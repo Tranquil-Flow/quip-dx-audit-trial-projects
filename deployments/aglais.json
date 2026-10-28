@@ -1,0 +1,11 @@
+{
+  "network": "Aglais Testnet (Quip Network)",
+  "chainId": 20033,
+  "rpcUrl": "https://evm-rpc.aglais.quip.network:20049",
+  "contract": "Counter",
+  "address": "0x51ddad71d1a185ec51e2451e7da3267ccf976bf4",
+  "deployer": "0x422b638Df9ec9A6085cdFb999C049ed11af5BA8e",
+  "deployTxHash": "0x4b692fb8a5a2ff947f6f624ef625a3e9e76add8d3d837602af229befca9813ec",
+  "deployBlock": 374903,
+  "deployGasUsed": 732883407
+}
