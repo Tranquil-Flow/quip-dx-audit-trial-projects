@@ -1,0 +1,388 @@
+# NOTE: there is intentionally no `env_file: .env` anywhere in this file.
+# `.env` is docker compose's interpolation source only — a variable reaches a
+# container solely when an `environment:` entry below wires it through. This
+# keeps each service's env contract explicit and stops secrets like
+# DWAVE_API_TOKEN from leaking into every container.
+
+# Runtime uid/gid mapping, shared by every image that does the
+# root-entrypoint -> chown /data -> gosu privilege-drop dance.
+x-runtime-user: &runtime-user
+  PUID: ${PUID:-1000}
+  PGID: ${PGID:-1000}
+
+# Every long-lived service forwards stdout to the syslog-ng collector inside
+# the dashboard container, which merges all of them into one host-readable
+# file at data/logs/quip-node.log. This replaces the per-container json-file
+# logs, which died with the container on every Watchtower update.
+#
+# `docker compose logs` and `docker logs` still work: Docker keeps a local
+# ring-buffer cache alongside any non-readable driver (dual logging), sized by
+# cache-max-size / cache-max-file below. Do NOT set cache-disabled.
+#
+# The address is a HOST address. The Docker daemon opens this socket, not the
+# container, so the compose network name quip-dashboard would not resolve.
+x-logging: &default-logging
+  driver: syslog
+  options:
+    syslog-address: "udp://127.0.0.1:${QUIP_LOG_PORT:-5514}"
+    # Container name becomes the PROGRAM field, which is the per-line prefix
+    # in the merged file. Without it every line is tagged with a container id.
+    tag: "{{.Name}}"
+    cache-max-size: ${QUIP_LOG_MAX_SIZE:-32m}
+    # Quoted: docker rejects cache-max-file as a bare int.
+    cache-max-file: "${QUIP_LOG_MAX_FILE:-5}"
+
+services:
+  # Both miner images ship the v0.3 quip-coordinator with every miner binary
+  # it supports bundled in. The coordinator is the supervised process: it
+  # connects to the chain and launches the miners declared in
+  # /data/config.toml, which the image seeds from its own /app/config.toml on
+  # first run. There are no QUIP_* config env vars. The environment block
+  # carries only host concerns (PUID/PGID) plus the D-Wave credential.
+  cpu:
+    image: registry.gitlab.com/quip.network/quip-miner/v0.3/quip-miner:${QUIP_MINER_TAG:-${CHANNEL:-beta}}
+    pull_policy: missing
+    container_name: devhobbyb-miner
+    restart: unless-stopped
+    profiles:
+      - cpu
+    # Restrict visible CPUs so the upstream entrypoint's `num_cpus = $(nproc)`
+    # autodetect writes a polite default instead of saturating the host. Linux
+    # `nproc` reads sched_getaffinity(2), which honors the cgroup cpuset — so
+    # this is what the entrypoint actually sees, unlike `cpus:` (CFS quota).
+    # Operators with dedicated miner hosts override with e.g. QUIP_MINER_CPUSET=0-15.
+    cpuset: ${QUIP_MINER_CPUSET:-0}
+    # Each SA worker streams samples through a POSIX shared-memory ring
+    # (~75 MiB/worker at the Advantage2 topology's max reads). Docker's
+    # 64 MiB /dev/shm default can't back even one worker's ring, so the
+    # miner dies with SIGBUS (exitcode=-7) — reported on a 12-core host,
+    # but the default single-CPU config hits it too. tmpfs is allocated
+    # lazily, so a generous cap costs nothing until written. (The cuda
+    # service instead sets ipc:host, which shares the host's /dev/shm.)
+    # See quip-miner v0.2.1-rc45.
+    shm_size: "2gb"
+    # STOPGAP (v0.2). The miner's working set grows without bound during a
+    # round: a 27.1 GiB peak on a 32 GiB host triggered two *global* OOM-kills,
+    # taking the validator and dashboard down with it. This cap converts that
+    # host-wide failure into a single container kill that `restart:
+    # unless-stopped` recovers from — it does not fix the leak, which is
+    # scheduled for v0.3. Until then the operator-side mitigation is a periodic
+    # reboot (or `docker compose restart cpu`) between rounds.
+    #
+    # NOTE: the 2 GiB shm ring above is tmpfs, and tmpfs pages are charged to
+    # this same cgroup — so this is ~14 GiB of heap plus the ring, not 16 + 2.
+    # Size it below total RAM with headroom for the colocated validator and
+    # dashboard; raise it only on a dedicated miner host.
+    mem_limit: ${QUIP_MINER_MEM_LIMIT:-16g}
+    logging: *default-logging
+    environment:
+      <<: *runtime-user
+      # D-Wave connection settings, read by the QPU layer only. The miner
+      # passes solver/region/token to DWaveSampler solely as explicit
+      # overrides and otherwise lets the Ocean SDK resolve them, so these use
+      # the SDK's canonical names. ~/.config/dwave/dwave.conf remains the
+      # file-based alternative. Empty resolves identically to unset.
+      #
+      # DWAVE_API_TOKEN is the name the SDK and the miner actually read;
+      # DWAVE_API_KEY is accepted here only so existing .env files keep
+      # working. Nothing reads DWAVE_API_KEY itself.
+      DWAVE_API_TOKEN: ${DWAVE_API_TOKEN:-${DWAVE_API_KEY:-}}
+      # Pin the solver. Without it the SDK picks whatever the account defaults
+      # to, which may not be the Advantage2 system the chain topology targets.
+      DWAVE_API_SOLVER: ${DWAVE_API_SOLVER:-}
+      DWAVE_API_REGION: ${DWAVE_API_REGION:-}
+    volumes:
+      - ./data:/data
+      # First-run config template, mounted over the image's own. The image
+      # entrypoint seeds /data/config.toml from /app/config.toml when the file
+      # is missing, and the upstream template still names the retired testnet
+      # faucet. See config/quip-miner.toml.
+      - ./config/quip-miner.toml:/app/config.toml:ro
+    networks:
+      default:
+        aliases:
+          - quip-miner
+    depends_on:
+      # service_healthy, not service_started: the coordinator's preflight reads
+      # the runtime at the validator's best block, so against a node that is
+      # still catching up it reads the genesis runtime (quip/103, QuantumPowApi
+      # v1) and exits. Waiting for the sync to finish is what makes that check
+      # meaningful. A fresh testnet install therefore holds here until the
+      # initial sync completes; see "Initial sync" in README.md.
+      quip-validator:
+        condition: service_healthy
+        required: false
+
+  cuda:
+    image: registry.gitlab.com/quip.network/quip-miner/v0.3/quip-miner-cuda:${QUIP_MINER_TAG:-${CHANNEL:-beta}}
+    pull_policy: missing
+    container_name: quip-cuda
+    restart: unless-stopped
+    profiles:
+      - cuda
+    # GPU sharing. ipc:host lets the miner attach to a host NVIDIA MPS control
+    # daemon (started by the manager on native Linux GPU hosts) for hardware SM
+    # partitioning; pid:host lets the miner's NVML detect sibling GPU processes
+    # for process-based yielding. Both are harmless without a daemon — the
+    # mounted MPS pipe dir is empty and the miner falls back to software nonce
+    # reduction. NOTE: NVIDIA MPS is unsupported under WSL2 / Docker Desktop, so
+    # these only engage on a native Linux GPU host.
+    ipc: host
+    pid: host
+    logging: *default-logging
+    environment:
+      <<: *runtime-user
+      # D-Wave connection settings, read by the QPU layer only. The miner
+      # passes solver/region/token to DWaveSampler solely as explicit
+      # overrides and otherwise lets the Ocean SDK resolve them, so these use
+      # the SDK's canonical names. ~/.config/dwave/dwave.conf remains the
+      # file-based alternative. Empty resolves identically to unset.
+      #
+      # DWAVE_API_TOKEN is the name the SDK and the miner actually read;
+      # DWAVE_API_KEY is accepted here only so existing .env files keep
+      # working. Nothing reads DWAVE_API_KEY itself.
+      DWAVE_API_TOKEN: ${DWAVE_API_TOKEN:-${DWAVE_API_KEY:-}}
+      # Pin the solver. Without it the SDK picks whatever the account defaults
+      # to, which may not be the Advantage2 system the chain topology targets.
+      DWAVE_API_SOLVER: ${DWAVE_API_SOLVER:-}
+      DWAVE_API_REGION: ${DWAVE_API_REGION:-}
+      # When a host MPS daemon is up, cap this client's GPU SMs at the operator's
+      # configured utilization (the manager writes QUIP_GPU_UTILIZATION to .env).
+      # NVIDIA runtime vars — no config-file equivalent exists for these.
+      CUDA_MPS_PIPE_DIRECTORY: /tmp/nvidia-mps
+      CUDA_MPS_ACTIVE_THREAD_PERCENTAGE: ${QUIP_GPU_UTILIZATION:-100}
+    volumes:
+      - ./data:/data
+      # First-run config template, mounted over the image's own. The image
+      # entrypoint seeds /data/config.toml from /app/config.toml when the file
+      # is missing, and the upstream template still names the retired testnet
+      # faucet. See config/quip-miner.toml.
+      - ./config/quip-miner.toml:/app/config.toml:ro
+      # MPS control pipe shared with the host daemon. Resolves to an empty dir
+      # (no MPS) on hosts without a running daemon — safe to mount regardless.
+      - /tmp/nvidia-mps:/tmp/nvidia-mps
+    networks:
+      default:
+        aliases:
+          - quip-miner
+    depends_on:
+      # service_healthy for the same reason as the cpu service above: the
+      # coordinator's preflight fails against a validator that is still syncing.
+      quip-validator:
+        condition: service_healthy
+        required: false
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+
+  # Substrate-based block-producing validator (quip-validator). Bundled
+  # into both the cpu and cuda profiles by default — every operator runs a
+  # local validator. TLS is best-effort: with a real QUIP_HOSTNAME + reachable
+  # port 80 (or DNS-01 creds), Caddy fronts the RPC at wss://<host>/rpc. With
+  # the dev default (QUIP_HOSTNAME=:20049) the validator still runs but is only
+  # reachable on the compose network and via http://localhost:20049/rpc.
+  # Inbound 30333/tcp and 30333/udp must be reachable from the public internet
+  # for libp2p peering.
+  quip-validator:
+    # On CHANNEL like every other image. quip-network-node:stable now names
+    # the v0.3 Aglais line, so CHANNEL=stable no longer resolves to the
+    # retired v0.2.2 build (runtime spec 116) that cannot run the runtime 117
+    # genesis. This repo published an explicit pin here while that upstream
+    # tag lagged. `latest` is still pre-Aglais and is not a release pointer:
+    # do not name it. QUIP_VALIDATOR_TAG overrides CHANNEL.
+    image: registry.gitlab.com/quip.network/quip-validator/quip-network-node:${QUIP_VALIDATOR_TAG:-${CHANNEL:-beta}}
+    pull_policy: missing
+    container_name: devhobbyb-validator
+    restart: unless-stopped
+    profiles:
+      - cpu
+      - cuda
+    # devhobbyb- adaptation: PUID/PGID pinned to the image defaults for the
+    # validator — host PGID 20 collides with a group in the image and its
+    # entrypoint crash-loops on `groupmod: GID '20' already exists`.
+    environment:
+      PUID: 1000
+      PGID: 1000
+    logging: *default-logging
+    volumes:
+      # Validator base path (db, keystore, libp2p key). Aglais keeps the
+      # chain id `quip_testnet`, so its db lands in the same chains/quip_testnet
+      # subdir the retired testnet used. A fresh directory keeps the two apart;
+      # the old one stays at ./data/validator-data until the operator deletes it.
+      - ./data/aglais-chain-db:/data
+      # Chain spec selector. Defaults to the Aglais spec (the Quip test
+      # network). Override in .env to join a private network with its own
+      # spec. Local development uses `make localdev` (--chain=dev) instead.
+      - ${QUIP_CHAIN_SPEC:-./chain-specs/aglais-network.json}:/etc/quip/chain-spec.json:ro
+      # Sync gate for the miner and the faucet. Mounted rather than baked in
+      # because the node image ships no HTTP client to probe its own RPC with.
+      - ./scripts/validator-healthcheck.sh:/usr/local/bin/validator-healthcheck:ro
+    ports:
+      # devhobbyb- adaptation: host side moved into 31600-31699.
+      - "31603:30333/tcp"
+      - "31603:30333/udp"
+    networks:
+      default:
+        aliases:
+          - quip-validator
+    command:
+      # Bootnodes come from the chain spec's bootNodes array. Override per
+      # deployment by adding additional `--bootnodes=<multiaddr>` entries
+      # via a docker-compose.override.yml. Compose's env-var expansion
+      # can't split a space-separated env var into multiple argv tokens,
+      # so SUBSTRATE_BOOTNODES isn't wired here.
+      - --chain=/etc/quip/chain-spec.json
+      - --base-path=/data
+      - --name=${VALIDATOR_NAME:-quip-validator}
+      - --validator
+      # Full archive node: keep every state trie + block body so historical RPC
+      # (e.g. the dashboard descriptor worker scanning from genesis) works
+      # without hitting "State already discarded" past the default 256-block
+      # pruning window. Operators who want to reclaim disk can override these
+      # via docker-compose.override.yml.
+      - --state-pruning=archive
+      - --blocks-pruning=archive
+      - --rpc-port=9944
+      - --unsafe-rpc-external
+      - --rpc-cors=*
+      - --rpc-methods=safe
+      - --prometheus-port=9615
+      - --prometheus-external
+      - --no-mdns
+      # Auto-generate the libp2p node identity on first boot. Required for
+      # joiner / observer nodes that don't have a published peer id (substrate
+      # otherwise refuses to start with NetworkKeyNotFound when --validator
+      # is set). Bootnode operators replace this with --node-key-file=/data/node-key
+      # per docs/testnet-deployment.md so their peer id matches the chain spec.
+      - --unsafe-force-node-key-generation
+    # Healthy means synced to the chain head. Initial sync of the live testnet
+    # replays every block under the archive pruning set above, so retries x
+    # interval has to cover hours, not minutes: docker marks a container
+    # unhealthy for good once retries are exhausted, and the gated services
+    # would never start. start_period keeps those early failures from counting.
+    healthcheck:
+      test: ["CMD", "validator-healthcheck"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 24h
+
+  # Optional faucet sidecar. Layered additively on top of a validator profile:
+  #   docker compose --profile cpu --profile faucet up -d
+  # See https://gitlab.com/quip.network/faucet for the upstream image.
+  quip-faucet:
+    image: registry.gitlab.com/quip.network/faucet:${QUIP_FAUCET_TAG:-${CHANNEL:-beta}}
+    pull_policy: missing
+    container_name: quip-faucet
+    restart: unless-stopped
+    profiles:
+      - faucet
+    logging: *default-logging
+    environment:
+      <<: *runtime-user
+      QUIP_FAUCET_ALLOW_ANY_CHAIN: ${QUIP_FAUCET_ALLOW_ANY_CHAIN:-0}
+    networks:
+      default:
+        aliases:
+          - quip-faucet
+    depends_on:
+      # The faucet signs and submits balance transfers, which a validator that
+      # is still catching up cannot process against the current runtime. An
+      # operator who points QUIP_FAUCET_NODE_URL at a remote node still waits
+      # for the local validator here; drop this dependency in an override if
+      # that wait is not wanted.
+      quip-validator:
+        condition: service_healthy
+        required: false
+    command:
+      - --node-url=${QUIP_FAUCET_NODE_URL:-ws://quip-validator:9944}
+      - --faucet-key=${QUIP_FAUCET_KEY:-//Alice}
+      - --listen-host=0.0.0.0
+      - --port=8087
+      - --rate-limit-seconds=${QUIP_FAUCET_RATE_LIMIT_SECONDS:-60}
+
+  # One container for the dashboard, the public front door, and the merged
+  # log. The image runs the Rust backend, Caddy, and syslog-ng under one
+  # supervisor, and keeps its index in an embedded Turso database at
+  # /data/dashboard.db. Caddy routes /rpc to quip-validator:9944,
+  # /api/faucet/* to quip-faucet:8087, /api/v1/* to quip-miner:8086, and
+  # everything else to the dashboard. An operator who needs a different
+  # Caddyfile mounts one over /etc/caddy/Caddyfile in
+  # docker-compose.override.yml.
+  dashboard:
+    image: registry.gitlab.com/quip.network/dashboard.quip.network:${QUIP_DASHBOARD_TAG:-${CHANNEL:-beta}}
+    pull_policy: missing
+    container_name: devhobbyb-dashboard
+    restart: unless-stopped
+    # faucet too: a faucet-only stack still needs the collector.
+    profiles:
+      - cpu
+      - cuda
+      - faucet
+    environment:
+      <<: *runtime-user
+      # The backend dials the validator and the miner directly. Miner-only
+      # nodes point QUIP_VALIDATOR_RPC_URLS at a remote front door instead
+      # (e.g. wss://bootnode-1.aglais.quip.network/rpc).
+      QUIP_VALIDATOR_RPC_URLS: ${QUIP_VALIDATOR_RPC_URLS:-ws://quip-validator:9944}
+      QUIP_MINER_REST_URL: ${QUIP_MINER_REST_URL:-http://quip-miner:8086}
+      QUIP_HOSTNAME: ${QUIP_HOSTNAME:-:20049}
+      # ACME registration email. Operators set CERT_EMAIL in .env before
+      # exposing the site over TLS; the placeholder default keeps Caddy
+      # parseable in dev mode where no ACME runs.
+      CERT_EMAIL: ${CERT_EMAIL:-hostmaster@localhost}
+      ZEROSSL_API_KEY: ${ZEROSSL_API_KEY:-}
+      # Rotation, matching the v0.1 miner: 10MB x 5. The collector checks the
+      # size every QUIP_LOG_CHECK_INTERVAL seconds, so the file can overshoot
+      # by one interval's worth of output before it rotates.
+      QUIP_LOG_MAX_BYTES: ${QUIP_LOG_MAX_BYTES:-10485760}
+      QUIP_LOG_KEEP: ${QUIP_LOG_KEEP:-5}
+      QUIP_LOG_CHECK_INTERVAL: ${QUIP_LOG_CHECK_INTERVAL:-30}
+    # Deliberately NOT *default-logging: the supervisor already forwards the
+    # backend's and Caddy's output to the collector in this container, and
+    # pointing the container's own driver at that collector is a feedback
+    # loop. json-file keeps collector startup errors visible in
+    # `docker compose logs dashboard`.
+    logging:
+      driver: json-file
+      options:
+        max-size: 8m
+        max-file: "2"
+    volumes:
+      # Index database, /files data, and collector state.
+      - ./dashboard-data:/data
+      # The image sets XDG_DATA_HOME=/data/caddy/data and
+      # XDG_CONFIG_HOME=/data/caddy/config, so these volumes keep the
+      # certificates the standalone caddy container provisioned.
+      - caddy-data:/data/caddy/data
+      - caddy-config:/data/caddy/config
+      - ./data/logs:/logs
+    ports:
+      # devhobbyb- adaptation: host side moved into 31600-31699.
+      # 31600 -> Caddy :20049 (dashboard/RPC/telemetry, dev HTTP)
+      # 31601/31602 -> Caddy :80/:443 (no-ops in dev mode, kept for parity)
+      # 31604 -> syslog collector :5514/udp (loopback, matches QUIP_LOG_PORT)
+      - "31600:20049"
+      - "31601:80"
+      - "31602:443"
+      - "127.0.0.1:31604:5514/udp"
+    # No depends_on. The collector and the front door must be up while the
+    # validator syncs; the indexer pauses backfill until the sync finishes.
+    networks:
+      default:
+        aliases:
+          - quip-dashboard
+
+volumes:
+  caddy-data:
+    name: devhobbyb-caddy-data
+  caddy-config:
+    name: devhobbyb-caddy-config
+
+networks:
+  default:
+    name: devhobbyb-quip-net
