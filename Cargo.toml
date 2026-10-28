@@ -1,0 +1,20 @@
+[package]
+name = "agls-tool"
+version = "0.1.0"
+edition = "2021"
+description = "Substrate-side CLI for Quip Network's Aglais testnet: AGLS balance queries and hybrid-signed (sr25519 + FN-DSA-512) transfers over the official Substrate RPC."
+
+# Make this directory its own workspace root so cargo does not walk up to
+# /private/tmp/Cargo.toml (an unrelated partial checkout from another session).
+[workspace]
+
+[dependencies]
+pqhybridsign = { version = "=0.0.0-rc9", default-features = false, features = ["std"] }
+blake2 = "0.10"
+bs58 = "0.5"
+twox-hash = "1.6"
+ureq = { version = "2", features = ["json"] }
+serde_json = "1"
+serde = { version = "1", features = ["derive"] }
+getrandom = "0.2"
+hex = "0.4"
