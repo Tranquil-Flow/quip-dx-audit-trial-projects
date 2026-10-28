@@ -1,0 +1,1200 @@
+# Welcome to Quip Network
+
+## Jump right in
+
+<table data-view="cards"><thead><tr><th></th><th></th><th data-hidden data-card-cover data-type="files"></th><th data-hidden></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td><strong>Getting Started</strong></td><td>Get a quantum-resistant wallet and run a node</td><td></td><td></td><td><a href="/docs/getting-started/quickstart">quickstart.md</a></td></tr><tr><td><strong>Network Basics</strong></td><td>Get to know the Quantum Unit Interlock Pathway (QUIP)</td><td></td><td></td><td><a href="/docs/quip-interlock-protocol/quip-the-quantum-unit-interlock-pathway">quip-the-quantum-unit-interlock-pathway.md</a></td></tr><tr><td><strong>Network Structure</strong></td><td>Peer-to-peer or delegated to a network of validators</td><td></td><td></td><td><a href="/docs/network/participants">participants.md</a></td></tr><tr><td><strong>Quantum Quirks</strong></td><td>Learn the basics of working with quantum computers</td><td></td><td></td><td><a href="/docs/nodes/miners">miners.md</a></td></tr><tr><td><strong>Post-quantum Pads</strong></td><td>Protecting your assets, contracts, and keys responsibly</td><td></td><td></td><td><a href="/docs/quip-interlock-protocol/quip-accounts">quip-accounts.md</a></td></tr><tr><td><strong>Requesting Jobs</strong></td><td>Solve problems unsolvable by any other means</td><td></td><td></td><td><a href="/docs/compute/submit-a-job">submit-a-job.md</a></td></tr></tbody></table>
+
+These docs cover building on the Quip Network: submitting optimization jobs to a decentralized quantum and classical compute marketplace, and protecting assets on the chains you already use with quantum-resistant accounts and swaps. New to Quip? Start with the [Quickstart](/docs/getting-started/quickstart), or read [What is Quip Network?](/docs/getting-started/what-is-quip) for how the two layers relate. Integrating? Go to the [Quip SDK](/docs/getting-started/quip-sdk). For the whole system in one diagram, see [How Quip Network Fits Together](/docs/quip-interlock-protocol/how-quip-fits-together). If you are reading alongside an AI assistant, these pages are also [available as markdown and over MCP](/docs/getting-started/use-with-ai).
+
+The goal of the Quip Network is to make quantum compute usable without owning the hardware, for problems in finance, logistics, manufacturing, and AI.
+
+If you can phrase your question as, "What's the best...?", "What's the fastest...?", or "What's the least costly...?" the odds are good that we can solve your problem faster with a quantum computer.
+
+Because we run a quantum computing network, we also secure client digital assets against threats from the advent of quantum computers. Users of the Quip Network (wallets, protocols, retail, and institutions) will be able to easily integrate the Quip Protocol into their existing chains and wallets to achieve post-quantum security as an extra layer of defense for their digital assets.
+
+The long-term mission is a worldwide quantum computer: a network that can solve problems no single platform can. These docs cover how to use that network today, and how to keep your assets secure from anyone who might misuse it.
+
+## Licensing and contact
+
+Quip Network publishes its quantum-resistant technology under the open-source AGPL 3.0 license, free for open-source projects. For private commercial licensing, contact legal@quip.network. For professional services around post-quantum accounts, cryptography, and quantum algorithms, contact Postquant Labs at bd@postquant.xyz.
+
+---
+
+# Quickstart
+
+The Quip Network protocol is published as open source software on [GitHub](https://github.com/quipnetwork/) and [GitLab](https://gitlab.com/quip.network). There are two things you can do with it today: run a node, and generate quantum-resistant keys. This page covers both.
+
+## Run a node
+
+If you wish to run a node, you can download the desktop node runner on Windows, Linux, or Mac OSX which will guide you through setting up your environment:\
+\
+[https://gitlab.com/quip.network/quip-node-manager/-/releases](https://gitlab.com/quip.network/quip-node-manager/-/releases)
+
+For more node running options see the [Nodes section](/docs/nodes/run-a-node-testnet), which covers server deployment with docker-compose and building from source.
+
+## Generate quantum-resistant keys
+
+Right now there's not much to do other than mine blocks, generate some quantum-resistant keys through our wallets on Ethereum, Solana, their L2s, and the Bitcoin L2s Arch and Midl, but we are building out the smart contract layer so you can take advantage of the quantum computers too.
+
+You can generate post-quantum keys to prepare for the smart contract layer by using our wallets at [account.quip.network](https://account.quip.network/) or you can use the libraries below.
+
+## Use the libraries directly
+
+Quip's implementation of various hash algorithms, especially the preferred Winternitz One-Time Signature (WOTS+), is available as a library for [rust](https://crates.io/crates/hashsigs-rs), [c++](https://github.com/quipnetwork/hashsigs-cpp), [typescript](https://www.npmjs.com/package/@quip.network/hashsigs), and [solidity](https://www.npmjs.com/package/@quip.network/hashsigs-solidity). If you do not want to use these libraries directly, you can use the interface at [account.quip.network](https://account.quip.network/).
+
+All Quip Network libraries and contracts are available for review on [GitHub](https://github.com/QuipNetwork).
+
+## Where to go next
+
+If you are new to the network, [What is Quip Network?](/docs/getting-started/what-is-quip) explains the two layers and how they relate, and [How Quip Network Fits Together](/docs/quip-interlock-protocol/how-quip-fits-together) shows the whole system in one diagram.
+
+For building, start from the [Quip SDK](/docs/getting-started/quip-sdk). To put a problem in front of the compute network, see [Submit Your First Compute Job](/docs/compute/submit-a-job).
+
+> **Note**
+> Want to learn more about QUIPs from scratch? Head to the [Basics](/docs/quip-interlock-protocol/quip-the-quantum-unit-interlock-pathway) section to learn more.
+
+---
+
+# What is Quip Network?
+
+Quip is **not** a single blockchain or a single quantum computer. Think of it as two orthogonal layers that can be adopted together or separately:
+
+1. **Compute-Consensus Layer (Quip Network)** – a new Nakamoto-style chain whose proof-of-work _is a useful optimization job_. This turns spare classical/quantum hardware into block-production while producing answers clients are willing to pay for.
+2. **Asset Layer (QUIP Account & Interlock)** – a post-quantum wrapper you deploy _on any existing chain_ to lock, move, or atomically swap value without bridges or oracles. It upgrades security today without requiring any hardware or protocol changes.
+
+These layers share the **same token ($QUIP)** and the same validator/miner economy, but either layer can function on its own:
+
+* **Only need useful-work mining?** Point your QPU/GPU/CPU farm at the Quip Network; earn $QUIP even if you never lock assets.
+* **Only need PQ security?** Use wallets on Ethereum/Solana/Bitcoin/Substrate with no exposure to mining.
+
+## 1. Mission & Scope
+
+Quip delivers **two coupled services**:
+
+1. **Decentralized compute marketplace** – miners solve real optimization jobs instead of wasteful hashes, proving quantum advantage under a single token economy.
+2. **Post-quantum asset security** – hash-based vaults wrap ECC keys with quantum-resistant WOTS+ keys, offering drop-in protection on any chain.
+
+This secures existing value, monetizes idle quantum-classical hardware, and funds open-source quantum research.
+
+For why the network is built this way, see [Motivation](/docs/basics/motivation); for the constraints the design has to satisfy, see [Key Properties](/docs/basics/key-properties). [How Quip Network Fits Together](/docs/quip-interlock-protocol/how-quip-fits-together) puts both layers in a single diagram.
+
+## 2. Core Components
+
+### 2.1. QUIP Account
+
+* Deposit on any chain → vault ID & first WOTS+ public key.
+* Each action signed with next WOTS+ key → immutable hash-chain of ownership.
+* Safe through host-chain reorgs; can always withdraw back to native chain.
+
+### 2.2. Interlock
+
+* Two parties can perform atomic swaps across chains by cryptographically exchanging quantum-resistant private keys
+* With their single use keys, each party encrypts a new quip wallet holding the assets they want to trade with a commitment to the details of the receiver and transferred tokens, and this begins a timer
+* If one executes their half of the trade, they reveal the information necessary for the other to execute the other half of the trade. If neither party acts, the expired timers allow refunds
+* No bridges or oracles required.
+
+### 2.3. Consensus – Quantum PoW (QPoW)
+
+* **Canonical chain:** Random Ising models are generated using a block header `prevHash‖Merkle‖height‖addr‖keys` with difficulty determined by chain clock speed
+* **Side-chains/uncles:** Jobs submitted by consumers can be included as an uncle block in any chain: different processors can mine same job class, and publish alternate solutions to validate quality
+* Miner must output **N** low-energy, pairwise-distant solutions.
+* Identity = {ECDSA, rolling WOTS+}; difficulty & streak bonuses bind to key.
+
+### 2.4 Subnet & Pipeline Marketplace
+
+* Each arrow is pluggable; component authors earn royalties.
+* First subnet = Optimization (QUBO -> Ising: knapsack, TSP, SVP, job scheduling…).
+* Future subnets: Verifiable Random Functions, Search, Factoring, Circuit Mapping.
+
+User Data → Template → Graph Reduce → Embed → Algo Select → HW Select → Compute
+
+## 3 Actors & Incentives
+
+| Actor                                | Role                                             | Earns                    |
+| ------------------------------------ | ------------------------------------------------ | ------------------------ |
+| **Miner** (CPU/GPU/ASIC/QPU)         | Solve Proofs of Useful Work, broadcast blocks    | Block reward + job fees  |
+| **Validator**                        | Batch QUIP tx, finalize blocks, track reorgs     | Network fees + emissions |
+| **Algorithm/Pipeline Designer**      | Publish templates, reducers, algos               | Royalty on every call    |
+| **Nominator**                        | Delegate $QUIP to validators                     | Share of validator yield |
+
+## 4 Token Economics
+
+### 4.1 Supply (fixed commitments)
+
+One billion QUIP will have been emitted when all pre-mine allocations finish vesting — and emissions continue at 40M/year after that, so this is not a maximum supply:
+
+* **Subnet Emissions:** 40 %
+* **Quip Foundation:** 20 %
+* **Early Investors:** 15 %
+* **Builders:** 15 %
+* **Community Programs:** 10 %
+
+### 4.2 Utilities
+
+| Layer                | Action          | Payer           | $QUIP sink            |
+| -------------------- | --------------- | --------------- | --------------------- |
+| **Asset (Wallet)**   | Account deposit | Creator         | Flat fee (protocol fee) |
+|                      | Transfer        | Sender          | Flat fee → validators |
+|                      | Contract exec   | Caller          | % routed to treasury  |
+|                      | Swap open       | Both parties    | Escrow (slashable)    |
+|                      | Swap claim      | Claimer         | Nominal fee           |
+| **Compute (Sinnet)** | Job bid         | Consumer        | Variable fee          |
+|                      | Block reward    | Protocol        | Newly-minted          |
+|                      | Staking bond    | Validators/Noms | Locked collateral     |
+|                      | Bounty payout   | Treasury        | Stream release        |
+
+Key points: universal denomination, predictable costs, treasury buyback into permanent liquidity (no burn), security-fee coupling.
+
+### 4.3 Emission Outline
+
+* **Fixed and flat:** 40 million QUIP per year, regardless of price, activity, or subnet count — no halvings.
+* **Implicit decay:** each new subnet competes for a share of the same annual emission, so QUIP emitted per unit of compute falls as the network grows.
+
+---
+
+# Quip SDK
+
+Quip Network publishes two SDKs:
+
+1. An SDK for quantum smart contracts and hybrid solvers, that helps you construct solutions for optimization and satisfiability problems, artificial intelligence tasks, or even Bitcoin mining.
+
+This SDK is meant to help you work with quantum computers of all kinds: adiabatic quantum computers like annealers, or gate-based quantum computers that support certain operations which make it easier to reason about generalized quantum computation.
+
+2. An SDK for existing smart contracts that lets you upgrade your contracts one ABI at a time. Import the file with your package manager and reference the SDK anytime you need to unwrap a post-quantum commitment into its associated classical public key.
+
+The wallet SDK is compatible with WalletConnect, Solana `wallet-adapter`, and other major cryptocurrency wallet clients. Its most versatile use case is a smart account much like a Coinbase smart account or a Safe wallet, which wraps any contract with a post-quantum signature read and aborts the subsequent contract call if the read fails.
+
+However, sometimes contracts may require token allowances, specialized permissions, or access to collateral held in the contract. For these use cases, it is necessary for the contract to implement the Quip SDK's post-quantum ABI extension directly.
+
+## Install
+
+The packages below are published in the public registries. Pre-release npm packages use the named distribution tags so the install command continues to select the current build in that release channel.
+
+### JavaScript and TypeScript (npm)
+
+> **Warning**
+> Install with the tags shown below. A plain `npm install` resolves the `latest` tag, which for these packages points at builds from 2025 that predate the current signature scheme.
+
+| Package | Install | What it is |
+| --- | --- | --- |
+| `@quip.network/ethereum-sdk` | `npm install @quip.network/ethereum-sdk@beta` | The account client for EVM chains. Use the `beta` tag for the current generation; `latest` still points to the earlier generation. |
+| `@quip.network/hashsigs-wasm` | `npm install @quip.network/hashsigs-wasm@rc` | The current hash-based signature signer and verifier (SHRINCS), compiled from the audited Rust implementation to WebAssembly. Works in Node.js and the browser. Use the `rc` tag; `latest` points to an earlier release candidate. |
+
+### Python (PyPI)
+
+| Package | Install | What it is |
+| --- | --- | --- |
+| `xquad[quip]` | `pip install "xquad[quip]"` | The XQuad toolchain: model building, solver adapters, and the backend that submits jobs to Quip Network. See [Submit Your First Compute Job](/docs/compute/submit-a-job). |
+
+### Packages that do not exist yet
+
+There is no public `@quip.network/quip-swap` or `@quip.network/sdk` package, and no swap SDK is published today. Use the wallet for swaps.
+
+### Previous-generation libraries
+
+The Winternitz One-Time Signature (WOTS+) libraries remain published for the earlier account generation: [`@quip.network/hashsigs`](https://www.npmjs.com/package/@quip.network/hashsigs) (TypeScript), [`@quip.network/hashsigs-solidity`](https://www.npmjs.com/package/@quip.network/hashsigs-solidity) (Solidity), [hashsigs-cpp](https://github.com/quipnetwork/hashsigs-cpp) (C++), and the [hashsigs-rs](https://crates.io/crates/hashsigs-rs) crate (Rust). New integrations should use the packages in the tables above.
+
+Working with an AI assistant? Every page here has a markdown mirror and the site runs an MCP server: see [Use These Docs with AI](/docs/getting-started/use-with-ai).
+
+---
+
+# Use These Docs with AI
+
+These docs are built to be read by AI tools as well as people. Every page has a plain-markdown mirror, and the whole site is indexed for language models. Both are live today.
+
+**Which option should you use?**
+
+| You are | Use |
+| --- | --- |
+| Asking questions about one page | [Open the page in your assistant](/docs/getting-started/use-with-ai#ask-an-assistant-about-one-page) |
+| Feeding the docs to your own tool, agent, or evaluation | [The site indexes](/docs/getting-started/use-with-ai#give-a-model-the-whole-site), never scrape the HTML |
+
+## Ask an assistant about one page
+
+Every page on this site has a markdown mirror: add `.md` to the end of the page URL.
+
+**What it does.** Gives an AI assistant the clean content of a page, structure and code blocks preserved, navigation noise removed.
+
+**When to use it.** Quick questions, code generation, or a longer analysis grounded in a single page.
+
+**How to use it.** Tell your assistant to read the page's `.md` URL:
+
+* **Claude:** `https://claude.ai/new?q=Read <page URL>.md so I can ask questions about it.`
+* **ChatGPT:** `https://chatgpt.com/?q=Read <page URL>.md so I can ask questions about it.`
+
+For example, to work with the [QuipSwap](/docs/quip-interlock-protocol/quipswap) page, copy the page's address from your browser and add `.md` to the end. The [`/llms.txt` index](/docs/getting-started/use-with-ai#give-a-model-the-whole-site) lists the exact mirror URL for every page.
+
+## Give a model the whole site
+
+**What it does.** Two standing indexes cover the entire documentation at once.
+
+| URL | Contents |
+| --- | --- |
+| [`/llms.txt`](https://developers.quip.network/docs/llms.txt) | An annotated index of every page with its markdown mirror, for models that fetch pages on demand |
+| [`/llms-full.txt`](https://developers.quip.network/docs/llms-full.txt) | The entire documentation in one markdown file, for pasting into a model's context window |
+
+**When to use it.** You are building a tool, agent, or evaluation that consumes the docs as data.
+
+**How to use it.** Fetch the index URL directly. Use these rather than scraping the HTML: they are generated from the same source as the site, so they are always current.
+
+> **Note**
+> These endpoints reflect the published documentation. If a page is not on the live site yet, it is not in the indexes.
+
+---
+
+# How Quip Network Fits Together
+
+Quip is easiest to understand as a chain of four pieces, where each piece exists because of the one before it. This page walks that chain once, and every other page in this section covers one link in depth.
+
+## The four pieces
+
+1. **The Quantum Unit Interlock Pathway (QUIP) is the primitive.** A lockbox that releases funds only against a post-quantum signature. Everything else is built on it. See [QUIP: The Quantum Unit Interlock Pathway](/docs/quip-interlock-protocol/quip-the-quantum-unit-interlock-pathway).
+2. **A Quip Account is that lockbox, holding your assets.** It lives on the chain you already use (Ethereum, Base, and others), so you get post-quantum protection without moving anything. See [Quip Accounts](/docs/quip-interlock-protocol/quip-accounts).
+3. **QuipSwap lets two accounts trade atomically.** One shared secret settles both sides of a trade, or neither. Because that works across chains, value can move without a bridge. See [QuipSwap](/docs/quip-interlock-protocol/quipswap).
+4. **That same swap mechanism pays for quantum compute.** Operators are paid through the swap, so you can request work from whatever chain your assets are on. Quantum randomness is designed to be the first product sold this way. See [Quantum Randomness (QVRF)](/docs/compute/qvrf).
+
+## The whole system in one diagram
+
+```mermaid
+flowchart LR
+    SC["<b><u>Supported chains</u></b><br/>Ethereum, Base, and more"]
+    JS["<b><u>Job submitters</u></b><br/>post problems with rewards"]
+    OP["<b><u>Operators</u></b><br/>mine solutions on quantum<br/>and classical hardware"]
+    subgraph QN["Quip Network"]
+        A["<b><u>Quip Account</u></b><br/>holds your assets"]
+        S["<b><u>QuipSwap</u></b><br/>settles atomic trades"]
+        subgraph SUB["Subnets"]
+            OPT["<b><u>Optimization</u></b><br/>Subnet 1, solves jobs"]
+            RND["<b><u>Randomness</u></b><br/>Subnet 2, serves QVRF"]
+        end
+    end
+    SC --> A
+    A -->|authorizes| S
+    S ==>|pays for work| SUB
+    SUB -->|returns the result| S
+    JS -->|submit jobs| SUB
+    OP -->|mine solutions| SUB
+    style SUB fill:#FFFFFF,stroke:#8B8083
+    classDef quip fill:#FFEDEE,stroke:#C93A3F,color:#1A1618
+    class A,S quip
+```
+
+The account and swap contracts are deployed onto the supported chains themselves, so your assets never leave the chain they live on. QuipSwap's trades are sealed by the QUIP interlock, the shared-secret construction the protocol is named for; [QUIP: The Quantum Unit Interlock Pathway](/docs/quip-interlock-protocol/quip-the-quantum-unit-interlock-pathway) explains it.
+
+Unlike most Web3 platforms, Quip's atomic swaps require no bridge. The swap carries the value between chains, so there is no bridge for anyone to attack and no third-party bridge contract for Quip to depend on.
+
+## Who pays whom
+
+The network is a stack of participants, and every payment between layers settles the same way.
+
+```mermaid
+flowchart LR
+    CC["Compute<br/>Consumers"] -->|USD| AD["Application<br/>Developers"]
+    AD -->|"$QUIP"| ALG["Algorithm<br/>Developers"]
+    ALG -->|"$QUIP"| PD["Protocol<br/>Developers"]
+    PD -->|"$QUIP"| CP["Compute Providers<br/>QPU, GPU, CPU"]
+    LP["Liquidity<br/>Providers"] <-->|"USD to $QUIP,<br/>via QuipSwap"| AD
+```
+
+Every $QUIP hop is a payment for work one layer down, and cross-chain payments settle over the QuipSwap protocol.
+
+## Where to go next
+
+| If you want to | Read |
+| --- | --- |
+| Hold assets under post-quantum protection | [Quip Accounts](/docs/quip-interlock-protocol/quip-accounts) |
+| Trade without bridges | [QuipSwap](/docs/quip-interlock-protocol/quipswap) |
+| Buy quantum randomness | [Quantum Randomness (QVRF)](/docs/compute/qvrf) |
+| Submit an optimization job | [Submit Your First Compute Job](/docs/compute/submit-a-job) |
+| Run hardware and earn | [Run A Node](/docs/nodes/run-a-node-testnet) |
+
+---
+
+# QUIP: The Quantum Unit Interlock Pathway
+
+The Quantum Unit Interlock Pathway (“QUIP”) is the basic primitive building block of the Quip Network. Each QUIP is a secure lockbox or vault which protects user funds with a post-quantum signature. The algorithms generating the signature have no known vulnerabilities to quantum computing attackers. Beyond its role in safeguarding assets, the QUIP plays a crucial part in maintaining the integrity and functionality of the Quip Protocol.
+
+QUIPs start with a user deposit on any blockchain into a QUIP-enabled smart contract. This action creates a QUIP transaction input, which can be used across the entire Quip Network. This deposit pairs the user’s classical wallet with information that can be used to uniquely generate a compatible post-quantum wallet.
+
+In its simplest form, the user can withdraw their funds from a QUIP by signing a transaction with their post-quantum wallet and sending the post-quantum signature to a QUIP-enabled smart contract with their classical wallet. This action could be easily integrated into existing wallets using an extension, such that the post-quantum wallet is hidden within the normal operations of the user’s everyday wallet. The user can also split funds in a QUIP by sending a signed split transaction to the contract, such that some balance is sent to a receiver, and the remaining assets are then shifted to a new QUIP address owned by the sender.
+
+QUIPs provide the ultimate protection for anyone worried about quantum computers. While funds are inside the QUIP they are safe even in the advent of a quantum zero day attack. An enterprising quantum attacker will be unable to provide the necessary post-quantum signature, which means they cannot provide a valid classical hash to the host transaction network, and thus they cannot create a valid QUIP transaction to remove the funds from the wallet. This guarantee holds true even if they can break the host transaction network’s consensus or steal funds from classical unprotected wallets.
+
+## Properties
+
+The QUIP is a versatile building block:
+
+1. Every transaction enforces ACID (Atomicity, Consistency, Isolation, and Durability) principles. They either complete or they do not.
+2. The protocol supports staking, swaps, flash loans, mixnets, zero-knowledge proofs, dark pools, voting, delegation, and any other process dreamable with boolean logic.
+3. Each deposit requires no custody or lockup on any one transaction network.
+4. Transaction resolution is independent and secure without need for any additional consensus mechanism or validator set.
+5. Exchange of funds requires no oracles or cross-chain messaging.
+6. Post-quantum guarantees are agnostic to the network consensus model and cryptographic architecture.
+7. Clients need only rely on the chains to validate transactions: no state comparisons, intermediate networks, or zero knowledge proofs are necessary to perform the needed validations, beyond those required by the host network consensus model.
+
+The states a QUIP moves through are described in [QUIP Lifecycle](/docs/quip-interlock-protocol/quip-lifecycle), and the contract that holds the funds is described in [Quip Accounts](/docs/quip-interlock-protocol/quip-accounts).
+
+---
+
+# Quip Accounts
+
+A Quip Account is where your assets live under post-quantum protection. This page explains what the account is, how you reach it, how its signatures work, and the one signature behavior every integrator needs to understand before relying on it.
+
+## A lockbox on the chain you already use
+
+A Quip Account is a smart contract deployed on the blockchain you already use. It works like a lockbox: your assets sit inside the contract, and the contract releases them only when it is shown a valid signature from a quantum-resistant key. The signature scheme is hash-based, which means its security rests on the strength of a hash function rather than on the mathematical problems that a quantum computer could one day solve.
+
+Nothing about your assets moves to a new network. You keep using the chain, the tokens, and the tooling you already have. Your existing wallet still has a job: it submits transactions to the network and pays the fees. The quantum-resistant signature is what authorizes the movement of assets.
+
+A factory contract creates each account, and the account's address is derived deterministically from its creation inputs rather than assigned at random.
+
+## One account, two doors
+
+Quip Network provides two clients for the same account: a browser extension and the web application at [account.quip.network](https://account.quip.network/). They are two doors into one account, not two wallets. The account itself is the contract on chain. Both clients read the same balances and history and produce signatures for the same account, so nothing you create through one client is trapped in the other.
+
+If your application points users at Quip, route Chrome users to the extension and everyone else to the web app. The web app requires no installation and runs in any modern browser. The extension wraps the same account surface and adds the click-the-icon flow and the decentralised application (dApp) connection surface that Chrome users expect from a wallet.
+
+## How signing works
+
+Quip Accounts sign with hash-based one-time signatures, packaged in a construction called SHRINCS. A hash-based one-time key can safely sign exactly one message, so SHRINCS commits to a large collection of one-time keys under a single compact public commitment and gives the account two ways to use them:
+
+* **The everyday path.** Cheap to verify and used for normal operations. Each signature consumes one slot from a fixed budget that is set when the key bundle is created. Once a slot has been used, it is gone: signing again requires the next unused slot.
+* **The break-glass path.** A more expensive signature reserved for recovery and for rotating to a fresh key bundle. It does not depend on any record of which slots have been used, which is exactly what you want when that record has been lost.
+
+```mermaid
+graph TD
+    C["One public key commitment<br/>(the account's quantum-resistant identity)"]
+    C --> A["Everyday path<br/>cheap signatures,<br/>one slot consumed per signature"]
+    C --> B["Break-glass path<br/>expensive recovery signatures,<br/>no slot records needed"]
+    A --> V["Account verifies the signature<br/>and executes the operation"]
+    B --> V
+```
+
+The chain verifies signatures; it does not manage your signing state. Which slots have been consumed is state that belongs to the signer, and the Quip clients track it for you.
+
+## If you build your own signer, track your slots
+
+This is the one discipline that makes Quip Accounts different from a classical wallet integration. A classical key can sign any number of times. A slot in a Quip Account key bundle must sign at most once.
+
+If you integrate at the level of the signing libraries rather than through the Quip clients, you own that state:
+
+* Record which slots have been consumed, and update the record before you broadcast, not after.
+* Never sign two different messages with the same slot. Reusing a slot weakens the one-time scheme it belongs to.
+* Treat the slot budget as a finite resource and plan for rotation to a fresh key bundle well before the budget runs out.
+
+The specific size of the slot budget is an implementation parameter and is not documented here. Design your integration to read the budget from the account rather than assume it.
+
+## Signature checks by other contracts are not one-time
+
+Third-party contracts, such as exchanges with off-chain order books or permit-style token approvals, can ask a Quip Account whether it authorized a message through the standard contract-signature interface, ERC-1271 (Ethereum Request for Comments 1271).
+
+> **Warning**
+> **ERC-1271 checks are view-only and do not consume a slot.** A signature verified through `isValidSignature` remains valid for as long as the key it was made with stays installed on the account. The one-time-use guarantee that applies to every other signature path does **not** apply here. This is a deliberate design choice, not an oversight.
+
+The consequence for integrators: if your protocol assumes a signature can only be used once, you must enforce that yourself. Common approaches are tracking nonces in your own contract, binding signatures to an expiry, or treating the account's verification key as something to be replaced once its signature has served its purpose. Do not assume replay protection on the ERC-1271 surface, because the account does not provide it there.
+
+## Upgrades are yours to accept
+
+Account logic will improve over time, and the upgrade model is designed around user consent:
+
+* **Opt-in only.** You are prompted when a new account version is available, and nothing changes until you explicitly approve the upgrade. Quip never upgrades your account for you.
+* **Your address is preserved.** An upgrade replaces the account's executable logic while the address, balance, and state stay where they are. Funds do not move, and integrations that reference your address keep working.
+
+## Standards lineage
+
+Quip Accounts are built on public, citable standards rather than proprietary cryptography.
+
+| Standard | What it is | Role in Quip Accounts |
+| --- | --- | --- |
+| [RFC 8391](https://datatracker.ietf.org/doc/html/rfc8391) | XMSS: eXtended Merkle Signature Scheme (RFC is Request for Comments) | Baseline for the stateful Merkle-tree component behind the everyday signing path |
+| [FIPS 202](https://csrc.nist.gov/pubs/fips/202/final) | SHA-3 Standard (FIPS is Federal Information Processing Standards) | Defines the Keccak hash family used throughout the signature scheme |
+| [FIPS 205](https://csrc.nist.gov/pubs/fips/205/final) | Stateless Hash-Based Digital Signature Standard | Conventions and cross-checks for the break-glass recovery path |
+| [ERC-1271](https://eips.ethereum.org/EIPS/eip-1271) | Standard Signature Validation Method for Contracts | The contract-signature interface described in the warning above |
+| [ERC-4337](https://eips.ethereum.org/EIPS/eip-4337) | Account Abstraction Using Alt Mempool | The smart-account execution model the account contracts follow |
+| [ERC-7913](https://eips.ethereum.org/EIPS/eip-7913) | Signature Verifiers | The interface exposed by the on-chain signature verifier contracts |
+
+A Quip Account is one of four pieces that make up the network. [How Quip Network Fits Together](/docs/quip-interlock-protocol/how-quip-fits-together) shows how it connects to [QuipSwap](/docs/quip-interlock-protocol/quipswap) and the compute network.
+
+---
+
+# QuipSwap
+
+QuipSwap is Quip Network's protocol for trading assets directly with another party. You agree on the terms of a trade, then each of you locks the assets you are giving up in a shared settlement contract on your own chain. A single secret connects the two locks. When one side reveals the secret to claim their new assets, that same reveal lets the other side claim theirs. If the trade stalls, each side takes back what they locked once a deadline passes. The trade can run across two chains or entirely on one chain, and at no point does a bridge, an exchange, or any other custodian hold your money.
+
+## Quantum protection comes first
+
+QuipSwap's design leads with what protects the assets. The bridgeless design is a benefit, but a secondary one.
+
+The assets in a swap are held and moved by Quip accounts, the quantum-resistant wallet layer described in [Quip Accounts](/docs/quip-interlock-protocol/quip-accounts). Every authorization above the settlement layer is protected there by post-quantum signatures. The settlement contract itself deliberately uses a simpler tool: a hash lock, a lock that opens only for whoever knows a chosen secret. Hash locks rest on hash functions, and hash functions are not weakened by the known quantum attacks that break ordinary wallet keys. The result is a trade in which no step depends on the kind of mathematics a quantum computer can break: quantum-resistant authentication in the wallet layer above, hash-based locks in the contract below.
+
+The contract accepts the asset kinds you would expect on a smart contract chain: the chain's native coin, fungible tokens, and non-fungible tokens (NFTs), in any combination on either side of the trade.
+
+## The swap lifecycle: commit, execute, reclaim
+
+A swap moves through three actions.
+
+**Commit.** Each party locks the assets they are offering into the settlement contract on their own chain. The contract records the agreed terms of the trade and the hash of the shared secret, and holds the assets in escrow. Both parties can independently check that the two commitments describe the same trade.
+
+**Execute.** One party reveals the secret to claim the assets committed to them. Revealing the secret is what unblocks the other side: the secret becomes publicly visible on that chain, so the counterparty can read it and use it to execute on their own chain.
+
+**Reclaim.** If the deadline on a commitment passes without execution, the party who committed takes their own assets back.
+
+Every committed side of a swap ends in exactly one of two terminal states: it is executed before its deadline, or it is reclaimed after. There is no outcome in which the contract keeps your assets. Taken together, the two sides give the trade its central guarantee: either both legs complete and each party receives the other's assets, or neither completes and each party recovers their own. There is no state in which one side has claimed and the other has permanently lost funds.
+
+## Timeout windows protect each side
+
+The two commitments do not share one deadline. The initiator, the party who will reveal the secret first, takes the longer window. The counterparty takes the shorter one. The gap is what keeps the trade fair: if the initiator reveals late, the counterparty still has time to read the secret and claim before their own window closes.
+
+The initiator's window must exceed the counterparty's by a safety margin that covers cross-chain observation delays, block confirmation times, and transaction inclusion delays. If the margin is too small, a race can open in which one party reclaims while the other has already revealed the secret.
+
+> **Note**
+> The contract enforces each deadline individually, but it cannot see the other chain, so it cannot check the gap between the two windows. If you integrate QuipSwap, that margin is a safety parameter you own. Choose it deliberately for the pair of chains you are trading across, and reject schedules that are formally valid but operationally unsafe.
+
+## Finding a counterparty: makers and takers
+
+The settlement protocol assumes you and your counterparty have already found each other and agreed on terms. The marketplace layer on top of it is how that happens when you do not have a counterparty in mind.
+
+A **maker** posts an order: a statement of intent to swap that says what they are offering and what they want in return. A **taker** browses the open orders and takes one. Both parties then commit on-chain, and settlement proceeds through the same commit, execute, and reclaim flow described above. The order book is a convenience layer that runs off-chain; it helps people find each other, and the protocol does not care how the negotiation happened as long as both parties agree on the terms.
+
+A maker order works like a request for quote (RFQ) run in reverse: instead of asking counterparties to quote a price, the maker publishes the full terms and waits for someone to accept them. If the maker leaves the amount of the counter asset open, the order becomes a classic request for quote, and takers respond with the price they are willing to give.
+
+## Who can start a swap today
+
+The settlement contract is gated: only Quip wallet contracts can initiate a swap. You cannot drive a swap from an ordinary account or from your own contract today.
+
+The gate is deliberate. The guided wallet flow is part of the protocol's safety boundary, not a convenience: the wallet can observe both chains, bind you to the intended swap instance, and reject unsafe timing that the contract alone cannot check. Opening the contract to arbitrary callers would expose users to workflow-bypass, phishing, and timing-misuse risks that the wallet flow exists to reduce, so the team treats removing the gate as a future protocol-hardening decision, not a configuration switch.
+
+## What QuipSwap does not do
+
+QuipSwap is a settlement primitive, and it keeps its scope narrow on purpose.
+
+* **No trade discovery, matching, or broadcast in the protocol.** The contract does not find counterparties, match orders, or announce open trades. Those jobs belong to layers built on top, such as the marketplace described above, or to whatever channel you and your counterparty prefer.
+* **No slashing.** The protocol does not penalize a party who commits and then walks away. The honest party waits out the deadline and reclaims, losing time but not assets. Penalizing bad behavior requires a non-spoofable proof of commitment, which is an open problem, so any deterrence beyond reclaim is left to integrators.
+
+## Why QuipSwap exists
+
+Quip's network sells quantum computing work. QuipSwap is the payment rail that makes that work purchasable: it lets you exchange value from the chain you are already on, without migrating your assets to a new chain first. A swap is how assets on any supported chain become buying power on the Quip network, which is why Quip built the swap protocol rather than wait for a third party to provide one.
+
+The propose, approve, and claim state machine underneath these steps is set out in [QUIP Lifecycle](/docs/quip-interlock-protocol/quip-lifecycle).
+
+---
+
+# QUIP Lifecycle
+
+A user creates a QUIP when they deposit funds to a QUIP-enabled smart contract or QUIP-enabled wallet. At any time, the user can transfer the QUIP to another owner using a regular cryptocurrency transaction. The QUIP also has three additional states that enable programmability:
+
+<figure><img src="/docs/assets/quip_lifecycle.svg" alt="State diagram titled A Quip's Journey: a new QUIP moves to Proposed, then Approved, then Claimable, while a proposal timeout diverts it to Cancellable and an approval timeout to Slashable, all enclosed by a post-quantum signature wall separating the coins from attacking qubits"><figcaption><p>The QUIP Lifecycle</p></figcaption></figure>
+
+1. _Propose_: A proposed QUIP signals that a user is ready to conduct a transaction
+2. _Approve_: An approval accepts the proposal and enables changes to the network state
+3. _Claim_: A claim executes the approved changes to the network state
+
+When multiple parties exchange QUIPs, there are also two timeout cases:
+
+1. _Cancellable proposal timeout_: A user can cancel a proposed QUIP once an initial timer expires with no counterparty matching the proposal. This resets the QUIP state.
+2. _Slashable approval timeout_: If a user has approved a matching proposal and a second timer expires without all parties’ approval, any approver can slash QUIPs belonging to the delinquent parties.
+
+These states are what a cross-chain trade moves through in practice; see [QuipSwap](/docs/quip-interlock-protocol/quipswap) for how two parties use them to settle without a bridge or a custodian.
+
+---
+
+# Submit your first compute job
+
+Anyone can post an optimization problem to Quip Network with a reward attached, and miners compete to return the best answer.
+
+This page walks you through installing the tools, describing a problem, and following your job from submission to result.
+
+## Install the tools
+
+Install the `xquad` package from the Python Package Index (PyPI). It requires Python 3.13 or newer and installs the compatible versions of the lower-level packages it uses.
+
+* **`xquad`** is the umbrella package for the [XQuad toolchain](/docs/xquad-toolchain): it provides the modeling and program interface and installs compatible versions of the lower-level packages, including `xqsa`.
+* **`xqsa`** contains the solver adapters. Its `quip` extra is included by the `xquad[quip]` install below. Every solver exposes the same `solve()` call, whether it runs on your own machine or on the Quip Network, so you can develop locally and switch to the network by changing one line.
+
+```sh
+pip install "xquad[quip]"
+```
+
+The base install of `xqsa` includes a local simulated annealing solver that runs on your central processing unit (CPU), so you can test a model without touching the network or spending anything. The `[quip]` extra adds the two pieces that the network backend, `SolverQuip`, needs: a chain client and a signing extension that produces the hybrid (classical plus post-quantum) signatures Quip transactions require. Every other solver in `xqsa` installs and runs without the extra. The signing extension, `quip-signer`, ships a prebuilt wheel for Linux; on macOS and Windows, `pip` builds it from source, which needs a local [Rust toolchain](https://rustup.rs).
+
+> **Note**
+> The chain interfaces behind the `[quip]` extra are pre-release. The package's own documentation notes that chain metadata and economic parameters can change between releases, so expect to update the packages as the network evolves.
+
+## Describe your problem as an Ising model
+
+The network's miners solve one kind of problem: an Ising model. The format is simpler than the name suggests.
+
+An Ising model is a graph. Every node carries a variable called a spin, which takes exactly one of two values, minus one or plus one. Every node can have a bias, a number that pulls its spin toward one value or the other. Every edge has a coupling, a number that rewards the two connected spins for agreeing or for disagreeing. An answer assigns a value to every spin, and each answer has an energy:
+
+```
+energy = sum over nodes of (bias × spin) + sum over edges of (coupling × spin × spin)
+```
+
+The best answer is the one with the lowest energy. That is the entire contract: you describe what you want by choosing biases and couplings so that good outcomes have low energy, and miners search for low-energy assignments.
+
+One convention matters for integrators: all coefficients and energies travel as whole numbers carrying thousandths (a value of 1.5 is transmitted as 1500). This fixed-point rule means every machine on the network computes the identical energy for the same answer, with no floating-point disagreement. Coefficients finer than a thousandth or larger in magnitude than 2,147,483 are rejected before submission; if you hit either limit, scale your model, as [Allowed values are advisory for your job](/docs/compute/ising-topologies#allowed-values-are-advisory-for-your-job) explains.
+
+In code, you build a model and hand it to a solver. This example uses the local CPU solver, which needs no network connection:
+
+```python
+from xqvm_py import XQMX
+from xqsa import SolverDWaveCPU
+
+model = XQMX.binary_model(size=4)
+model.set_linear(0, -1)        # bias on variable 0
+model.set_quadratic(0, 1, 2)   # coupling between variables 0 and 1
+
+result = SolverDWaveCPU().solve(model)
+print(result.sample, result.energy)
+```
+
+The tools accept binary models (variables of 0 or 1) as well as spin models, and convert binary models to the spin basis for you.
+
+To submit the same model to the network, swap in the `SolverQuip` backend. It connects to a Quip node, posts your model to the job mempool, waits for a miner to solve it, and returns the best answer, all through the same single `solve()` call:
+
+```python
+from xqsa import SolverQuip
+
+solver = SolverQuip.for_network("aglais", keystore="~/.quip/keystore.json")
+result = solver.solve(model)
+print(result.sample, result.energy)
+```
+
+This example prints a warning that some coefficients fall outside the topology's allowed values. The job is still submitted and solved as given; [Allowed values are advisory for your job](/docs/compute/ising-topologies#allowed-values-are-advisory-for-your-job) explains why.
+
+`for_network("aglais")` connects to the public test network using its published node and faucet addresses. Your account lives in the keystore, `~/.quip/keystore.json`, which is also the default when you leave out `keystore=`. It is created on first use with no password, so keep it private, and it starts empty; [the faucet step](#fund-your-account-from-the-faucet) covers that.
+
+To reach a node of your own, construct `SolverQuip(url=..., keystore=...)` with its WebSocket remote procedure call (RPC) address, or set `QUIP_RPC_URL`. Test network endpoints can move between releases; [aglais.quip.network](https://aglais.quip.network) publishes the current ones.
+
+## What a job costs
+
+A job on `aglais` costs the chain's minimum reward, 1 AGLS, plus a transaction fee that is a small fraction of that. The minimum reward is a runtime constant that gates submissions, not a price for the work: the chain [meters none of the solver's compute](https://gitlab.com/quip.network/quip-validator/-/blob/161667b2ed7e375390ada523a459258f0f576f78/runtime/src/configs/mod.rs#L650).
+
+* **The fee** grows with the size of your model. On the `aglais` test network it is burned, which is the test network's behavior, not the $QUIP fee model described on the [Token](/docs/network/token) page.
+* **The reward** is nearly all of the cost. It is reserved from your account when the job is posted and paid to the winning miners. Pass `reward=` (in planck; 1 AGLS is 1,000,000,000,000 planck) to offer more than the minimum.
+
+AGLS is free from the faucet. The exact amounts can change with runtime upgrades, so ask the chain:
+
+```python
+quote = solver.quote(model)
+print(quote)
+```
+
+It builds the same transaction `solve()` would send, asks the chain for the fee, checks your balance, and submits nothing. `solve()` prints the same quote before it submits. The [first-job tutorial](/docs/xquad/solving/quip-first-job.html) walks through a full run with its output.
+
+## Fund your account from the faucet
+
+A new account holds no AGLS, and you do not need to fund it by hand. By default, `solve()` quotes the job, draws one faucet drip of 10 AGLS if your balance is short, and submits. Pass `autoconfirm=False` or `autofund=False` to be asked on the terminal first; a job you decline draws no drip and puts nothing on chain. The [solver reference](/docs/xquad/solving/quip-network.html) covers the gates in full.
+
+To fund an account yourself, send a POST request to the faucet:
+
+```sh
+curl -X POST https://faucet.aglais.quip.network/request \
+  -H 'Content-Type: application/json' \
+  -d '{"dest": "<your address>"}'
+```
+
+Your address is the `account_id_hex` field of your keystore file. Each request sends one drip. A `429` with `retry_after_seconds` means the address was funded seconds ago, so wait that long and retry; a `429` without it means a request for the address is still in flight. A `403` means the address already holds more than one drip; it can draw again once spending takes it back below that.
+
+## What makes a set of answers acceptable
+
+Miners do not submit one answer; they submit a set of candidate answers. When you post a job you can set three quality floors, each optional:
+
+* **A minimum number of valid answers.** The job does not settle for a single lucky sample.
+* **An energy threshold.** Answers above the threshold do not count as good.
+* **A diversity floor.** The answers in the set must genuinely differ from one another.
+
+Diversity is measured pairwise across the submitted set, using a distance that accounts for the mirror symmetry of Ising models (flipping every spin in an answer produces the same energy, so a flipped copy does not count as different). The practical effect is that a miner cannot pad a submission with twenty copies of the same answer: duplicates collapse to one, and a set that fails your floors is rejected.
+
+## Placed or native
+
+The solver can submit your problem in one of two modes.
+
+By default, the solver places your model's variables onto the nodes of the chain's default registered topology, one variable to one node, so that every coupling lands on an edge the hardware has. This is subgraph placement. The search for a placement can give up on dense models, such as the one-hot cliques in a travelling-salesman encoding. When it finds no placement, it raises `PlacementError` before anything is submitted or spent, so you lose nothing by trying.
+
+In native mode, the solver submits your problem over its own coupling graph and skips placement, so any shape is accepted up to the job mempool's limits of 5,000 nodes and 50,000 edges. Turn it on with `topology="native"` on `for_network()` or on a single `solve()` call. The cost is who can answer: a miner that cannot embed an arbitrary graph, such as one backed by a quantum processing unit (QPU), cannot solve a native job. The simulated annealing miners on the test network can.
+
+[Ising Topologies](/docs/compute/ising-topologies) explains what a topology is, why the shapes are what they are, and why the chain does not filter jobs by topology.
+
+## What happens to your job
+
+From your `solve()` call to the answer coming back:
+
+1. **You post the job with a bid.** The solver encodes your model, places it onto the target topology unless native mode is on, checks that your account can cover the reward plus the transaction fee, and submits the job to the Quip job mempool. Your reward is reserved on-chain, held in escrow until the job resolves.
+2. **A miner picks it up.** The open order is visible to miners on the network's optimization subnet, which spans CPU, graphics processing unit (GPU), and quantum annealing hardware. By default any registered solver may compete; you can instead restrict a job to named miners or to particular hardware types.
+3. **The chain verifies answers.** Every submitted answer is checked on-chain against your problem: spins must be minus one or plus one, the energy is recomputed from your coefficients, diversity is computed across the set, and your quality floors are enforced. Miners cannot grade their own homework.
+4. **Competition runs on a clock.** Each job carries a hard deadline, measured in blocks. When the first valid solution arrives, a shorter competition window opens so that other miners have a fair chance to beat it. The order closes at whichever comes first, the hard deadline or the end of that window.
+5. **The reward is split.** You choose the split when posting: the single best answer takes the whole reward, or the top answers share it weighted by quality, or the top answers share it equally.
+6. **The result comes back to you.** Your `solve()` call polls until the order is final and returns the winning answer as `result.sample` with its energy in `result.energy`. The result is also readable on-chain by order identifier, so a timed-out client can recover it later through the solver's `query()` method.
+
+If the order closes with no submissions, `solve()` tries to reclaim the reserved reward and raises `QuipJobFailedError`; if it does not close in time, it raises `QuipTimeoutError`. Both carry the `order_id`. The reclaim is best-effort: if it fails, the error says so, and `query()` with that `order_id` frees the reward later. The fee is not refunded. The [Failure Taxonomy](/docs/xquad/solving/quip-network.html#failure-taxonomy) lists every error the solver raises.
+
+> **Note**
+> Interested in the other side of this marketplace, earning rewards by solving jobs? See the [Nodes section](/docs/nodes/run-a-node-testnet) for running a miner.
+
+---
+
+# Quantum Randomness (QVRF)
+
+QVRF (Quantum Verifiable Random Function) is Quip Network's quantum randomness service. It supplies random numbers to smart contracts, and the numbers come from measurements taken on a real quantum computer rather than from a formula. Your contract asks for random values and receives them back later through a callback, the same request-and-callback shape used by existing randomness oracles. The values are delivered over an encrypted application programming interface (API) connection when requested.
+
+This page covers concepts only. The request interface is not yet final, so no function names or parameters appear here.
+
+## The name is historical: QVRF is not a VRF
+
+Despite the name, QVRF is not a verifiable random function (VRF) in the cryptographic sense, and you should not reason about it as if it were one.
+
+In the cryptographic literature, a VRF is a keyed pseudorandom function: a secret key turns an input into an output, along with a proof that anyone can check against the matching public key. QVRF is a different kind of object. It is a physical randomness source with a verification record: the randomness comes from quantum measurements, and the record lets you check where and when those measurements happened. If you are assessing QVRF for your application, do not import the standard VRF security definitions, because they do not apply. This correction comes from Quip's own security model, which keeps the project name and flags the distinction so that reviewers start from the right definitions.
+
+## Why quantum hardware
+
+A classical random number generator is a formula. Anyone who learns the formula and its inputs can reproduce every number it will ever produce. A measurement on a quantum computer is different: the outcome does not exist until the measurement is taken. That is the core guarantee quantum hardware adds. The number was created at a known moment, and only the party who generated it could have known it before delivery.
+
+The certification design supports that guarantee from two sides, both described here qualitatively:
+
+- **A timing threshold.** The challenge that decides which quantum measurements to take is derived from a public source of randomness, so nobody can know it in advance, and a valid answer must come back within a short deadline. Producing a convincing answer by classical simulation would take far longer than the deadline allows, so a fast, valid answer is evidence that a quantum computer produced it. The blockchain records both ends of that time window, a technique the design calls carbon dating, which makes the timeline publicly checkable.
+- **A fidelity score.** After the fact, verifiers use classical simulation to check a sample of the returned measurements and score how closely they match what the requested quantum process should produce. A sufficiently high score is evidence that a quantum device genuinely ran the process rather than guessing.
+
+## What V0 guarantees, and what it does not
+
+V0 is the first version of the service, and its trust model is deliberately simple. Integrate with these three facts in mind:
+
+- **Delivery is operator-trusted.** In V0, Quip operates both the randomness generator and the delivery service. You are trusting a single operator to run the pipeline honestly.
+- **The operator can withhold values, but cannot swap them.** Before any randomness is handed out, a commitment to the generated values is published on chain. A delivered value must match that earlier commitment, so an operator could refuse to deliver, but could not substitute different numbers after the fact without detection.
+- **Verification is asynchronous.** The checks described above run after the fact, not at the moment of delivery. A value has not yet passed the full verification pipeline when you receive it; the verification record catches up later.
+
+If your application needs stronger guarantees than this, treat V0 as a trusted randomness feed with a public commitment trail, and revisit as the trust model evolves in later versions.
+
+## Where QVRF fits
+
+Randomness is the Quip Network's second subnet, alongside the optimization subnet described in [Submit Your First Compute Job](/docs/compute/submit-a-job). Quantum miners produce the raw randomness by running sampling circuits, and classical miners verify the results, so the service is itself a form of the network's proof of useful work.
+
+QVRF is designed to be the first product sold over Quip's swap-protocol payment rail. QuipSwap, Quip's peer-to-peer swap protocol, lets two parties settle a trade directly across chains, and QVRF uses that same mechanism as its payment path. In practice, payment does not tie you to one network: you can purchase randomness from any supported chain.
+
+The first consumer of QVRF is [Quantum Echoes](https://echoes.quip.network/), a collection of Quantum Forged Tokens (QFTs). Each mint requests a seed from the QVRF coordinator, and the token's traits are derived from the quantum randomness that comes back.
+
+> **Note**
+> The request interface, the fee model, and the exact certification parameters are still being finalized. Integration documentation with installable packages and code examples will follow once those details settle.
+
+---
+
+# Ising Topologies
+
+Every compute job on Quip Network is solved on real hardware, and real hardware is not fully connected. A quantum annealer has a fixed pattern of qubits and of couplers between them: some pairs of qubits can influence each other, and most pairs cannot. An Ising topology is that pattern, published on the chain as a graph, so that everyone works from the same picture of the machine: you when you post a problem, the miners when they solve it, and the chain when it checks the answers.
+
+This page explains what a topology is, what the network does and does not do with it, and what both of those mean for a job you post. For the mechanics of posting one, see [Submit Your First Compute Job](/docs/compute/submit-a-job).
+
+## A topology is a machine's connectivity graph
+
+A registered topology is a list of nodes and a list of edges between them. The nodes stand for the machine's qubits and the edges for the couplers that connect them. The registration also records which coefficient values that machine's mining puzzles are drawn from, which matters for block production and not for your job; see below.
+
+A topology is a snapshot of a machine, not a data sheet for a product. Annealers go through recalibration, and each one can take a qubit or a coupler out of service, so what gets published is the working graph as measured at that calibration rather than the idealized lattice in the vendor's specification. A recalibration that changes the working graph produces a fresh registration.
+
+Registrations are permanent. A topology cannot be edited or withdrawn once it is on the chain, so superseding one means registering a new topology and pointing the network at it. The old entry stays where it is.
+
+A topology is identified by a hash that covers the graph and the value sets together, not by a name or a hardware model number. Two networks running the same model of machine will not share an identifier, because each publishes its own calibration snapshot and its own value sets. Resolve the topology you want from the chain you are talking to rather than hard-coding an identifier you saw somewhere else.
+
+## Your problem is placed onto a topology as a subgraph
+
+When you post a job, the tools map your model's variables onto a topology's nodes, one variable to one node, so that every coupling in your model lands on an edge the hardware actually has. That is subgraph placement, and it is the reason your problem's shape matters: your graph has to fit inside the machine's graph as it is.
+
+There is no minor embedding. The tools will not spread one of your variables across several hardware nodes to synthesize a connection the machine does not have. If your graph does not fit, or the search for a placement gives up before finding one, placement fails with a clear error before anything is submitted, so you spend nothing on a shape that cannot work. Native mode skips placement and submits your model over its own graph instead; see [Submit Your First Compute Job](/docs/compute/submit-a-job#placed-or-native).
+
+Placement is deterministic. The same model against the same topology places the same way every time, which is what lets the tools read an answer back later without having stored the mapping.
+
+## Node identifiers are hardware labels, not positions
+
+A job carries the hardware's own labels for the nodes it uses, exactly as the topology publishes them. They are not renumbered into a tidy sequence starting at zero. A two-variable model that lands on hardware nodes 0 and 12 travels as the node list `[0, 12]`, never `[0, 1]`. Node sets are routinely sparse and non-contiguous, because a registered working graph has a gap wherever a qubit is offline, and that is valid rather than a defect to be normalized away.
+
+Positions are a separate thing, and a job uses both. The graph uses labels; the coefficients and the answers use positions into the lists that graph is made of.
+
+| Part of a job | Indexed by |
+| --- | --- |
+| the node list | hardware labels; their order defines the positions everything else uses |
+| the edge list | pairs of hardware labels, each of which appears in the node list |
+| the bias values | position in the node list |
+| the coupling values | position in the edge list |
+| a returned answer | position in the node list |
+
+If you post jobs through the tools, this is handled for you. If you write software that reads jobs off the network, take the distinction seriously, because confusing the two fails quietly rather than loudly. Reading a label where a position is expected raises no error; it reads the wrong element, or runs off the end of the list when the labels happen to be larger than the graph. The symptom is a fleet that never answers rather than a fleet that reports a problem. If you need positions, derive them from the job's own node list.
+
+## Registered, default, and mineable
+
+Three ideas travel under the word "topology" on this network, and keeping them apart explains most of what follows.
+
+* **Registered means published.** A registered topology is one anyone can read off the chain, and registering it states that the machine exists and this is its shape. It obligates nobody. No miner is required to support a registered topology, and the network does not promise that a job built against one will be answered. Registered means proposed, not supported.
+* **Default is the one the tools reach for.** When you do not name a topology yourself, your job goes to whichever registered topology is currently marked the default.
+* **Mineable belongs to block production, not to your compute job.** Producing blocks on Quip Network means solving a puzzle built from a topology, and only a topology in the mineable set can supply that puzzle. The set is deliberately tiny: the default is always in it, at most one other topology can join it at a time, and in steady state it holds the default alone. That is a design constraint, not a temporary configuration, because the difficulty mechanism that keeps block times stable has one global anchor and a second concurrently mined topology would corrupt it.
+
+There is a fourth idea that deliberately does not exist: there is no set of topologies a miner is required to be able to solve, and no rule that admits or rejects your job based on which topology you built it against.
+
+Registering a topology is a privileged operation today. There is no open path for anyone to publish one, which is a separate question from the policy stance below and is not a step toward it.
+
+## The chain does not police topology, on purpose
+
+A job carries its own graph inline, its nodes and edges and coefficients, and carries no topology identifier at all. So a registered but non-mineable topology is not something the network declines to work with. It is something the job market cannot perceive: nothing in a job says which topology it was built against, and everything needed to check an answer is rebuilt from the job itself.
+
+The consequences follow directly. A job built against a registered but non-mineable topology is accepted and answered like any other. Being mineable is a property of the block-production puzzle, so it cannot affect whether your job is admitted or solved, and the Quip solver backend does not check it before submitting your job.
+
+This is a design position rather than an unfinished feature. Topology policy as a class, meaning a list of topologies miners must solve, a list they must refuse, or a check at the door when you post a job, is out of scope on principle. Deciding which jobs to take is each miner's own policy, made in that miner's own software, and it stays there. Miner software cannot act on that policy today either, because a job carries no topology identifier to filter on.
+
+> **Note**
+> The network publishes a single default topology today. Choosing among several registered topologies for a given job, and ranking them by how often they return good answers, waits on a second one existing.
+
+## Allowed values are advisory for your job
+
+A registration also records which values that machine's mining puzzles draw from: which biases, which couplings, and which values a spin in an answer may take.
+
+Those sets bind the mining puzzle. They do not bind your compute job. Your coefficients are submitted as you gave them and are not rejected for falling outside the published sets, for three reasons. The chain does not check them on the compute path. Nothing routes or filters on them, so an out-of-spec value changes nothing about who can pick your job up. And real annealing hardware rescales coefficients onto its own analog range in a way that preserves which answer is best, so a model outside the sets is still solved correctly. The tools warn you once and carry on.
+
+One limit is not advisory. Coefficients travel as whole numbers carrying thousandths, in a 32-bit signed field, so a coefficient above 2,147,483 at natural scale does not fit and is rejected outright. Scale your model down if you reach it: multiplying every coefficient by the same positive number leaves the best answer unchanged.
+
+## Size limits
+
+| Limit | Value |
+| --- | --- |
+| Maximum nodes | 5,000 |
+| Maximum edges | 50,000 |
+| Minimum nodes | 16 |
+
+For scale, a full working graph from a D-Wave Advantage2 system runs to roughly 4,800 nodes.
+
+---
+
+# Motivation
+
+## The Worldwide Quantum Computer
+
+There will come a day not long from now, when quantum communication is so good that it is easier to scale your quantum computer horizontally than it is to build a more densely packed quantum processor, when we can entangle millions of processors around the world in a quantum internet all bending their capacities toward the same problem.
+
+When this day comes, if we want to solve problems addressable only by such massively concurrent quantum computation, we will have to split jobs across heterogeneous processors owned by potentially untrustworthy operators. These operators may have incentives to lie or cheat on their work, to sabotage other computers in the network, or to snoop on the data submitted to their machines. We will have to have solutions to complex coordination problems.
+
+But this tradeoff will be worth it. It is only with such a large network that we can answer questions unknowable by any other means, and discover hidden patterns in diverse industries such as materials design, commerce, logistics, artificial intelligence, and more.
+
+Once robots are mining, manufacturing, distributing, and delivering end-to-end every single creature comfort, from raw material to finished product at your doorstep, it is only such a computer that can facilitate economical coordination of the swarm. When corporations are consuming more energy than a billion homes to train their new frontier models, it is only such a computer that will be able to fit the model and bring down the energy cost by orders of magnitude. When the AI models wish to simulate the world instead of building a new laboratory experiment, it is only such a computer that will report a faithful result.
+
+The purpose of the Quip Network is to facilitate this shared computation worldwide, to ensure that programs execute on the network privately, securely, verifiably. To enforce payments and dispute resolution, auctions for quantum storage space and compute capacity, evictions for squatting data tenants denying other participants from running urgent jobs. It is not enough to share the computation, but we must also create a trustworthy protocol, socialize its design, and enforce its rules.
+
+Quip Network is this protocol. It forms the foundation of the world's shared quantum computer, and it will do the jobs which quite literally no other platform on Earth can do.
+
+## Starting Where We Are
+
+The time for this level of fidelity in quantum communication has not yet arrived, but we can begin to build the foundations for it today. Quantum advantage is here, for both adiabatic and logic-based platforms as demonstrated by [D-Wave](https://www.science.org/doi/10.1126/science.ado6285) and [Google](https://www.nature.com/articles/s41586-025-09526-6) in their respective experiments racing against the Frontier supercomputer at Oak Ridge National Labs.
+
+### The Core Challenges
+
+Nonetheless, people do not believe that quantum advantage has arrived, and they are unclear on how these research examples translate into real-world value. Skeptics point out that these types of quantum advantage stunts are contrived, or that they elide pre-processing and post-processing steps required as parcel to the computation, which negatively impact the advantage that industrial applications can realistically expect to achieve with a quantum processor.
+
+Furthermore, the truly advantageous application of a quantum computer is the fruit of close attention and rigorous optimization. The most likely purchasers of a $20 million machine have likely already spent hundreds of millions on optimizing solutions using existing hardware, so the quantum computing manufacturers are not entering a vacuum. They must insert themselves into a highly optimized pipeline, where the latency of communicating with a manufacturer's cloud over a thousand miles away could easily swamp the advantage achieved by using the quantum processor. This latency wouldn't exist if the client purchased a computer and colocated it with their high-performance infrastructure, but they will want to see a proof of outperformance before making the purchase.
+
+For this reason, most manufacturers are their own cloud providers, and the current status quo is to contact each manufacturer directly and ask if you can use their platform. If you seem like a likely prospect to purchase a $70,000 recurring license to the cloud or to purchase a computer, they will help you enter a three to six month consulting process to arrive at your highly optimized solution and demonstrate the value of their processors for your business use case. This is a very costly onboarding pipeline for both parties, and it filters out a large segment of the population of potential users who both desire and can afford the product.
+
+As a result, the computers often sit around under-utilized, and as super-cooled machines they cannot be turned off without a lengthy and expensive recalibration process. These are fixed costs that only compound as you scale up computers and demand whipsaws with market interest and energy prices. Even if you wanted to open up the excess capacity on these machines to an anonymized network of quantum computers, there are so few machines in distribution it would be relatively easy to tell who was serving your job, and there would be no way to verify the output for certain classes of problems.
+
+Finally, the industrial applications for these computers are limited by the talent pool that can explore them. There are maybe 4,000 quantum programmers and algorithm designers in the world, if we are generous. These highly educated experts tend to work either for a government, in which case their work is top secret; a quantum manufacturer, in which case their work is proprietary; or for a university, in which case they are not getting paid commensurately for their contributions. This has a chilling effect on the production and dissemination of meaningful applications, and demands a new market incentive to socialize new algorithms and monetize their usage.
+
+### An Immediate Solution
+
+The Quip Network aims to solve all of these incentive problems and inadequate equilibria with its first Proof of Useful Work network, which requires miners of any kind to solve optimization problems in the form of Ising models.
+
+There are over 100 known industrial applications for the Ising model, from traveling salesman problems, to knapsack problems, to job scheduling problems, and beyond. More importantly, it's a proof of work that can be solved by any known computation platform, from central processing units, to graphical processing units, to application-specific integrated chips, and even both adiabatic and circuit-based quantum processing units. These comparative proofs of work can be used to judge the quality, time-to-solution, and cost from each platform and validate that quantum computers are really offering advantage.
+
+By getting these platforms to compete against each other in a gradually escalating proof of work, specifically larger and larger Ising models with higher and higher connectivity, it is possible to create an immutable record of the performance of each platform on this industrially relevant benchmark. If your platform cannot economically compete to mine blocks, then the miners will stop mining, and it would become very expensive to fake competitive performance in the network. The skeptics can rest easy knowing that miners have to put up, or shut up.
+
+Once we have deployed the proof of work, then we can open up a smart contract layer that supports highly optimized submissions from algorithm designers which provide the necessary pre-processing and post-processing steps to convert business data into the Ising model, and reconvert the answer back into the relevant subject domain. This cryptographically anonymized smart contract layer unlocks talent from the top firms and provides meaningful paths to revenue for researchers working at passion projects with little upside.
+
+A potential consumer of these jobs can submit their data to a job queue with a bid of protocol tokens, and a miner can choose whether or not to fulfill this job for the proposed bid. After the job has run, the protocol, the algorithm designer, and the miner all split the proceeds from the consumer's bid, and the consumer walks away with an efficient, highly optimized answer to their question which they can compare to their existing infrastructural solutions. No more six month consulting process to get your high quality answer.
+
+This is also a boon for the quantum computer operator, as now they can earn token rewards with their unused compute, defraying the cost of keeping their computer online and providing a default amortization schedule for any loans used to purchase the machine. Operating in a cryptographically encrypted network with heterogeneous platforms allows the operator to maintain optionality in revealing their identity to the network as a whole, and gives consumers confidence that they're really receiving the highest quality and fastest possible answers that any machine can provide.
+
+This initial Proof of Useful Work network solving Ising models is the first of many like it, but it is the most important for understanding the capabilities and limitations of the verification model today. It is only the beginning, and the prelude to a much more ambitious network.
+
+## Expanding the Solution Space
+
+Once we have vetted and proven the first proof of work, we will introduce additional proofs of work to expand the industrial applications and consumer footprint of the Quip Network. Candidate applications for the first networks include quantum random number generation, quantum variational autoencoders, Shor's algorithm for factoring, Grover's algorithm for search, or even quantum memory and storage. The number of subnets will be limited only by our community's imagination, and they are bound to surprise the world with the applications that they make possible.
+
+### Mapping Capabilities
+
+The same platforms that win the most blocks on the primary subnet may not be the ones that excel elsewhere. Part of the benefit of this model is that we can map the performance space of many applications of quantum computers, and it may turn out that cold atom processors have unique qualities that allow them to outperform superconducting processors on specific proofs of work.
+
+Building this diverse network of processors, sensors, storage media, and communications equipment is a necessary prerequisite to the worldwide quantum computer. Mapping the capabilities of these machines is a dependency to efficiently allocating available resources in the network and the result of this eternal competition will form a public dataset that can inform the development of the first nodes on the quantum internet.
+
+Indeed, some manufacturers may wish to use the public dataset and the proposed subnets to inform the development of future capabilities and technology. We anticipate providing some incentive mechanism design that supports consumers in requesting this kind of development through bounties for deploying novel and useful subnets, as well as programmatic rewards for demonstrating new performance profiles within each subnet.
+
+### Breaking Ground
+
+Once we have established this leadership, we will actually develop the first quantum interconnects and invest in physical infrastructure which operates on the network. We are already working with community colleges, universities, NGOs, and government labs to facilitate training programs and research collaborations to this end.
+
+The ultimate goal is that we are publishing novel research in distributed quantum computation, breaking records, and establishing precedent that the worldwide quantum computer is not just possible, but inevitable. Through these research partnerships we intend to resolve questions of quantum multi-party computation, zero-knowledge quantum programs, verifiable quantum workloads, and beyond.
+
+It is an enormous volume of research that will be required, but the rewards that lie at the end of the journey are sure to justify much greater expenditures in the pursuit thereof. If all goes well, we will have created the new http for quantum information and established the standards that generations of quantum programmers and experimentalists will use for decades to come.
+
+## Conclusion
+
+It took over seventy years from the first 10Kb computer to the first large language models that define today's current hopes for the future of artificial intelligence and clearly outperform the median human on a huge variety of tasks. It will be another seventy years before we begin to see the fruits made possible by the advent of the worldwide quantum computer, but it is imperative that we begin planting those seeds today.
+
+Quantum computing threat vectors are imminent. Over the past few years, there has been a steady stream of results published by quantum computing researchers demonstrating significant increases in physical qubit counts, tremendous reductions in error rates, and other substantial improvements to practical computing factors relevant to real-world deployments. These improvements taken as a whole paint a compelling picture that the first quantum computers capable of compromising widely used cryptographic algorithms, like ECC256 or RSA2048, will arrive before the end of the decade.
+
+## Coda: Post-quantum Cryptography
+
+The coherence values of superconducting qubit architectures like Google’s Willow chip and the low error rates of Riken’s fusion-based photonics platform represent significant leaps forward in the capabilities of contemporary quantum processing units. We are rapidly approaching a cost of attack of less than 4% of the value held in the largest Bitcoin wallets. Indeed, the marginal cost of an attack on RSA2048 for a well-equipped quantum computing lab is estimated to approach $20,000, and the cost of an attack on ECC256 is likely even lower.
+
+Unfortunately, broad adoption of post-quantum cryptography has lagged behind the accelerating scale of the threat, and few agents in the world are prepared for quantum attackers. While Bitcoin’s pay-to-quantum-resistant-hash proposal has been reviewed by at least one commenter, the specification remains undecided and largely undiscussed. Similarly, the Ethereum improvement proposal offering solutions for EVM networks is likewise lacking in detail and serious discussion, with no further development on any of the EVM L2s or appchains. These approaches remain reactive rather than proactive, leaving room for grievous harm to users who might be caught unaware and unprepared.
+
+Many skeptics point out that P2PKH transactions on Bitcoin remain secure as long as the new public key is not disclosed with a payment transaction, however these users are not protected against block reorganization attacks made possible by quantum computers, and few users maintain sufficient operational discipline to maintain the integrity of their undisclosed public key.
+
+Advocates for delaying adoption of post-quantum commitments claim that other targets are more likely to take priority over cryptocurrency addresses, and such advocates will often proclaim that a swift upgrade will deploy upon discovery of a viable quantum attack. However, we find this argument unconvincing, as many such large targets have immense incentives to keep any compromise a secret, and the deployment of a chain upgrade closes its eyes to the possibility of a rewind attack through a chainwide block reorganization which impacts significantly more wallets than a single private key.
+
+Exacerbating matters, traditional financial firms and certificate authorities show similar vulnerabilities to cryptocurrency networks, relying on insecure algorithms that provide guarantees sufficient only for classical computing. The Hudson Institute estimates that over $3.3 trillion in value hangs in the balance as financial contagion threatens to expand damages from the first quantum victim to the rest of the free market.
+
+## Challenges & Opportunities in Post-quantum Readiness
+
+Any serious attempt to rectify the lackluster adoption of these necessary upgrades must grapple with the challenges that have hindered uptake in previous post-quantum protocols:\\
+
+| Key Considerations                                                                                                                                                          | The Solution Must…                                                                                                                  |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| Initial costs of a quantum computing attack filter viable targets down to very large wallets, and larger post-quantum signatures create significant negative externalities. | be adoptable in part or in whole by individuals without any requirements for change to the underlying protocols.                    |
+| Clients do not wish to give up any capabilities of their assets for post-quantum security or otherwise split liquidity.                                                     | use native primitives on each network and maintain external interfaces of standard user accounts while staying post-quantum secure. |
+| There is a huge risk associated with moving locked funds onto a less secure ledger.                                                                                         | provide the same security guarantees wherever the client chooses to transact.                                                       |
+
+The four properties any solution to these problems has to exhibit are set out in [Key Properties](/docs/basics/key-properties).
+
+---
+
+# Key Properties
+
+## Distributed Compute Protocol
+
+In order to ensure the successful adoption of the distributed compute standard, the Quip Network must exhibit four properties: hardware and implementation agnosticism, layered abstraction for specialists, computational tractability, and consumer legibility.
+
+1. **Hardware and Implementation Agnosticism**
+
+The esoteric nature of quantum computing and the broadly divergent specifications for all the different architectures represent a challenge for the prospective consumer of quantum solvers. It is a full-time job to understand one quantum processor, much less the broad array of available designs from various manufacturers.
+
+For this reason, the design of the network must be hardware and implementation agnostic. The network should only specify an input, an output, and a validation function to reject improper combinations of these data.
+
+2. **Layered Abstraction for Specialists**
+
+In general, industrial consumers of computation are not specialists in quantum physics or computing, and the service providers who consult with these consumers are unlikely to have any additional skill in the subject. There is an enormous developer community around the world for traditional computation, but quantum developers are still few and far between.
+
+The system must divide out the layers of abstraction so specialists can easily interface with subject matter experts outside their domain of focus. We choose to make these layers of abstraction explicit in the network design, with a) consumers specializing in their industry, b) application developers specializing in professional services for that industry, c) smart contract developers specializing in data transformation and ETL, d) algorithm and protocol designers specializing in quantum computation and computational equivalence, e) hardware operators and manufacturers who specialize in fine-tuning for compiler targets, and f) liquidity providers who are trying to efficiently discover the true price of the spot compute capacity available on the network.
+
+<figure><img src="/docs/assets/stakeholder-categories-2.png" alt="Five stacked participant layers, from Compute Consumers at the top through Application Developers, Algorithm Developers and Protocol Developers to Compute Providers at the bottom, with $QUIP passing down the stack and Liquidity Providers exchanging USD and $QUIP alongside it"><figcaption><p>The layers of the Quip Network Protocol</p></figcaption></figure>
+
+3. **Computational tractability**
+
+Quantum computing is still in its infancy, where most of the proposed applications of the new paradigm are prospective rather than truly advantageous to implement on current hardware. Additionally, the hardware is still in limited distribution, requiring classical hardware validators to prevent the network from amounting to a permissioned node set.
+
+The design of the first subnets must take these factors into account and only introduce computational complexity at the level the network can support. Only once there is a significant distribution of quantum computers, can we graduate to QMA complexity class proofs of useful work. Until then, all subnets must have a validation function efficiently computable by classical platforms.
+
+4. **Consumer legibility**
+
+The most important element of the protocol is that the use thereof has to be understandable by non-domain experts. If a trucker can't come to an application developer's website and get a useful result out of the network we have failed.
+
+The protocol must prioritize tools for discovery, understanding, and quick delivery of useful results.
+
+## Interlock Protocol
+
+In order to ensure the successful adoption of the quantum-resistant standard, the Quip Network must exhibit four pairs of properties: post-quantum and classically secure, native and portable, transparent and composable, liquid and bondable.
+
+1. **Post-quantum and Classically Secure**
+
+While there are many proposed post-quantum algorithms, none have been battle-tested by actual quantum attackers, and some may even remain vulnerable to attacks via classical computing methods.
+
+For this reason, the Quip architecture should wrap a battle-tested cryptographic primitive such as ECC with a post-quantum primitive such as WOTS, so the end user can benefit from both layers of security. Where possible, the protocol should give the user choice over the post-quantum algorithm that wraps the classical primitive.
+
+2. **Native and Portable**
+
+Consumers do not want to move funds to yet another transaction network, as splitting the client’s liquidity across multiple networks reduces the leverage and capabilities available to that client. Additionally, a client does not want to lose post-quantum security because they migrated their funds from one transaction network to another.
+
+Wherever possible, the Quip architecture should empower clients to remain on the protocols where they already hold funds while still receiving the benefit of post-quantum security, even when a Turing-complete smart contract language is not available. Furthermore, once the client has locked funds on one chain, they should be able to withdraw equivalent value on another chain at the minimum shared clock cycle.
+
+3. **Transparent and Composable**
+
+Bridging funds between chains and executing cross-chain intents is a convoluted and error-prone process. Many oracular and bridging protocols rely on decentralized validator networks to monitor the latest state on source and destination networks, where malicious nodes can be slashed for any perfidy. Such protocols are vulnerable to cartels, require significant resources to support new network deployments, and remain opaque to the end-user in the event of defection.
+
+In contrast, the Quip architecture should prioritize transparency for the direct participants in the transaction, who may reveal all the information required to unwrap a post-quantum signature offline if they so wish. This process should be isolated, asynchronous, and concurrent, and should support the arbitrary composition of functions on dissimilar protocols, such that the outputs of a function on one network can be coerced into the inputs of arbitrary functions on the second network.
+
+4. **Liquid and Bondable**
+
+Splitting liquidity is an enormous problem for consumers in the cryptocurrency industry, where clients must maintain balances on multiple chains in order to transact. Building on the difficulties of cross-chain intents, there are few resources that can bond funds on one-chain to deploy equivalent capital on another in an atomic and verifiable fashion.
+
+Ultimately, the Quip architecture should enable a process whereby any funds on any chain can be wrapped in a post-quantum signature and used as collateral or consideration for equivalent value on any other chain.
+
+These properties follow from the problems set out in [Motivation](/docs/basics/motivation). The primitive that delivers them is described in [QUIP: The Quantum Unit Interlock Pathway](/docs/quip-interlock-protocol/quip-the-quantum-unit-interlock-pathway).
+
+---
+
+# Participants
+
+## Distributed Compute Protocol
+
+Many different consumers, developers, operators, and liquidity providers come together to participate in the Quip Network. Each serves an irreplaceable function in the whole of the protocol.
+
+<figure><img src="/docs/assets/stakeholder-categories-2.png" alt="Five stacked participant layers, from Compute Consumers at the top through Application Developers, Algorithm Developers and Protocol Developers to Compute Providers at the bottom, with $QUIP passing down the stack and Liquidity Providers exchanging USD and $QUIP alongside it"><figcaption><p>The different participants in the compute protocol</p></figcaption></figure>
+
+| Payor                 | Payee                 | Request                                                           |
+| --------------------- | --------------------- | ----------------------------------------------------------------- |
+| Consumer              | Application Developer | Upload data and bid for solver execution                          |
+| Application Developer | Algorithm Developer   | Convert consumer bid currencies and format data for chosen solver |
+| Algorithm Developer   | Protocol Developer    | Extract, transform, load data for optimal solver architecture     |
+| Protocol Developers   | Compute Providers     | Route transformed data to the optimal architecture                |
+| Compute Providers     | Liquidity Providers   | Execute the requested job for compute credits                     |
+| Liquidity Providers   | Consumer              | Sell compute credits for local stable currencies                  |
+
+### Consumers
+Consumers may be individuals, small businesses, or enterprises. No matter who they are, they're looking to get better answers out of their compute solutions, whether that is a 9-figure cluster of GPUs or Jenny from operations down the hall.
+
+Whoever they are, it's unlikely that they have a lot of expertise in quantum computing, and so they need a lot of help to connect to the right solvers for problems in their industry. The best way for this to happen is that someone identifies edge that can be achieved with a quantum computer and packages that into an app. The second best way is that these quantum curious people can browse a library of solvers and use a no-code API to try them out.
+
+The only thing they should have to worry about is how much they are willing to pay in their home currrency to access a solution. Everything else should be handled by the network.
+
+### Application Developers
+As with traditional application developers, middleware providers for the Quip Network may come from their industry of focus and have slightly more technical savvy than their average colleague. Or, they saw an opportunity and hired consultants to help them exploit it.
+
+No matter where they come from, they tend to be entrepreneurs or enterprises trying to package a compute resource into a repeatable billable. Their goal is to find edge in their industry by using the network, and resell that edge to their customers.
+
+The most important thing from the network's perspective is to make it easy to discover applications, format consumer data, request jobs, acquire the tokens expected by the smart contract developer and the protocol, and exchange currencies on behalf of the end-consumer.
+
+### Algorithm Developers
+One layer down from the application developers, we have the algorithm developers. They promote job specifications to solve specific industrial challenges that matter to consumers, and then deploy smart contracts that solve those job specifications. They can charge fees in any currency for each execution of the contract.
+
+A job specification consists of an input type, an output type, and a verification type that makes sure the output is a valid transformation of the input. Job specifications can be linked together in order to extract, transform, and load data for arbitrary workloads. Target hardware implementations can be associated with each specification.
+
+When a job specification wants to rely on a Proof of Useful Work, the implementation can request the Protocol to serve the model for a block reward.
+
+The network's role is to make this process of writing, deploying, and optimizing solvers easy and enjoyable, while abstracting away the more onerous aspects of fine-tuning results.
+
+### Protocol Developers
+Protocol developers maintain the network and submit parameters for every new Proof of Useful Work. Quantum computers exist in an odd complexity class where some of their outputs can be computed efficiently by classical computers (eg calculating Hamiltonian ground states), some can only be verified efficiently by classical computers (eg elliptic curve discrete logarithm problem), and some can only be verified by other quantum computers (eg quantum merlin-arthur problems).
+
+Every solved block and every Proof of Useful Work provides a percentage of fees back to the network in order to fund its maintenance and improvement. Protocol developers also deploy new implementations for different hardware architectures so that Proofs of Useful Work can benefit from state of the art algorithmic improvements.
+
+Here, the network's role is to make sure that the development of the subnets and new Proofs of Useful Work is always sufficiently incentivized, and to make this process of deploying new proofs easy with straightforward discoverability and interpretibility by the Compute Providers.
+
+### Compute Providers
+These operators of all kinds of computer processors do the hard work of actually solving smart contract bids and Useful Proofs of Work. They charge on a per instruction basis and accept larger bids to prioritize which jobs they will execute on their hardware.
+
+Ultimately it is up to the operator to decide which types of jobs they will serve, the threshold for making that job attractive to execute, and what requirements they will need in a ZK credential before serving a consumer's bid. In many cases, it may make sense to form a mining pool that combines resources across hybrid platforms or multi-QPU clusters.
+
+The protocol must focus on making it easy for compute providers to discover and toggle these features of the collective smart contract library, to benchmark their performance and expected payoff for mining any subnet, and to deny service based on the rules in their local jurisdiction.
+
+### Liquidity Providers
+An often under-appreciated participant in most networks, the job of the liquidity providers is to efficiently discover the price of the shared compute credit and to provide a liquid market between consumers' local currency and the network's native token.
+
+For the most part, they should be interacting directly with developers and operators rather than consumers, but in some cases consumers may wish to monetize their inventory of compute credits by acting as a liquidity provider.
+
+There are many unexplored roles for liquidity providers as well: building prediction markets for new valuable Proofs of Useful Work, voting protocol emissions to subnets based on their perceived relative value, and even providing sureties against the bad behavior of distributed identities in the network.
+
+The most important thing is to make the token useful for more than just reserving compute and to make it easily exchangeable and bondable.
+
+## Interlock Protocol
+
+While QUIPs can be created and executed on a peer to peer basis, significant additional value will be created given a public index of all the active quips on various networks. As such, we endeavor to form the Quip Network, comprising several parties who collaborate to make the world a safer place to transact:
+
+```mermaid
+flowchart LR
+    C["Client"] -->|pays fees| TN["Transaction<br/>network"]
+    TN -->|stores and<br/>processes QUIPs| C
+    TN -->|splits fees| V["Quip Network<br/>validators"]
+    V -->|publishes QUIP<br/>commitments| TN
+    V -->|pays yield| N["Nominators"]
+    N -->|stake funds| V
+    N -->|pays bounties| W["Whitehat<br/>hackers"]
+    W -->|proves algorithm<br/>security| N
+```
+
+| Payor                   | Payee                   | Service                       |
+| ----------------------- | ----------------------- | ----------------------------- |
+| Client                  | Transaction Network     | Store & Process QUIPs         |
+| Transaction Network     | Quip Network Validators | PubSub QUIP Commitments       |
+| Quip Network Validators | Nominators              | Endorses via Staked Assets    |
+| Nominators              | Whitehat Hackers        | Proves Security of Algorithms |
+
+### Clients
+Clients come in many shapes and sizes, from retail to institutional, as lenders, traders, insurers, and end-users of the underlying protocol. To take advantage of a QUIP, they pay fees for the necessary computation and storage on the underlying transaction network and the QUIP extension will determine any additional fee retained by the protocol. Wallet providers and treasury management solutions may wish to integrate QUIPs as a secure add-on for their clients, in order to streamline the process of forming and executing more complex QUIP exchanges.
+
+Institutions may wish to employ QUIPs as a second layer of security on their cold storage funds, or else integrate QUIPs directly into low volume hot wallet transactions that touch more sensitive and valuable assets. Even transaction networks with highly sensitive contracts, such as Ethereum’s validator staking contract that holds more than 45% of all ETH, may wish to integrate a QUIP directly into the contract so that stakers can rest secure in the knowledge their funds are safe.
+
+### Transaction Networks
+Transaction networks don’t have to explicitly form partnerships with the Quip Network, as any deployer can post a QUIP-enabled smart contract or cryptographic primitive to any sufficiently sophisticated network. However, protocols and traditional payment rails may wish to subscribe to the Quip Network’s validators and create a plan for restoring a canonical chain state in the event of a significant reorganization by a quantum attacker.
+
+If the Quip Validators are unable to show that certain accepted post-quantum signatures are still included in the heaviest block or tip of any network, it is a signal that the network may have been compromised by a quantum attacker. Such an eventuality can be planned for, and the miners or validators can adopt a set of criteria for rejecting chain states that do not include recent QUIP commitments.
+
+### Validators
+In addition to the developers and the foundation, the Quip Network will employ Nominated Proof of Stake Validators to maintain and upgrade services for any transaction network that has not yet implemented post-quantum security, and to provide automation to individual depositors and clients who do not wish to directly manage the Quip Protocol on a peer-to-peer basis. Alongside the miners who solve Proofs of Useful Work and broadcast winning blocks, validators are one of the three consensus roles — validators, miners, and nominators — that receive the $QUIP token for running the chain.
+
+A validator is a full node. These infrastructure providers maintain indices of all proposed quips and process messages and transactions between willing counter-parties in return for $QUIP. They can aggregate together multiparty quip transaction signatures and batch the processing for cost savings, provide mixnet or privacy-preserving functionality, and execute other post-quantum multi-party computation services. In return for locking up funds on target networks to facilitate liquidity and collateral, these node providers receive yield in the form of network fees on the indexed networks, as well as $QUIP emissions.
+
+Validators also track the current state of each host transaction network to ensure that no quip has been orphaned by a block reorganization or other malicious attack on consensus. These records can be used by host networks as a canonical checkpoint in case of a rewind attack by a quantum attacker — the commitment-omission defense — and can improve the security of the underlying transaction network. Storing and attesting the presence of quips on host networks earns attestation fees on top of emissions.
+
+For enterprising node providers with insufficient funds to meet the minimum bond required of a trusted validator, they can accept stakes from nominators and share yield from validation.
+
+### Nominators
+Nominators can supply funds to validators with insufficient capital to meet the minimum stake, and can restake the coupon and yield tokens as collateral for further Quip Network activity.
+
+An added bonus of the validator and nominator staking structure is that node providers can choose the post-quantum algorithms that they trust most to protect their own funds, and nominators can choose the validators using the post-quantum algorithms they trust most.
+
+This stakers’ collective choice of post-quantum algorithm will provide an implicit betting market on the safety, storage, and throughput tradeoffs of each paradigm, which can incentivize quantum attackers to prove that any given post-quantum algorithm is flawed. The protocol will provide a built-in bug bounty mechanism, where a quantum attacker can reveal the private information necessary to slash validator and nominator stakes to keep a percentage of the compromised funds. Some percentage of this stake will also be used to stake a bug bounty showing that ECC256 has been broken, and that quantum supremacy has arrived.
+
+### Whitehats
+Arguably one of the most important participants in the network, these enterprising cryptographers and computer scientists can earn automated bug bounties for showing that existing cryptography is now insecure to contemporary methods. By using vulnerabilities in classical and post-quantum algorithms to reveal private keys, they can slash the stake of all the existing validators and nominators and prove that a given algorithm is no longer secure.
+
+This activity creates a more resilient ecosystem of decentralized services, and will increase demand for the security guarantees provided by the Quip Network and the remaining secure algorithms. The more any one algorithm is preferred by the validators, the larger incentive remains for a white hat to claim their pro rata share of the stake.
+
+The $QUIP token these participants earn and spend is described in [Token](/docs/network/token), and the properties the network has to hold to for them is set out in [Key Properties](/docs/basics/key-properties).
+
+---
+
+# Token
+
+The $QUIP token is a shared compute credit across all the operators in the decentralized compute protocol. In addition to being used to reserve spot capacity on quantum and classical hardware, it is an integral component to the functioning of the protocol.
+
+## Token Purpose & Value Accrual
+
+The $QUIP token serves as the incentive layer that ensures Quip Network remains secure, performant, and decentralized:
+
+* Reward miners for proving availability on the network
+* Punish bad actors for breaking shared programs
+* Simplify consumer experience with a shared compute credit
+* Facilitate quantum-resistant transactions across chains
+
+## Buy & LP Mechanism
+
+$QUIP implements a value accrual mechanism:
+
+1. Users pay transaction and network fees in $QUIP
+2. A portion of these fees buys $QUIP back off the market and pairs it into permanent 50/50 liquidity pools — nothing is ever burned
+3. Smart contract deployers earn tokens of their choice for each execution
+4. Node operators earn $QUIP for providing services
+5. The protocol earns AMM transaction fees when consumers buy or sell $QUIP
+
+As the network grows and demand for quantum compute increases:
+
+* More demand requires more computation
+* More computation requires more $QUIP to buy space in the next block
+* All these revenues are used to buy and LP $QUIP
+* Increasing demand + decreasing float + deeper liquidity = upward price pressure and lower price volatility
+
+More quantum demand = more $QUIP buy pressure = more $QUIP liquidity
+
+This creates a $QUIP-native economy where the protocol continuously earns a larger portion of transaction volume denominated in $QUIP. The more activity on Quip Network, the more $QUIP flows into buying and locking active trading pairs in captive liquidity pools, creating price stability and token scarcity.
+
+## Tokenomics Overview
+
+* Ticker: $QUIP
+* Initial allocation: 1 billion QUIP will have been emitted when all pre-mine allocations finish vesting, split 40% subnet emissions / 20% Quip Foundation / 15% early investors / 15% builders / 10% community programs
+* Emission: 40 million QUIP per year, fixed and flat — emissions continue at this rate after the first billion has vested, so the first billion is not a maximum supply
+* Implicit decay: each new subnet competes for a share of the same 40M annual emission, so issuance per subnet falls as the network grows — no halvings, no burns
+* Token Standard: PSP-3 on Substrate, ERC-20 on Ethereum, SPL on Solana
+
+## Governance
+
+Emissions are routed by the Quip Control Asset (QCA). In its canonical implementation, veQUIP, holders lock QUIP in an Interlock-enforced escrow to gain control weight that grows with lock duration, then vote each epoch to divide the fixed emission among subnets. The escrowed position remains liquid — it can be lent, borrowed, or posted as collateral while it votes.
+
+The Control Asset binds to a zero-knowledge identity credential so the protocol can apply per-identity limits, such as quadratic decay in marginal control weight, that a token-only system cannot enforce against an actor splitting a balance across wallets. Subnet backers can also pay veQUIP voters through an explicit, permissionless incentive market, turning emission routing into a transparent auction that prices demand for each problem class.
+
+For who earns and spends $QUIP, see [Participants](/docs/network/participants). To buy compute with it, see [Submit Your First Compute Job](/docs/compute/submit-a-job).
+
+---
+
+# Run A Node (TestNet)
+
+You can run a quip testnet node using the node manager application:
+
+[https://gitlab.com/quip.network/quip-node-manager/-/releases](https://gitlab.com/quip.network/quip-node-manager/-/releases)
+
+The primary user interface is a graphical user interface which will walk you through and test your environment to ensure you can connect to the network. This tool also has a command line only terminal UI as well with the same functionality.
+
+## Running on a Server
+
+If you're a little more tech savvy, can verify your own connectivity, and want to run this on a server, you can trivially deploy on servers using a docker-compose deployment repository:
+
+[https://gitlab.com/quip.network/nodes.quip.network](https://gitlab.com/quip.network/nodes.quip.network)
+
+In general, you will need to open a port (20049 recommended, but you control it) and configure the node through the config file. It is also highly recommended to install the cron job so the node automatically updates as updates come out.
+
+## Developers
+
+Developers can download, compile, and run a node here:\
+\
+[https://gitlab.com/quip.network/quip-protocol/](https://gitlab.com/quip.network/quip-protocol/)
+
+We do not recommend doing this UNLESS you are experimenting
+
+For what your hardware will actually be solving once the node is running, see [Miners](/docs/nodes/miners). To generate quantum-resistant keys as well, see the [Quickstart](/docs/getting-started/quickstart).
+
+---
+
+# Miners
+
+Two families of hardware mine on Quip Network.
+
+**Classical miners** are the compute platforms that do not support entanglement: CPUs, GPUs, TPUs, NPUs, and the like. While the network often leads with quantum computing as a differentiator, these traditional architectures are first-class citizens that help validate the quantum computers are really delivering improved performance. The network currently publishes Metal and CUDA solvers as well as direct implementations for x86 and ARM CPUs.
+
+**Quantum miners** are any compute platform that supports entanglement through adiabatic quantum computing, or gate-based platforms featuring CNOT or Toffoli gates: neutral atom, trapped ion, superconducting, photonic, or otherwise. The ultimate goal of the network is to maximize the utilization of all quantum processors everywhere and to connect them together to solve the hardest problems as one unified quantum system.
+
+## Node Requirements
+
+Node requirements are minimal. There is no barrier to entry for running a node, but you will have to fit the blockchain on local storage and your block rewards will be correlated with your ability to efficiently solve the Proofs of Useful Work supported by the network.
+
+The first Proof of Useful Work is finding the ground state energy of a Hamiltonian, often called an Ising Model problem. These solutions can be used in a variety of optimization and constraint programming problems, providing useful outputs for real businesses. Future Proofs of Useful Work may include things like Verifiable Random Functions, Hidden Subgroup Problems, Search, Quantum Key Distribution, or otherwise.
+
+The network currently publishes Qiskit and Ocean SDK solutions for the Ising subnet. If you have another framework or instruction set you would like to support, please submit an issue on [GitHub](https://github.com/quipnetwork).
+
+## Run a Node
+
+Please see the [Run a Node](/docs/nodes/run-a-node-testnet) section.
+
+---
+
+# Toolchain
+
+XQuad compiles quadratic optimization problems into bytecode for a single virtual machine, the XQVM, and runs that bytecode on whichever backend you point it at. A problem written once runs unchanged on a D-Wave quantum processor, a GPU annealer, a local CPU sampler, or the Quip Network. It plays the role LLVM plays for compilers: one intermediate representation, many targets.
+
+> **Note**
+> **Early public release.** The instruction set, binary format, and public API may change before v1.0.
+
+## What it models
+
+Combinatorial problems that reduce to quadratic binary models: QUBO, Ising, and discrete formulations. Traveling salesman, graph coloring, knapsack, set cover, maximum independent set, and portfolio optimization all fall in range. You write the model in a constraint-programming DSL or in `.xqasm` assembly, compile it to a `.xqb` binary, and hand the result to a solver.
+
+## Components
+
+A Rust core does the execution. Python packages wrap it and add the modeling and solver layers.
+
+| Package | Language | Role |
+| --- | --- | --- |
+| `xqvm` | Rust | The VM interpreter, opcode table, and bytecode codec. Builds `no_std + alloc`, so it also runs inside WASM runtimes and Substrate pallets |
+| `xqasm` | Rust | Assembler for the `.xqasm` text format |
+| `xqcli` | Rust | The `xquad` command: `asm`, `dism`, `run`, `verify` |
+| `xqffi` | Python | PyO3 bindings that expose `xqvm` and `xqasm` to Python |
+| `xqvm_py` | Python | Pure-Python reference VM, used as the conformance oracle |
+| `xqcp` | Python | Constraint-programming DSL that compiles to `.xqasm` |
+| `xqsa` | Python | Solver adapters for every supported backend |
+| `xquad` | Python | Umbrella package with the interactive `Program` / `Session` / `RunResult` API |
+
+A written specification defines every behavior, and CI runs each conformance vector on both the Rust VM and the Python reference VM. If the two disagree, the build fails.
+
+## Backends
+
+| Backend | Hardware | Install |
+| --- | --- | --- |
+| Simulated annealing | CPU | `pip install xquad` |
+| CUDA annealer | NVIDIA GPU | `pip install "xquad[cuda]"` |
+| Metal annealer | Apple Silicon GPU | `pip install "xquad[metal]"` |
+| D-Wave Advantage | Quantum annealer | `pip install "xquad[dwave]"` |
+| Quip Network | Network-provided solvers | `pip install "xquad[quip]"` |
+
+Extras compose: `pip install "xquad[cuda,dwave]"`.
+
+## Getting started
+
+```sh
+pip install xquad          # Python toolchain
+cargo install xqcli        # the `xquad` binary
+```
+
+The full documentation covers installation, modeling, the instruction set, worked examples for a dozen classic problems, and the reference for every package.
+
+To run a model on the Quip Network rather than on your own hardware, see [Submit Your First Compute Job](/docs/compute/submit-a-job).
