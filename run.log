@@ -1,0 +1,72 @@
+
+> t03-gpt-6-sol@1.0.0 test
+> node scripts/local-demo.mjs
+
+This version of µWS is not compatible with your Node.js build:
+
+Error: Cannot find module '../binaries/uws_darwin_arm64_127.node'
+Require stack:
+- /private/tmp/devtrials2/t03-gpt-6-sol/node_modules/ganache/node_modules/@trufflesuite/uws-js-unofficial/src/uws.js
+- /private/tmp/devtrials2/t03-gpt-6-sol/node_modules/ganache/dist/node/core.js
+Falling back to a NodeJS implementation; performance may be degraded.
+
+
+{
+  "warning": "LOCAL GANACHE TRANSACTIONS ONLY; NOT QUIPSWAP OR PUBLIC TESTNET",
+  "chainId": 31337,
+  "contract": "0x16eD1a62e397c43fa65F5DF8E933127239D93fA7",
+  "addresses": {
+    "funder": "0xedD05bC0e34ba15e70593789916184bfA30A9Fd4",
+    "initiator": "0x4eA4D5be879a5cA282aF1E10a94F8a53F585f590",
+    "counterparty": "0x7e60AFF5dC87f88781e466641664f390630bd170"
+  },
+  "transactions": {
+    "deploy": "0xb07ca2c36e2a6de075b6c6ecbb5b48b1ccf73488b7cd3e6bc9ac9db12c44a103"
+  },
+  "scenarios": {
+    "happy": {
+      "ids": [
+        "0x194707486478508d13a6318b07dd03cfeaa390476c15ded93a92f109da643154",
+        "0x6e0922720eaaa09eff931b9f000a74ac7327321fb2c1e8b8e8e6a8ea96812b82"
+      ],
+      "secretHash": "0xc2172573b736a22be7367c2758e85a30d22b3b4b25d8ad56e27039f561d14891",
+      "commitInitiator": {
+        "hash": "0xb35eee39bfa58f3d8a5988724275ad53eaaafb927879bf914ceee7ae47b699f2",
+        "blockNumber": 2,
+        "status": 1
+      },
+      "commitCounterparty": {
+        "hash": "0xb07b74b23f73000d2a1e9116bf02f2053080d395f2f08ff690243653d5fe897f",
+        "blockNumber": 3,
+        "status": 1
+      },
+      "executeInitiator": {
+        "hash": "0x2ede2e9b07d480043f44d86565dc95de918891d8b13114d82edfe4af5f377ea8",
+        "blockNumber": 4,
+        "status": 1
+      },
+      "executeCounterparty": {
+        "hash": "0xe1d6c5c4de720b8f3c3d496da7e7e60d4a743536f87f1316b885d427910a45e6",
+        "blockNumber": 5,
+        "status": 1
+      },
+      "outcome": "both locks executed; contract balance zero"
+    },
+    "refund": {
+      "id": "0xb423102a7962abd0e0a8a9bfc4ed7c9af01489b3b3137175321773b63860c7ad",
+      "amountWei": "40000000000000000",
+      "commitInitiator": {
+        "hash": "0xa0d9dd34dcb358965592cefb7bc3c43dfe39f692d191e33f30825bf0af6d9716",
+        "blockNumber": 6,
+        "status": 1
+      },
+      "earlyReclaim": "reverted as expected",
+      "reclaimInitiator": {
+        "hash": "0xbef806de79649a350fa787897f06bb99bdca968082f01566c0a08047896b8b5a",
+        "blockNumber": 8,
+        "status": 1
+      },
+      "outcome": "counterparty never committed; depositor reclaimed after simulated deadline; contract balance zero"
+    }
+  }
+}
