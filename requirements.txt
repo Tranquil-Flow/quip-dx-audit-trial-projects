@@ -1,0 +1,5 @@
+# Quip Network demo requirements (Python >= 3.13 required by the vendor).
+#
+# On macOS, the `quip-signer` extension is built from source via pip, which
+# needs a local Rust toolchain (rustup) — see DEVLOG.md / RESULT.md.
+xquad[quip]==0.4.2
