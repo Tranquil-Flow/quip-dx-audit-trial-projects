@@ -1,0 +1,15 @@
+[profile.default]
+src = "src"
+out = "out"
+libs = ["lib"]
+
+# See more config options https://github.com/foundry-rs/foundry/blob/master/crates/config/README.md#all-options
+
+# Aglais testnet (Quip Network) — see https://agls.quip.network/
+# EVM RPC: https://evm-rpc.aglais.quip.network (HTTPS only; no pubsub/filter API)
+# Chain ID 20033 (0x4e41), token AGLS (18 decimals), gas price 1 gwei, backend pallet-revive
+[profile.aglais]
+eth_rpc_url = "https://evm-rpc.aglais.quip.network"
+chain_id = 20033
+gas_price = 1000000000 # 1 gwei, fixed by the network
+verbosity = 3
