@@ -1,0 +1,74 @@
+# Quip Network for developers
+
+> Quip Network provides post-quantum protection for assets on existing chains, and an open marketplace for running optimization jobs on real quantum hardware. This is the developer entry point: quickstarts, testnet connection details, repositories, and machine-readable documentation.
+
+## Start here
+
+- [Quickstart](https://developers.quip.network/docs/getting-started/quickstart): Fastest path to a working result.
+- [What is Quip Network](https://developers.quip.network/docs/getting-started/what-is-quip): What the network does and who it is for.
+- [How Quip Network fits together](https://developers.quip.network/docs/quip-interlock-protocol/how-quip-fits-together): The relationship between the asset-security and compute halves.
+- [Documentation index](https://developers.quip.network/docs): Full documentation.
+
+## Machine-readable documentation
+
+- [Docs llms.txt](https://developers.quip.network/docs/llms.txt): Annotated index of every documentation page.
+- [Docs llms-full.txt](https://developers.quip.network/docs/llms-full.txt): The entire documentation set as one markdown file.
+- Any documentation page also returns markdown if you append .md to its URL.
+- [Use These Docs with AI](https://developers.quip.network/docs/getting-started/use-with-ai): Machine-readable indexes and markdown mirrors. Any docs page also returns markdown if you append .md to its URL.
+
+## Build applications
+
+- [Quip SDK](https://developers.quip.network/docs/getting-started/quip-sdk): Key generation, signing, and verification. Install: npm install @quip.network/ethereum-sdk@beta
+- [Quip Accounts](https://developers.quip.network/docs/quip-interlock-protocol/quip-accounts): Contract-based post-quantum lockboxes secured by hash-based signatures.
+- [QuipSwap](https://developers.quip.network/docs/quip-interlock-protocol/quipswap): Hash-locked atomic swaps with no bridge and no custodian.
+- [ethereum-sdk on npm](https://www.npmjs.com/package/@quip.network/ethereum-sdk): Use the @beta tag; the latest tag is stale at 0.1.7.
+- [quip-swap-sdk on npm](https://www.npmjs.com/package/@quip.network/quip-swap-sdk): Swap protocol SDK.
+
+## Run compute jobs
+
+- [Submit Your First Compute Job](https://developers.quip.network/docs/compute/submit-a-job): Ising-model optimization through the job mempool. Install: pip install "xqsa[quip]"
+- [Quantum Randomness (QVRF)](https://developers.quip.network/docs/compute/qvrf): Concepts only. Not a cryptographic VRF.
+- [xquad on PyPI](https://pypi.org/project/xquad/): Problem-formulation toolchain, Python 3.13 or newer.
+- [xqsa on PyPI](https://pypi.org/project/xqsa/): Solver adapters, local CPU and network backends.
+
+## Run a node
+
+- [Run a Node (TestNet)](https://developers.quip.network/docs/nodes/run-a-node-testnet): Hardware requirements and install routes.
+- [Miners](https://developers.quip.network/docs/nodes/miners): Classical and quantum miners, and proof of useful work.
+- [Node Manager releases](https://gitlab.com/quip.network/quip-node-manager/-/releases): Desktop GUI and TUI builds.
+- [Server deployment](https://gitlab.com/quip.network/nodes.quip.network): Docker compose stack for always-on nodes.
+
+## Testnet
+
+- Genesis hash: 0x59e064bddd49a920d1392693c728c3bf9867f2cf3e0f8fea8c2498b389b0c286. Identify the chain by THIS. Not by the EVM chain ID, which is 20033 on both this network and the retired one that preceded it, and not by the chain spec id, which is still "quip_testnet" because that string is the on-disk database path.
+- [Explorer](https://explorer.aglais.quip.network): Blocks, transactions, and accounts on the Aglais testnet.
+- [Subscan](https://subscan.aglais.quip.network): Substrate-side explorer for the same chain.
+- [Polkadot.js portal](https://portal.aglais.quip.network): Extrinsics, storage, and chain state.
+- [Chain spec](https://gitlab.com/quip.network/nodes.quip.network/-/tree/main/chain-specs?ref_type=heads): aglais-network.json, includes bootnodes. About 2.4 MB, with a .sha256 beside it.
+- EVM JSON-RPC: https://evm-rpc.aglais.quip.network over HTTPS on port 443, chain ID 20033 (0x4e41), token AGLS with 18 decimals, gas price 1 gwei, backend pallet-revive. EVM history starts at block 0.
+- Substrate JSON-RPC: https://bootnode-1.aglais.quip.network:20049/rpc over HTTPS POST, or wss://bootnode-{1-3}.aglais.quip.network:20049/rpc over websocket. Open CORS, so a browser can call it directly. SS58 prefix 42, native token precision 12 decimals. Locally, ws://127.0.0.1:9944 once your own node is running.
+- Faucet: POST /request to https://faucet.aglais.quip.network, JSON body {"dest": "<SS58 address | 0x+64-hex AccountId | 0x+40-hex EVM address>"}. Dispenses 10 AGLS, rate-limited per destination. API only: the root path 404s and there is no CORS preflight, so call it from a server or curl rather than a browser.
+- Testnet tokens hold no value and balances can be reset.
+
+## Source code
+
+- [GitLab group](https://gitlab.com/quip.network): Canonical host. Most recent work lands here first.
+- [GitHub organisation](https://github.com/QuipNetwork): Mirror of the GitLab group.
+- [quip-validator](https://gitlab.com/quip.network/quip-validator): Protocol node, Rust on a Substrate fork.
+- [xquad](https://gitlab.com/quip.network/xquad): Problem formulation across quantum architectures.
+- [hashsigs-rs](https://gitlab.com/quip.network/hashsigs-rs): Hash-based signatures, with ports for TypeScript, Solidity, Python, and C++.
+- [quip-miner](https://gitlab.com/quip.network/quip-miner): Ising solvers for CPU, CUDA, Metal, and D-Wave.
+
+## Community and feedback
+
+- [Feedback board](https://feedback.quip.network): Report documentation gaps, broken commands, and feature requests. This is the single feedback channel across every Quip Network product, so name the surface you were using. There is no developer-only channel yet.
+- [Discord](https://discord.gg/quipnetwork): Support and questions. Use the faucet above for testnet balance rather than asking here.
+- [Research forum](https://research.quip.network): Protocol proposals.
+
+## Optional
+
+- [Key properties](https://developers.quip.network/docs/basics/key-properties): Design principles behind the network.
+- [Participants](https://developers.quip.network/docs/network/participants): The five-layer participant stack and who pays whom.
+- [Token](https://developers.quip.network/docs/network/token): $QUIP as a shared compute credit.
+- [Whitepaper](https://quip.network/documents/Quip-Whitepaper.pdf): Full protocol paper, PDF.
+- [Quip Account](https://account.quip.network): Browser interface for generating quantum-resistant keys.

@@ -1,0 +1,75 @@
+{
+  "scenario": "settled",
+  "chainId": 84532,
+  "rpc": "local anvil fork of Base Sepolia",
+  "omnibus": "0xA7955981D5759a799267063110Be0F7AeCc26F8A",
+  "token": "0xe7508a487b13d8115a6e4f70a0d0d0c0c868ad6e",
+  "tokenDeployTx": "0x0e78c962810e2f9a10ec4b2ca96dfdc77c2e27471aaaf1411cb89491d163905e",
+  "partyA_maker": "0x20D926298d2Fb4A8B69b720Bb1b508A5FC5507B4",
+  "partyB_taker": "0xe015Bc41593B74bEB8a88Ea4f1061cd51a159c2B",
+  "txs": {
+    "approve": "0xcbf7e2ed1601e1d438f774ade390d7fbf2bb602662d775df2969f827b6ee4c60",
+    "commitA": "0x003922f6d190285a5907cff7021a87d7719e24c81a440a9adbd0980faaec074e",
+    "commitB": "0xd49037cc3be2439f849b08c8d2f6f756f994353cafb2daee8ac28473a9d631e4",
+    "claim": "0xefe8d5037afc82640621cd05d6649e205339ab30bd380a4fd38cc662a3d6d233"
+  },
+  "pqKeys": {
+    "partyA": "0x4df97445cc821d918ac01ced391e74bacc05ac6f35eec6c7c24e68cc0f45493e",
+    "partyB": "0xcea159bc214a7775133ed5697c77996fb36d1494286bc475ed587de5856c324f",
+    "verifier": "0xF2f9E6D692da41b089c3c261c41509669eEc5567",
+    "profile": "shrincs-256s-keccak"
+  },
+  "balancesBefore": {
+    "A_musdc": "1000000000",
+    "B_musdc": "0",
+    "A_eth": "0.999953325020359414",
+    "B_eth": "1",
+    "omnibus_eth": "1.236245522798521367"
+  },
+  "offer": {
+    "hash": "0xe436789e2e19c110698650159a1fb3ccf7522a06dd4f14190da99d8069186b13",
+    "lock": "0x0c383885651b72c78899d8b19ed4e17fa0973aa7cda8ffba3bd16146db300283",
+    "makerSigBytes": 3040,
+    "acceptanceHash": "0x78ed18adc949cf91100026e2f0045f581b9b1af6c33ed0f5a75224c1c81c32d1",
+    "schedule": [
+      "1790598940",
+      "1790598960",
+      "1790598980",
+      "1790599000",
+      "1790599020",
+      "1790599040"
+    ],
+    "onchainVerifierAcceptedBothSignatures": true
+  },
+  "swapId": "0x7ada483b4c1146ac297a7affbfd2b64337edfe51d3afefadc17d558580c5c15d",
+  "canonicalDigest": "0xfee18b098d040a4caedbdc9a336bc0ffe0adede0923d28598ac9b233aab7e4e3",
+  "claimEvents": [
+    {
+      "recipient": "0x20D926298d2Fb4A8B69b720Bb1b508A5FC5507B4",
+      "lock": "0x0c383885651b72c78899d8b19ed4e17fa0973aa7cda8ffba3bd16146db300283",
+      "secret": "0x8b4aab1d50a2ac75b40029c1d67c4fece80128045ce0b706ff61b179f86d6f42",
+      "blockNumber": "47415308",
+      "transactionHash": "0xefe8d5037afc82640621cd05d6649e205339ab30bd380a4fd38cc662a3d6d233",
+      "logIndex": 0,
+      "chainId": ""
+    },
+    {
+      "recipient": "0xe015Bc41593B74bEB8a88Ea4f1061cd51a159c2B",
+      "lock": "0x0c383885651b72c78899d8b19ed4e17fa0973aa7cda8ffba3bd16146db300283",
+      "secret": "0x8b4aab1d50a2ac75b40029c1d67c4fece80128045ce0b706ff61b179f86d6f42",
+      "blockNumber": "47415308",
+      "transactionHash": "0xefe8d5037afc82640621cd05d6649e205339ab30bd380a4fd38cc662a3d6d233",
+      "logIndex": 2,
+      "chainId": ""
+    }
+  ],
+  "negativeTests": [],
+  "finalStatus": "settled",
+  "balancesAfter": {
+    "A_musdc": "0",
+    "B_musdc": "1000000000",
+    "A_eth": "1.001514322377571367",
+    "B_eth": "0.997720795839736904",
+    "omnibus_eth": "1.236245522798521367"
+  }
+}

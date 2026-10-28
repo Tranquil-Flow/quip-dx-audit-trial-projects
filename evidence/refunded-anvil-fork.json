@@ -1,0 +1,67 @@
+{
+  "scenario": "refunded",
+  "chainId": 84532,
+  "rpc": "local anvil fork of Base Sepolia",
+  "omnibus": "0xA7955981D5759a799267063110Be0F7AeCc26F8A",
+  "token": "0xe7508a487b13d8115a6e4f70a0d0d0c0c868ad6e",
+  "tokenDeployTx": "0x0e78c962810e2f9a10ec4b2ca96dfdc77c2e27471aaaf1411cb89491d163905e",
+  "partyA_maker": "0x20D926298d2Fb4A8B69b720Bb1b508A5FC5507B4",
+  "partyB_taker": "0xe015Bc41593B74bEB8a88Ea4f1061cd51a159c2B",
+  "txs": {
+    "approve": "0x2c577b38dfad1548fc8becdb0d4f701d09d631623e10105f1b4534be5b5fa0fc",
+    "commitA": "0x01921676ba77173f51025ca2861901f261d709fca3286c9f40db5d1c6dc7d4fb",
+    "commitB": "0xcf55c2ac012b0ebfb87e7a1c30127d88564b0c3aa3e7fa1b77fef3b93a77f34b",
+    "reclaimA": "0x290cfa9bac646baae3ed2af4326ac0faadcc38d69d4c6c53f162c357fb52433b",
+    "reclaimB": "0x5cf1226805292116822e10e966c2607bab4a1285890b34f620a5774d2389a7ca"
+  },
+  "pqKeys": {
+    "partyA": "0x4df97445cc821d918ac01ced391e74bacc05ac6f35eec6c7c24e68cc0f45493e",
+    "partyB": "0xcea159bc214a7775133ed5697c77996fb36d1494286bc475ed587de5856c324f",
+    "verifier": "0xF2f9E6D692da41b089c3c261c41509669eEc5567",
+    "profile": "shrincs-256s-keccak"
+  },
+  "balancesBefore": {
+    "A_musdc": "1000000000",
+    "B_musdc": "1000000000",
+    "A_eth": "1.001467648374630905",
+    "B_eth": "0.997720795839736904",
+    "omnibus_eth": "1.236245522798521367"
+  },
+  "offer": {
+    "hash": "0xded8f98d7fdd50e3ed6650b712dcd8ff0da259cc9be208b7c26cff6d9eee8113",
+    "lock": "0x76a9aec7a11e025fee6be4981755bbc7b838d2d7615d739b9cfb9ff87634bfaf",
+    "makerSigBytes": 3104,
+    "acceptanceHash": "0xa8280e088a2162cca80aa83e8f4c5399efcb017477acd5b9b9828f42cfeff96b",
+    "schedule": [
+      "1790599003",
+      "1790599023",
+      "1790599043",
+      "1790599063",
+      "1790599083",
+      "1790599103"
+    ],
+    "onchainVerifierAcceptedBothSignatures": true
+  },
+  "swapId": "0x3fd924bd4bbf3ebaebc7d717748d3045d90e8ab4e6b98d2da6301360e78688d9",
+  "canonicalDigest": "0xe44aaab717f9c2a1005f7e147f545504d80e0e16c37211573a050ebb52f265c3",
+  "negativeTests": [
+    {
+      "label": "B tries reclaim before release",
+      "reverted": true,
+      "code": "WINDOW_VIOLATED"
+    },
+    {
+      "label": "A claims after claim window",
+      "reverted": true,
+      "code": "WINDOW_VIOLATED"
+    }
+  ],
+  "finalStatus": "settled",
+  "balancesAfter": {
+    "A_musdc": "1000000000",
+    "B_musdc": "1000000000",
+    "A_eth": "1.001015526356658783",
+    "B_eth": "0.997363116837233151",
+    "omnibus_eth": "1.236245522798521367"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "route": "wallet",
+  "chainId": 84532,
+  "omnibus": "0xA7955981D5759a799267063110Be0F7AeCc26F8A",
+  "token": "0x0a0b21f85d0eeb3b5a51a15faf3a0501eb05b447",
+  "txs": {
+    "A.approve": "0x692aaec8dc09ab4a4f3779d3fe6ace6d77794263ad15cc38aca133d003e12010",
+    "A.commit": "0x57fc4960e8757b51df193f9fb872a523b6d580f6fe17970aa424672e8dfdc480",
+    "B.commit": "0xcaca850855dd7f153626095ab5ded73839c7c461ff616176da99181cd80fe711",
+    "claim": "0x71b3f376a4c8b1eff01c19f7dc5a43575cca6c37f9c940a5586b62c7c752c8b5"
+  },
+  "walletA": "0xA480ef208B72fEBC4C89C23dFD5F03Cb932940b5",
+  "walletB": "0x1e61b5c592394EB779e20c19238251A2ba1312B1",
+  "final": {
+    "walletA_musdc": "0",
+    "walletB_musdc": "1000000000",
+    "walletA_eth": "0.002",
+    "walletB_eth": "0.01"
+  }
+}

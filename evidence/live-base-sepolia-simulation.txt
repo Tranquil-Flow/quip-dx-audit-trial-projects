@@ -1,0 +1,4 @@
+chain 84532 block 47415160n omnibus 0xA7955981D5759a799267063110Be0F7AeCc26F8A
+SDK digest == live on-chain commitDigest(): true 0xee3b2e007bc800f172dd304ef0dc0e2d5731eb5e76ae6bccca3bf43bf599ec41
+VALID PQ signature: live Omnibus.commit simulation SUCCEEDED (would lock 0.001 ETH)
+tampered PQ signature rejected: Execution reverted for an unknown reason. 

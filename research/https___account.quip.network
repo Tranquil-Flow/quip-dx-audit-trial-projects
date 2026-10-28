@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="/favicon.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="/pwa/apple-touch-icon.png"
+    />
+    <link
+      rel="manifest"
+      href="/manifest.webmanifest"
+    />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <meta
+      name="theme-color"
+      content="#fafafa"
+    />
+    <meta
+      name="mobile-web-app-capable"
+      content="yes"
+    />
+    <meta
+      name="apple-mobile-web-app-capable"
+      content="yes"
+    />
+    <meta
+      name="apple-mobile-web-app-title"
+      content="QUIP"
+    />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="default"
+    />
+
+    <!-- Basic Meta Tags -->
+    <title>QUIP Account</title>
+    <meta
+      name="description"
+      content="Protect yourself from quantum computer hackers, right now, with this quantum-safe account (currently in beta)."
+    />
+
+    <!-- Open Graph / Facebook -->
+    <meta
+      property="og:type"
+      content="website"
+    />
+    <meta
+      property="og:url"
+      content="https://account.quip.network"
+    />
+    <meta
+      property="og:title"
+      content="QUIP Account"
+    />
+    <meta
+      property="og:description"
+      content="Protect yourself from quantum computer hackers, right now, with this quantum-safe account (currently in beta)."
+    />
+    <meta
+      property="og:image"
+      content="https://account.quip.network/og-default.png"
+    />
+    <meta
+      property="og:image:type"
+      content="image/png"
+    />
+    <meta
+      property="og:image:width"
+      content="1200"
+    />
+    <meta
+      property="og:image:height"
+      content="630"
+    />
+
+    <!-- Twitter -->
+    <meta
+      name="twitter:card"
+      content="summary_large_image"
+    />
+    <meta
+      name="twitter:url"
+      content="https://account.quip.network"
+    />
+    <meta
+      name="twitter:title"
+      content="QUIP Account"
+    />
+    <meta
+      name="twitter:description"
+      content="Protect yourself from quantum computer hackers, right now, with this quantum-safe account (currently in beta)."
+    />
+    <meta
+      name="twitter:image"
+      content="https://account.quip.network/og-default.png"
+    />
+    <script>
+      (function (w, d) {
+        if (w.Quackback) return;
+        w.Quackback = function () {
+          (w.Quackback.q = w.Quackback.q || []).push(arguments);
+        };
+        var s = d.createElement('script');
+        s.async = true;
+        s.src = 'https://feedback.quip.network/api/widget/sdk.js';
+        d.head.appendChild(s);
+      })(window, document);
+
+      Quackback('init');
+    </script>
+    <script type="module" crossorigin src="/assets/index-dxrl1c5W.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/buffer-vendor-DP4UE5qy.js">
+    <link rel="modulepreload" crossorigin href="/assets/react-vendor-yiqiTd-v.js">
+    <link rel="stylesheet" crossorigin href="/assets/index-DI4lNe1q.css">
+  </head>
+  <body>
+    <div id="root"></div>
+    <!-- Hidden form for Netlify form detection — submitted server-side to alert IT -->
+    <form hidden method='post' name='service-alert'><input type='hidden' name='form-name' value='service-alert' />
+      <input
+        name="service"
+        type="text"
+      />
+      <input
+        name="error"
+        type="text"
+      />
+      <input
+        name="timestamp"
+        type="text"
+      />
+    </form>
+  </body>
+</html>

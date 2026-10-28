@@ -1,0 +1,60 @@
+12:34:56 RPC http://127.0.0.1:8547 chainId 84532 fork/anvil=true PQ profile shrincs-256s-keccak
+12:34:56   0x20D926298d2Fb4A8B69b720Bb1b508A5FC5507B4 1 ETH
+12:34:57   0xe015Bc41593B74bEB8a88Ea4f1061cd51a159c2B 1 ETH
+12:34:57   0x9B96c79de9c6589E14Ea2a763414D3DBE9e958B5 1 ETH
+12:34:57 MockUSDC deployed 0xe7508a487b13d8115a6e4f70a0d0d0c0c868ad6e (tx 0x0e78c962810e2f9a10ec4b2ca96dfdc77c2e27471aaaf1411cb89491d163905e)
+12:35:00 before {
+  A_musdc: '1000000000',
+  B_musdc: '0',
+  A_eth: '0.999953325020359414',
+  B_eth: '1',
+  omnibus_eth: '1.236245522798521367'
+}
+12:35:02 maker signed offer 0xe436789e2e19c110698650159a1fb3ccf7522a06dd4f14190da99d8069186b13 (PQ sig 3040 bytes)
+12:35:04 taker accepted 0x78ed18adc949cf91100026e2f0045f581b9b1af6c33ed0f5a75224c1c81c32d1; both PQ signatures verified off-chain (hashsigs-wasm)
+12:35:05 A committed tx 0x003922f6d190285a5907cff7021a87d7719e24c81a440a9adbd0980faaec074e gas 350671 (PQ keyed route, 54 leaves left)
+12:35:05 waiting for chain time >= 1790598940 (proposer commit deadline; taker window opens)
+12:35:40 status (taker view): awaiting-taker-commit
+12:35:41 B committed tx 0xd49037cc3be2439f849b08c8d2f6f756f994353cafb2daee8ac28473a9d631e4 gas 279204 (PQ keyed route, 56 leaves left)
+12:35:41 waiting for chain time >= 1790598960 (taker commit deadline; claim window opens)
+12:36:00 status: claimable
+12:36:00 A claimed (revealed secret) tx 0xefe8d5037afc82640621cd05d6649e205339ab30bd380a4fd38cc662a3d6d233; claim events: 2
+12:36:00 status: settled
+12:36:01 after {
+  A_musdc: '0',
+  B_musdc: '1000000000',
+  A_eth: '1.001514322377571367',
+  B_eth: '0.997720795839736904',
+  omnibus_eth: '1.236245522798521367'
+}
+12:36:03 before {
+  A_musdc: '1000000000',
+  B_musdc: '1000000000',
+  A_eth: '1.001467648374630905',
+  B_eth: '0.997720795839736904',
+  omnibus_eth: '1.236245522798521367'
+}
+12:36:04 maker signed offer 0xded8f98d7fdd50e3ed6650b712dcd8ff0da259cc9be208b7c26cff6d9eee8113 (PQ sig 3104 bytes)
+12:36:05 taker accepted 0xa8280e088a2162cca80aa83e8f4c5399efcb017477acd5b9b9828f42cfeff96b; both PQ signatures verified off-chain (hashsigs-wasm)
+12:36:05 A committed tx 0x01921676ba77173f51025ca2861901f261d709fca3286c9f40db5d1c6dc7d4fb gas 352554 (PQ keyed route, 52 leaves left)
+12:36:05 waiting for chain time >= 1790599003 (proposer commit deadline; taker window opens)
+12:36:43 status (taker view): awaiting-taker-commit
+12:36:44 B committed tx 0xcf55c2ac012b0ebfb87e7a1c30127d88564b0c3aa3e7fa1b77fef3b93a77f34b gas 280956 (PQ keyed route, 54 leaves left)
+12:36:44 waiting for chain time >= 1790599023 (taker commit deadline; claim window opens)
+12:37:03 status: claimable
+12:37:03 ok B tries reclaim before release: rejected (WINDOW_VIOLATED)
+12:37:03 waiting for chain time >= 1790599043 (claim window closed (proposer claimDeadline))
+12:37:24 ok A claims after claim window: rejected (WINDOW_VIOLATED)
+12:37:24 waiting for chain time >= 1790599083 (proposer reclaimRelease)
+12:38:03 A reclaimed tx 0x290cfa9bac646baae3ed2af4326ac0faadcc38d69d4c6c53f162c357fb52433b
+12:38:03 waiting for chain time >= 1790599103 (taker reclaimRelease)
+12:38:23 B reclaimed tx 0x5cf1226805292116822e10e966c2607bab4a1285890b34f620a5774d2389a7ca
+12:38:23 status: settled
+12:38:23 after {
+  A_musdc: '1000000000',
+  B_musdc: '1000000000',
+  A_eth: '1.001015526356658783',
+  B_eth: '0.997363116837233151',
+  omnibus_eth: '1.236245522798521367'
+}
+12:38:23 done
