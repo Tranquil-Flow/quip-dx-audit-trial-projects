@@ -1,0 +1,15 @@
+{
+  "people": ["Ada", "Ben", "Cam", "Dee", "Eli", "Flo"],
+  "interactions": [
+    ["Ada", "Ben", 5],
+    ["Ada", "Cam", 2],
+    ["Ada", "Dee", 7],
+    ["Ben", "Cam", 6],
+    ["Ben", "Eli", 3],
+    ["Cam", "Dee", 4],
+    ["Cam", "Flo", 8],
+    ["Dee", "Eli", 5],
+    ["Dee", "Flo", 2],
+    ["Eli", "Flo", 6]
+  ]
+}
