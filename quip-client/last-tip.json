@@ -1,0 +1,12 @@
+{
+  "quipAccount": "0xe3a62d353a6AC3c5Ebb532d53dA3a1A6fdE62aeC",
+  "owner": "0x9781DD5e6B34C9A959ABCD61C4454fE7124C6a43",
+  "tipJar": "0x6DA047CfA020C04de82cF4aFBa8cDD52b537E60b",
+  "creator": "0x4b859E4C8d73864653fEe55cC29C3dcAD9F46B88",
+  "amount": "0.01",
+  "message": "first post-quantum tip on Aglais",
+  "leaf": 1,
+  "tx": "0x855d5f3685ef3fda548af703e0a219c4bddb0128881ca8436fc14ecf0a72f8fe",
+  "block": "478366",
+  "status": "success"
+}

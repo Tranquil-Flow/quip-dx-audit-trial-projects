@@ -1,0 +1,8 @@
+{
+  "chainId": 20033,
+  "shrincsVerifier": "0xf4ba1b7713e96065a7c8f2f6de9342c51799669e",
+  "walletFactoryImpl": "0x203b98d0aa32126a8cdb04baa117060ebc88e327",
+  "walletFactory": "0x5a76af570fa9ba264654f357298ce57df24d0c6f",
+  "shrincsWalletImpl": "0xb6fa01c735e5903c5ed6800b5499f086e61d7002",
+  "factoryOwner": "0x9781DD5e6B34C9A959ABCD61C4454fE7124C6a43"
+}
