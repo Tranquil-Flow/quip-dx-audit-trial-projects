@@ -1,0 +1,80 @@
+{
+  "assets": {
+    "AAA": {
+      "index": 0,
+      "return_pct": 8
+    },
+    "BBB": {
+      "index": 1,
+      "return_pct": 5
+    },
+    "CCC": {
+      "index": 2,
+      "return_pct": 7
+    },
+    "DDD": {
+      "index": 3,
+      "return_pct": 3
+    },
+    "EEE": {
+      "index": 4,
+      "return_pct": 9
+    },
+    "FFF": {
+      "index": 5,
+      "return_pct": 4
+    },
+    "GGG": {
+      "index": 6,
+      "return_pct": 6
+    },
+    "HHH": {
+      "index": 7,
+      "return_pct": 2
+    }
+  },
+  "cardinality_k": 4,
+  "job": {
+    "order_id": 167,
+    "solver": "5EXN4YzJoqb7GnMTdMDmDo7wYpMz5HtQwcAvy1LmJVHTB943",
+    "best_energy_milli": -457500,
+    "energy_matches_chain": true,
+    "num_submissions": 11,
+    "num_solutions": 1
+  },
+  "solution": {
+    "bits": [
+      0,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0
+    ],
+    "selected_mask": 86,
+    "selected_names": [
+      "BBB",
+      "CCC",
+      "EEE",
+      "GGG"
+    ],
+    "energy": -3360,
+    "energy_check": -3360
+  },
+  "network": {
+    "name": "aglais",
+    "rpc": "wss://bootnode-1.aglais.quip.network:20049/rpc"
+  },
+  "placement": {
+    "mode": "native",
+    "placed": false,
+    "reason": "dense K8 coupling graph is not a subgraph of the default hardware topology",
+    "default_topology": {
+      "nodes": 4577,
+      "edges": 41514
+    }
+  },
+  "timing_s": 76.69812912499765
+}
