@@ -1,0 +1,3 @@
+[submodule "lib/hashsigs-solidity"]
+	path = lib/hashsigs-solidity
+	url = https://github.com/QuipNetwork/hashsigs-solidity
