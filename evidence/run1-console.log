@@ -1,0 +1,19 @@
+12:50:33 deploying Raffle, entryBlocks = 150 commit = 0xfb0aacaf559eacbcda3d9316986e71211f8c52c20f9f16d5b2ef0dada8064fda
+12:51:11 deployed at 0x47AbbA4c03a3Acd7444EDcCa0beD1d3e948A93C9 block 377029
+12:51:11 entryEndBlock = 377179
+12:51:11 on-chain check: organizerCommit = 0xfb0aacaf559eacbcda3d9316986e71211f8c52c20f9f16d5b2ef0dada8064fda state = 0n
+12:51:33 carol entered 0x843fe6b0097CdE2a1d1b7ac462EfF3F20CC85f43 block 377031
+12:51:33 bob entered 0x9BF7D742a1BFdD0BD798e1366172bD4484a851b6 block 377031
+12:51:33 alice entered 0x473C8443467A28330f1CeA70a0A7baEC774E770B block 377031
+12:51:33 dave entered 0x08cf48439a221835A79b2c718752478eC03042bA block 377031
+12:51:34 numEntries on chain = 4
+12:51:34 waiting for block > 377179
+13:06:21 entries closed, drawBlock = 377183
+13:06:45 WINNER 0x473C8443467A28330f1CeA70a0A7baEC774E770B (index 2) seed 0x5dd77433b7f59f0c3df581bf18a6574568411bcc8c9ac05945c03a18205f95b2
+13:06:45 verification {
+  commitMatches: true,
+  seedRecomputed: true,
+  indexRecomputed: true,
+  winnerIsEntrant: true,
+  drawnEventPresent: true
+} ALL OK

@@ -1,0 +1,75 @@
+{
+  "network": "Aglais (Quip Testnet)",
+  "chainId": 20033,
+  "randomness": "commit-reveal + future blockhash (fallback; QVRF unavailable)",
+  "txs": {
+    "deploy": {
+      "ethTxHash": "0x413b5a7f6a8d1a2f8a90ed7c3f5db2787e7e77b8ed30712172d60aea099529e2",
+      "extrinsic": "0x765a2e7a9965694afa9cebdaf79dbe8624c83f64461bfac2079085a8434c9d07",
+      "block": 377029,
+      "blockHash": "0xbdffe955cd165e1f7373e8a889fde8d2b77aceb18b0c426d6d36dd245eaf4e23"
+    },
+    "entries": [
+      {
+        "player": "0x473C8443467A28330f1CeA70a0A7baEC774E770B",
+        "ethTxHash": "0xca2d5579b2081620649e4a0cecb3c4a2c45fbaf51fd23f9b5954649dc473c184",
+        "extrinsic": "0x2b09037c5b716b4073b29ff5a1ff38009f58a2a4942ab594fc11abb9613d3cf8",
+        "block": 377031
+      },
+      {
+        "player": "0x9BF7D742a1BFdD0BD798e1366172bD4484a851b6",
+        "ethTxHash": "0x42a5dd3a0d03452eeecc3cb0a7a41dd0ef676aeb4f0dd73e11490ebc9f0364b2",
+        "extrinsic": "0x08e0baeb6d3acffc4ca04403b158a3210521ca071d698e9425f0cb63e9c004ce",
+        "block": 377031
+      },
+      {
+        "player": "0x843fe6b0097CdE2a1d1b7ac462EfF3F20CC85f43",
+        "ethTxHash": "0xb1ae9c3bd54c8a4aa9275c10c25eb07d59c362fbbfe4dc679e5da4c1973e56a4",
+        "extrinsic": "0x8ea7c090f15d793614ca4573300a2d5b555caf35944d6b1f5306beda2d268425",
+        "block": 377031
+      },
+      {
+        "player": "0x08cf48439a221835A79b2c718752478eC03042bA",
+        "ethTxHash": "0x1ad5291c4016b68d5b0575df1c23258b682fc88f64afa41d9668931ca307c25d",
+        "extrinsic": "0x26a83c8d2a916e971b3fbc5280e15b217d419ca9c66325b3b9379fac2723b27f",
+        "block": 377031
+      }
+    ],
+    "closeEntries": {
+      "ethTxHash": "0x60d1829f4e118c971c23699407166d819911ca0f5c7526e9c56a39180c1297b9",
+      "extrinsic": "0xb6e42c9e7a3bf00161a318bd83909ba712aefdeb46ba879a0c3a222669ef45dc",
+      "block": 377181,
+      "drawBlock": 377183
+    },
+    "draw": {
+      "ethTxHash": "0x58d21c55ebab7b15a5505c12394bcb22f6192fb689ac8439f8a108386b202e5a",
+      "extrinsic": "0x0916a52b9a5c859e311161f4d03602a2154320c0acdf736897b25457c5461bae",
+      "block": 377185
+    }
+  },
+  "commit": "0xfb0aacaf559eacbcda3d9316986e71211f8c52c20f9f16d5b2ef0dada8064fda",
+  "contract": "0x47AbbA4c03a3Acd7444EDcCa0beD1d3e948A93C9",
+  "entryEndBlock": 377179,
+  "result": {
+    "winner": "0x473C8443467A28330f1CeA70a0A7baEC774E770B",
+    "winnerIndex": 2,
+    "seed": "0x5dd77433b7f59f0c3df581bf18a6574568411bcc8c9ac05945c03a18205f95b2",
+    "blockHashUsed": "0x88bb24314e1f791b46924bbf142447a7d22a20996cea866aebd818a429e32fa0",
+    "secretRevealed": "0x8a719604c9852f3b3fb87484337884392aa7635ac47b3a5a1aae9412d4c24044",
+    "entrants": [
+      "0x843fe6b0097CdE2a1d1b7ac462EfF3F20CC85f43",
+      "0x08cf48439a221835A79b2c718752478eC03042bA",
+      "0x473C8443467A28330f1CeA70a0A7baEC774E770B",
+      "0x9BF7D742a1BFdD0BD798e1366172bD4484a851b6"
+    ],
+    "prizeAGLS": "0.04",
+    "checks": {
+      "commitMatches": true,
+      "seedRecomputed": true,
+      "indexRecomputed": true,
+      "winnerIsEntrant": true,
+      "drawnEventPresent": true
+    },
+    "verified": true
+  }
+}

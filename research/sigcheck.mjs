@@ -1,0 +1,13 @@
+import { connect, loadWallet } from '../scripts/lib.mjs';
+import { Transaction } from 'ethers';
+const api = await connect();
+const w = loadWallet('organizer');
+const tx = Transaction.from({ type: 0, chainId: 20033n, nonce: 0, gasPrice: 1000000000n, gasLimit: 1000000n, to: '0x0000000000000000000000000000000000000001', value: 0n, data: '0x' });
+tx.signature = w.signingKey.sign(tx.unsignedHash);
+console.log('recovered from', tx.from, 'expected', w.address);
+const ext = api.tx.revive.ethTransact(tx.serialized);
+console.log('ext hex prefix', ext.toHex().slice(0, 16), 'isSigned', ext.isSigned, 'version', ext.version);
+console.log('ext versions supported', api.runtimeMetadata.asLatest.extrinsic.versions?.toString(), 'ext ver', api.runtimeMetadata.asLatest.extrinsic.version?.toString());
+console.log('tx extensions', api.runtimeMetadata.asLatest.extrinsic.transactionExtensions?.map(e=>e.identifier.toString()).join(','));
+console.log('authorize?', JSON.stringify(api.tx.revive.ethTransact.meta.docs.map(d=>d.toString()).join(' ')).slice(0, 700));
+await api.disconnect();

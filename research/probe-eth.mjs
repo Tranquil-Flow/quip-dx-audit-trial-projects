@@ -1,0 +1,12 @@
+import { ApiPromise, WsProvider } from '@polkadot/api';
+import { readFileSync } from 'fs';
+const api = await ApiPromise.create({ provider: new WsProvider('wss://bootnode-1.aglais.quip.network:20049/rpc'), noInitWarn:true });
+const me = JSON.parse(readFileSync('keys/organizer.json')).address;
+console.log('gasPrice', (await api.call.reviveApi.gasPrice()).toString());
+console.log('blockGasLimit', (await api.call.reviveApi.blockGasLimit()).toString());
+console.log('nonce', (await api.call.reviveApi.nonce(me)).toString());
+console.log('balance(eth 18dec)', (await api.call.reviveApi.balance(me)).toString());
+const m = api.registry.lookup; 
+console.log('ethTransact params:', JSON.stringify(api.call.reviveApi.ethTransact.meta.params.map(p=>p.name+':'+p.type)));
+console.log('ethTransact output:', api.call.reviveApi.ethTransact.meta.type.toString());
+await api.disconnect();

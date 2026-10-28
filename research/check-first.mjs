@@ -1,0 +1,11 @@
+import { connect, loadWallet, loadArtifact, view } from '../scripts/lib.mjs';
+import { Interface, getCreateAddress } from 'ethers';
+const api = await connect();
+const w = loadWallet('organizer');
+const addr = getCreateAddress({ from: w.address, nonce: 0 });
+const iface = new Interface(loadArtifact().abi);
+console.log('first deploy address', addr);
+for (const f of ['organizer', 'organizerCommit', 'ticketPrice', 'entryEndBlock', 'bond', 'state']) console.log(f, (await view(api, iface, addr, f))[0].toString());
+console.log('balance(contract, 18dec)', (await api.call.reviveApi.balance(addr)).toString());
+console.log('organizer balance', (await api.call.reviveApi.balance(w.address)).toString());
+await api.disconnect();

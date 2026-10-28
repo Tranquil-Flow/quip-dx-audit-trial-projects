@@ -1,0 +1,12 @@
+import { ApiPromise, WsProvider } from '@polkadot/api';
+const api = await ApiPromise.create({ provider: new WsProvider('wss://bootnode-1.aglais.quip.network:20049/rpc'), noInitWarn:true });
+console.log('evmChainId q', Object.keys(api.query.evmChainId), 'consts', Object.keys(api.consts.evmChainId||{}));
+console.log('revive consts', JSON.stringify(api.consts.revive, (k,v)=>typeof v==='bigint'?v.toString():v, 1).slice(0,2500));
+console.log('storage', Object.keys(api.query.revive));
+console.log('xqvm calls', Object.keys(api.tx.xqvm), 'q', Object.keys(api.query.xqvm));
+console.log('QCM q', Object.keys(api.query.quantumComputeMempool));
+console.log('QPow q', Object.keys(api.query.quantumPow));
+console.log('Babe q', Object.keys(api.query.babe));
+console.log('runtime apis', Object.keys(api.call));
+console.log('block', (await api.rpc.chain.getHeader()).number.toString());
+await api.disconnect();
