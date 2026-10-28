@@ -1,0 +1,54 @@
+{
+  "rpc": "http://127.0.0.1:18545",
+  "omnibus": "0xA7955981D5759a799267063110Be0F7AeCc26F8A",
+  "aliceWallet": "0x2d6ecfb4ACc8fc53f934cdF6c7E46c9cDA1379F8",
+  "bobWallet": "0x820bFc8541a811Ff5F3147F874d6B035240a401c",
+  "lock": "0x4ae0df63ca4bb2049f2bdd6250340c9c16770469e47e8ce8e3174cdfdaac2b7d",
+  "secret": "0x176d529893fad9723006f1f9bccb2fa05d15c54b8f175c74bf7afda19ab724eb",
+  "swapId": "0xced6110834ef26ffef0d1175fdd336a624d476603c0e964e7560252e0e20e8f7",
+  "aliceLeg": {
+    "chainId": "84532",
+    "reclaimRecipient": "0x2d6ecfb4ACc8fc53f934cdF6c7E46c9cDA1379F8",
+    "recipient": "0x2d6ecfb4ACc8fc53f934cdF6c7E46c9cDA1379F8",
+    "commitmentDeadline": "1790586806",
+    "claimDeadline": "1790586926",
+    "reclaimRelease": "1790587046",
+    "assets": [
+      {
+        "assetType": 0,
+        "target": "0x0000000000000000000000000000000000000000",
+        "id": "0",
+        "amount": "100000000000000"
+      }
+    ]
+  },
+  "bobLeg": {
+    "chainId": "84532",
+    "reclaimRecipient": "0x820bFc8541a811Ff5F3147F874d6B035240a401c",
+    "recipient": "0x820bFc8541a811Ff5F3147F874d6B035240a401c",
+    "commitmentDeadline": "1790586866",
+    "claimDeadline": "1790586986",
+    "reclaimRelease": "1790587106",
+    "assets": [
+      {
+        "assetType": 1,
+        "target": "0xe3378796806e32625331a1e595118a494381e231",
+        "id": "0",
+        "amount": "250000000"
+      }
+    ]
+  },
+  "txs": {
+    "aliceCommit": "0x7d765588ef34e2a91526d3c3b04c4b7a3687dd9d544b2758d72b35cecbb171f8",
+    "aliceReclaim": "0x3a1746cc4d588f30dfe88842ca005bcbe0730f99c548fda50c276f6b875d7d7e"
+  },
+  "aliceWalletETH": {
+    "afterCommit": "0",
+    "final": "0.0001"
+  },
+  "omnibusEscrowETH": {
+    "escrowBefore": "1.188645522798521367",
+    "escrowAfterCommit": "1.188745522798521367",
+    "escrowFinal": "1.188645522798521367"
+  }
+}

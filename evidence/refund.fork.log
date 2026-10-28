@@ -1,0 +1,21 @@
+lock 0x4ae0df63ca4bb2049f2bdd6250340c9c16770469e47e8ce8e3174cdfdaac2b7d
+swapId 0xced6110834ef26ffef0d1175fdd336a624d476603c0e964e7560252e0e20e8f7
+Alice wallet ETH before: 0; Omnibus escrow ETH: 1.188645522798521367
+  ✓ Alice commit (0.0001 ETH): tx 0x7d765588ef34e2a91526d3c3b04c4b7a3687dd9d544b2758d72b35cecbb171f8 (block 47409171, status success, gas 371448)
+  lockState=Free; Alice wallet ETH: 0; Omnibus escrow ETH: 1.188745522798521367 (leg funded from Alice EOA via msg.value)
+  Bob goes silent (never commits).
+  early reclaim correctly rejected: Execution reverted with reason: custom error 0x32e5164b.
+  … waiting for chain time 1790587046 (Alice's reclaimRelease); now 1790586751, 295s to go
+  ✓ Alice reclaim: tx 0x3a1746cc4d588f30dfe88842ca005bcbe0730f99c548fda50c276f6b875d7d7e (block 47409173, status success, gas 315618)
+  events: [
+  {
+    "event": "Reclaimed",
+    "args": {
+      "lock": "0x4ae0df63ca4bb2049f2bdd6250340c9c16770469e47e8ce8e3174cdfdaac2b7d",
+      "recipient": "0x2d6ecfb4ACc8fc53f934cdF6c7E46c9cDA1379F8",
+      "caller": "0x2d6ecfb4ACc8fc53f934cdF6c7E46c9cDA1379F8"
+    }
+  }
+]
+  Omnibus escrow ETH after reclaim: 1.188645522798521367
+  lockState=Spent; Alice wallet ETH after reclaim: 0.0001

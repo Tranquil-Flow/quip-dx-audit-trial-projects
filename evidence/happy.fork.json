@@ -1,0 +1,62 @@
+{
+  "rpc": "http://127.0.0.1:18545",
+  "omnibus": "0xA7955981D5759a799267063110Be0F7AeCc26F8A",
+  "token": "0xe3378796806e32625331a1e595118a494381e231",
+  "aliceWallet": "0x2d6ecfb4ACc8fc53f934cdF6c7E46c9cDA1379F8",
+  "bobWallet": "0x820bFc8541a811Ff5F3147F874d6B035240a401c",
+  "aliceEOA": "0x1D9326571DcAb9C8076CF79087eC64728B4DD6Aa",
+  "bobEOA": "0x4197ff18cA3B3691F4475bbd0644E49FcFcdfcE8",
+  "lock": "0xe56b6ed1124464bb43024679b9f59001dd53bc0b6b77daceaa04acd5336ec592",
+  "secret": "0x037f0633179b468190e3c5b0a3c850d728cb665ebc88e347f4e22c223fd1597c",
+  "swapId": "0x5b757405f4205da8597e78dbde8195b68ad4d677f30c7169c2eb310325d70c2f",
+  "aliceLeg": {
+    "chainId": "84532",
+    "reclaimRecipient": "0x2d6ecfb4ACc8fc53f934cdF6c7E46c9cDA1379F8",
+    "recipient": "0x2d6ecfb4ACc8fc53f934cdF6c7E46c9cDA1379F8",
+    "commitmentDeadline": "1790586685",
+    "claimDeadline": "1790586805",
+    "reclaimRelease": "1790586925",
+    "assets": [
+      {
+        "assetType": 0,
+        "target": "0x0000000000000000000000000000000000000000",
+        "id": "0",
+        "amount": "100000000000000"
+      }
+    ]
+  },
+  "bobLeg": {
+    "chainId": "84532",
+    "reclaimRecipient": "0x820bFc8541a811Ff5F3147F874d6B035240a401c",
+    "recipient": "0x820bFc8541a811Ff5F3147F874d6B035240a401c",
+    "commitmentDeadline": "1790586745",
+    "claimDeadline": "1790586865",
+    "reclaimRelease": "1790586985",
+    "assets": [
+      {
+        "assetType": 1,
+        "target": "0xe3378796806e32625331a1e595118a494381e231",
+        "id": "0",
+        "amount": "250000000"
+      }
+    ]
+  },
+  "txs": {
+    "aliceCommit": "0x8910927342a2af46e5c2edc3b9515c341f4d073917c859292942fcec9f558cb8",
+    "bobApprove": "0x6be10e9a5228552b95f47c78f5042dc54542578e7af2da3067755610e6a5a5da",
+    "bobCommit": "0x0890bb6dc72d5ac33d1c328fd554d2f64beefc264a54c36aa6c668b78bf400c3",
+    "aliceClaim": "0x35480137c59f328b854b9c96c26f30a8c1e8676b9908227a80a5f696ac9ead9e"
+  },
+  "before": {
+    "aliceWalletETH": "0",
+    "aliceWalletTUSD": "0",
+    "bobWalletETH": "0",
+    "bobWalletTUSD": "1000000000000"
+  },
+  "after": {
+    "aliceWalletETH": "0",
+    "aliceWalletTUSD": "250000000",
+    "bobWalletETH": "0.0001",
+    "bobWalletTUSD": "999750000000"
+  }
+}

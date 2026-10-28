@@ -1,0 +1,71 @@
+{
+  "name": "alice",
+  "eoa": "0x1D9326571DcAb9C8076CF79087eC64728B4DD6Aa",
+  "eoaBalance": "0.099504845308061884",
+  "quipWallet": "0x2d6ecfb4ACc8fc53f934cdF6c7E46c9cDA1379F8",
+  "walletBalance": "0",
+  "owner": "0x1D9326571DcAb9C8076CF79087eC64728B4DD6Aa",
+  "remainingStatefulSignatures": 32,
+  "executeFee": "0"
+}
+{
+  "name": "bob",
+  "eoa": "0x4197ff18cA3B3691F4475bbd0644E49FcFcdfcE8",
+  "eoaBalance": "0.099505114922644324",
+  "quipWallet": "0x820bFc8541a811Ff5F3147F874d6B035240a401c",
+  "walletBalance": "0",
+  "owner": "0x4197ff18cA3B3691F4475bbd0644E49FcFcdfcE8",
+  "remainingStatefulSignatures": 32,
+  "executeFee": "0"
+}
+{
+  "token": "0xe3378796806e32625331a1e595118a494381e231",
+  "deployTx": "0x9c55243dc9296294004193d0b79e35ec06cf56c5dc8b9b5a78153317a92404ff",
+  "mintedTo": "0x820bFc8541a811Ff5F3147F874d6B035240a401c"
+}
+Balances before: {
+  "aliceWalletETH": "0",
+  "aliceWalletTUSD": "0",
+  "bobWalletETH": "0",
+  "bobWalletTUSD": "1000000000000"
+}
+lock 0xe56b6ed1124464bb43024679b9f59001dd53bc0b6b77daceaa04acd5336ec592
+swapId 0x5b757405f4205da8597e78dbde8195b68ad4d677f30c7169c2eb310325d70c2f
+  ✓ Alice commit (0.0001 ETH): tx 0x8910927342a2af46e5c2edc3b9515c341f4d073917c859292942fcec9f558cb8 (block 47409165, status success, gas 403750)
+  lockState(swapId) = Free
+  Bob check: lockState(swapId)=Free, termsHash=0x3ed418ceef9094e962435e256a4f19d11b69c8e6cffa6c1dadbb9f4ca340adf7
+  … waiting for chain time 1790586685 (taker commit window opens at proposer.commitmentDeadline); now 1790586631, 54s to go
+  ✓ Bob approve tUSD: tx 0x6be10e9a5228552b95f47c78f5042dc54542578e7af2da3067755610e6a5a5da (block 47409167, status success, gas 316165)
+  ✓ Bob commit (250 tUSD): tx 0x0890bb6dc72d5ac33d1c328fd554d2f64beefc264a54c36aa6c668b78bf400c3 (block 47409168, status success, gas 364535)
+  lockState(swapId) = Committed
+  … waiting for chain time 1790586745 (claim window opens at taker.commitmentDeadline); now 1790586687, 58s to go
+  ✓ Alice claim Bob's leg (reveals secret): tx 0x35480137c59f328b854b9c96c26f30a8c1e8676b9908227a80a5f696ac9ead9e (block 47409170, status success, gas 330046)
+  2 Claim events: recipients 0x820bFc8541a811Ff5F3147F874d6B035240a401c, 0x2d6ecfb4ACc8fc53f934cdF6c7E46c9cDA1379F8; revealed secret 0x037f0633179b468190e3c5b0a3c850d728cb665ebc88e347f4e22c223fd1597c
+  lockState(swapId) = Spent
+Balances after: {
+  "aliceWalletETH": "0",
+  "aliceWalletTUSD": "250000000",
+  "bobWalletETH": "0.0001",
+  "bobWalletTUSD": "999750000000"
+}
+lock 0x4ae0df63ca4bb2049f2bdd6250340c9c16770469e47e8ce8e3174cdfdaac2b7d
+swapId 0xced6110834ef26ffef0d1175fdd336a624d476603c0e964e7560252e0e20e8f7
+Alice wallet ETH before: 0; Omnibus escrow ETH: 1.188645522798521367
+  ✓ Alice commit (0.0001 ETH): tx 0x7d765588ef34e2a91526d3c3b04c4b7a3687dd9d544b2758d72b35cecbb171f8 (block 47409171, status success, gas 371448)
+  lockState=Free; Alice wallet ETH: 0; Omnibus escrow ETH: 1.188745522798521367 (leg funded from Alice EOA via msg.value)
+  Bob goes silent (never commits).
+  early reclaim correctly rejected: Execution reverted with reason: custom error 0x32e5164b.
+  … waiting for chain time 1790587046 (Alice's reclaimRelease); now 1790586751, 295s to go
+  ✓ Alice reclaim: tx 0x3a1746cc4d588f30dfe88842ca005bcbe0730f99c548fda50c276f6b875d7d7e (block 47409173, status success, gas 315618)
+  events: [
+  {
+    "event": "Reclaimed",
+    "args": {
+      "lock": "0x4ae0df63ca4bb2049f2bdd6250340c9c16770469e47e8ce8e3174cdfdaac2b7d",
+      "recipient": "0x2d6ecfb4ACc8fc53f934cdF6c7E46c9cDA1379F8",
+      "caller": "0x2d6ecfb4ACc8fc53f934cdF6c7E46c9cDA1379F8"
+    }
+  }
+]
+  Omnibus escrow ETH after reclaim: 1.188645522798521367
+  lockState=Spent; Alice wallet ETH after reclaim: 0.0001
