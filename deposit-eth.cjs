@@ -1,0 +1,21 @@
+const fs = require('node:fs');
+const { JsonRpcProvider, Wallet, parseEther, formatEther } = require('ethers');
+const provider = new JsonRpcProvider(process.env.BASE_SEPOLIA_RPC || 'https://base-sepolia-rpc.publicnode.com', 84532);
+const account = '0x4E42b8c67cBEd13215e5a17B1A13561CcAf406E2';
+(async () => {
+  if ((await provider.getNetwork()).chainId !== 84532n) throw Error('Not Base Sepolia');
+  const wallet = new Wallet(fs.readFileSync('./keys/wallet.key','utf8').trim(), provider);
+  if (wallet.address.toLowerCase() !== '0x530e633464aB126DC899808F002fAB34A161C603'.toLowerCase()) throw Error('Wrong wallet');
+  const value = parseEther('0.003');
+  const balance = await provider.getBalance(wallet.address);
+  const fee = await provider.getFeeData();
+  const estimatedGas = await provider.estimateGas({from: wallet.address, to: account, value});
+  const ceiling = (fee.maxFeePerGas || fee.gasPrice) * estimatedGas;
+  if (balance - value - ceiling < parseEther('0.015')) throw Error('Insufficient remaining test ETH');
+  console.log('EOA',wallet.address,'starting ETH',formatEther(balance),'deposit',formatEther(value),'estimated gas',estimatedGas.toString());
+  const tx = await wallet.sendTransaction({to: account, value, gasLimit: estimatedGas * 120n / 100n});
+  console.log('deposit ETH tx',tx.hash);
+  const receipt = await tx.wait();
+  console.log('receipt status',receipt.status,'block',receipt.blockNumber);
+  if (receipt.status !== 1) process.exitCode = 1;
+})().catch(err => {console.error('ERROR',err.message);process.exitCode=1});

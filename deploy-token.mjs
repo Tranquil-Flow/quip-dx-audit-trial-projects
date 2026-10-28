@@ -1,0 +1,28 @@
+import { readFileSync } from 'node:fs';
+import solc from 'solc';
+import { JsonRpcProvider, Wallet, ContractFactory, Contract, parseUnits, formatEther } from 'ethers';
+const raw = readFileSync('./keys/wallet.key','utf8').trim();
+let secret = raw.startsWith('{') ? (JSON.parse(raw).privateKey ?? JSON.parse(raw).key) : raw;
+if (!secret.startsWith('0x')) secret='0x'+secret;
+const provider = new JsonRpcProvider('https://sepolia.base.org',84532,{staticNetwork:true});
+if ((await provider.getNetwork()).chainId !== 84532n) throw Error('Wrong chain');
+const signer = new Wallet(secret,provider);
+if (signer.address.toLowerCase() !== '0xa3ba936060bf501cc1081e15ff6b37d2cca659d6') throw Error('Wrong signer');
+const account = '0x23df35bECCa4ceb4a65A6B396F4A65A32a17887a';
+const source = readFileSync('TestQuipToken.sol','utf8');
+const output=JSON.parse(solc.compile(JSON.stringify({language:'Solidity',sources:{'TestQuipToken.sol':{content:source}},settings:{optimizer:{enabled:true,runs:200},outputSelection:{'*':{'*':['abi','evm.bytecode.object']}}}})));
+if(output.errors?.some(e=>e.severity==='error')) throw Error(JSON.stringify(output.errors));
+const compiled=output.contracts['TestQuipToken.sol'].TestQuipToken;
+if(process.argv.includes('--deploy')) {
+  console.log('chain: 84532; signer:',signer.address,'balance:',formatEther(await provider.getBalance(signer.address)),'ETH');
+  const factory=new ContractFactory(compiled.abi,compiled.evm.bytecode.object,signer);
+  const token=await factory.deploy();
+  console.log('deployment tx:',token.deploymentTransaction().hash);
+  await token.waitForDeployment();
+  console.log('token:', await token.getAddress());
+  const receipt=await provider.getTransactionReceipt(token.deploymentTransaction().hash);
+  console.log('deploy status:',receipt.status);
+  const transfer=await token.transfer(account,parseUnits('100',18));
+  console.log('transfer tx:',transfer.hash);
+  console.log('transfer status:',(await transfer.wait()).status,'account QTEST:',(await token.balanceOf(account)).toString());
+} else console.log('Compiled token; deployment requires --deploy');
