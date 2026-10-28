@@ -1,0 +1,23 @@
+# DEVLOG.md
+
+- Started qb session `web-949d85` with wallet ./keys/wallet.key chain 84532. Session ready, wallet 0x105EebB7dC7357984960165B5EB6D0282C3CeC75.
+- Read maker.md: maker needs taker's Quip Account address before creating offer. Terms: both sides 0.005 test ETH.
+- Next: search for QuipSwap.
+- DuckDuckGo search "QuipSwap post-quantum safe swaps" -> shots/0001.png. Results: quip.network/quipswap (product page), blog launch post, KuCoin news.
+- quip.network/quipswap -> shots/0002.png. Buttons: "Create an Account and Swap", "Try Paper Trading". Nav has Docs.
+- Docs tab opened: developers.quip.network/docs -> shots/0004.png. Sidebar: Quip Accounts, QuipSwap, QUIP Lifecycle.
+- Quip Accounts docs -> shots/0005-0006.png. KEY: Quip Account = smart contract wallet created by factory. Two clients: browser extension + web app at account.quip.network. "Two doors into one account".
+- QuipSwap docs -> shots/0007-0015.png. KEY: "only Quip wallet contracts can initiate a swap. You cannot drive a swap from an ordinary account." Maker posts order, taker takes it, both commit on-chain, secret-linked atomic swap. Timeout windows.
+- Found web apps: account.quip.network (Quip Accounts) and swap.quip.network (Quip Order Book).
+- account.quip.network: "Post-quantum secured accounts derived from your signing wallet". Connect Wallet -> Reown modal -> Test Wallet. Site then auto-switches wallet to Base mainnet (8453) and asks for a signature; wallet declines on mainnet -> app stuck at "Finding your accounts / Reading your address book." No network selector found in UI (header boxes 3-5 empty).
+- swap.quip.network: order book, LIVE/PAPER toggle, chain filter chips (ALL CHAINS / BASE), offers listed with Take buttons. Connect flow also auto-switches wallet to Ethereum mainnet (chain 1); session restore fails same way.
+- URL params (?chain=Base%20Sepolia, ?chain=base-sepolia, ?chain=BaseSepolia) all redirect to root. testnet.quip.network / sepolia.quip.network do not resolve.
+- docs llms.txt: Quip testnet = Aglais (chain 20033, explorer.aglais.quip.network), NOT Base Sepolia. No docs page about the order book app or Base Sepolia swaps.
+- FAQ/changelog pages: no testnet info (changelog blank).
+- Restarted qb session twice to reset wallet to Base Sepolia (84532); sites still force mainnet on connect.
+- PAPER mode = /demo (simulated, "5 CHAINS" header, session signature, no funds). LIVE = "1 CHAINS" (BASE). Demo connect also forces Ethereum mainnet.
+- BREAKTHROUGH: swap.quip.network/balances states "Covers Base, Base Sepolia, and OP Sepolia. See all accounts and chains." -> app DOES support Base Sepolia. Link goes to account.quip.network.
+- Maker updated maker.md: they have Base Sepolia Quip Account v1.1.0 (0x23df...887a, 0.012 ETH + 100 QTEST). Their maker form (account.quip.network/accounts/<id>:v1.1/swap/new) shows "No asset on this network" — same network blocker. Proposed terms: maker gives 1 QTEST (ERC-20 0xf876...6526), taker gives 0.001 test ETH.
+- Wrote taker.md with status OPEN and findings.
+- Order book offers visible while browsing (tiny ETH amounts, BASE chip) may already be Base Sepolia; maker 0x23df... not present yet.
+- feedback.quip.network: "QuipSwap is live on Base" (mainnet); no testnet/Base Sepolia posts.
