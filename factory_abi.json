@@ -1,0 +1,1013 @@
+[
+ {
+  "type": "constructor",
+  "inputs": [
+   {
+    "name": "maxFee_",
+    "type": "uint256",
+    "internalType": "uint256"
+   }
+  ],
+  "stateMutability": "payable"
+ },
+ {
+  "type": "receive",
+  "stateMutability": "payable"
+ },
+ {
+  "type": "function",
+  "name": "MAX_FEE",
+  "inputs": [],
+  "outputs": [
+   {
+    "name": "",
+    "type": "uint256",
+    "internalType": "uint256"
+   }
+  ],
+  "stateMutability": "view"
+ },
+ {
+  "type": "function",
+  "name": "cancelOwnershipHandover",
+  "inputs": [],
+  "outputs": [],
+  "stateMutability": "payable"
+ },
+ {
+  "type": "function",
+  "name": "completeOwnershipHandover",
+  "inputs": [
+   {
+    "name": "pendingOwner",
+    "type": "address",
+    "internalType": "address"
+   }
+  ],
+  "outputs": [],
+  "stateMutability": "payable"
+ },
+ {
+  "type": "function",
+  "name": "creationFee",
+  "inputs": [],
+  "outputs": [
+   {
+    "name": "",
+    "type": "uint256",
+    "internalType": "uint256"
+   }
+  ],
+  "stateMutability": "view"
+ },
+ {
+  "type": "function",
+  "name": "deployLatestWalletProxy",
+  "inputs": [
+   {
+    "name": "vaultId",
+    "type": "bytes32",
+    "internalType": "bytes32"
+   },
+   {
+    "name": "to",
+    "type": "address",
+    "internalType": "address payable"
+   },
+   {
+    "name": "payload",
+    "type": "bytes",
+    "internalType": "bytes"
+   }
+  ],
+  "outputs": [
+   {
+    "name": "",
+    "type": "address",
+    "internalType": "address"
+   }
+  ],
+  "stateMutability": "payable"
+ },
+ {
+  "type": "function",
+  "name": "deploySpecificWalletProxy",
+  "inputs": [
+   {
+    "name": "vaultId",
+    "type": "bytes32",
+    "internalType": "bytes32"
+   },
+   {
+    "name": "index",
+    "type": "uint256",
+    "internalType": "uint256"
+   },
+   {
+    "name": "to",
+    "type": "address",
+    "internalType": "address payable"
+   },
+   {
+    "name": "payload",
+    "type": "bytes",
+    "internalType": "bytes"
+   }
+  ],
+  "outputs": [
+   {
+    "name": "",
+    "type": "address",
+    "internalType": "address"
+   }
+  ],
+  "stateMutability": "payable"
+ },
+ {
+  "type": "function",
+  "name": "deprecateImplementation",
+  "inputs": [
+   {
+    "name": "impl",
+    "type": "address",
+    "internalType": "address"
+   }
+  ],
+  "outputs": [],
+  "stateMutability": "nonpayable"
+ },
+ {
+  "type": "function",
+  "name": "deprecatedImpls",
+  "inputs": [
+   {
+    "name": "codehash",
+    "type": "bytes32",
+    "internalType": "bytes32"
+   }
+  ],
+  "outputs": [
+   {
+    "name": "isDeprecated",
+    "type": "bool",
+    "internalType": "bool"
+   }
+  ],
+  "stateMutability": "view"
+ },
+ {
+  "type": "function",
+  "name": "executeFee",
+  "inputs": [],
+  "outputs": [
+   {
+    "name": "",
+    "type": "uint256",
+    "internalType": "uint256"
+   }
+  ],
+  "stateMutability": "view"
+ },
+ {
+  "type": "function",
+  "name": "getVaultIdAt",
+  "inputs": [
+   {
+    "name": "owner_",
+    "type": "address",
+    "internalType": "address"
+   },
+   {
+    "name": "index",
+    "type": "uint256",
+    "internalType": "uint256"
+   }
+  ],
+  "outputs": [
+   {
+    "name": "",
+    "type": "bytes32",
+    "internalType": "bytes32"
+   }
+  ],
+  "stateMutability": "view"
+ },
+ {
+  "type": "function",
+  "name": "getVaultIdCount",
+  "inputs": [
+   {
+    "name": "owner_",
+    "type": "address",
+    "internalType": "address"
+   }
+  ],
+  "outputs": [
+   {
+    "name": "",
+    "type": "uint256",
+    "internalType": "uint256"
+   }
+  ],
+  "stateMutability": "view"
+ },
+ {
+  "type": "function",
+  "name": "getVaultIdIndex",
+  "inputs": [
+   {
+    "name": "owner_",
+    "type": "address",
+    "internalType": "address"
+   },
+   {
+    "name": "vaultId",
+    "type": "bytes32",
+    "internalType": "bytes32"
+   }
+  ],
+  "outputs": [
+   {
+    "name": "",
+    "type": "uint256",
+    "internalType": "uint256"
+   }
+  ],
+  "stateMutability": "view"
+ },
+ {
+  "type": "function",
+  "name": "getVaultIds",
+  "inputs": [
+   {
+    "name": "owner_",
+    "type": "address",
+    "internalType": "address"
+   }
+  ],
+  "outputs": [
+   {
+    "name": "",
+    "type": "bytes32[]",
+    "internalType": "bytes32[]"
+   }
+  ],
+  "stateMutability": "view"
+ },
+ {
+  "type": "function",
+  "name": "getVettedCodeAt",
+  "inputs": [
+   {
+    "name": "index",
+    "type": "uint256",
+    "internalType": "uint256"
+   }
+  ],
+  "outputs": [
+   {
+    "name": "",
+    "type": "bytes32",
+    "internalType": "bytes32"
+   }
+  ],
+  "stateMutability": "view"
+ },
+ {
+  "type": "function",
+  "name": "getVettedCodeCount",
+  "inputs": [],
+  "outputs": [
+   {
+    "name": "",
+    "type": "uint256",
+    "internalType": "uint256"
+   }
+  ],
+  "stateMutability": "view"
+ },
+ {
+  "type": "function",
+  "name": "getVettedCodeIndex",
+  "inputs": [
+   {
+    "name": "codehash",
+    "type": "bytes32",
+    "internalType": "bytes32"
+   }
+  ],
+  "outputs": [
+   {
+    "name": "",
+    "type": "uint256",
+    "internalType": "uint256"
+   }
+  ],
+  "stateMutability": "view"
+ },
+ {
+  "type": "function",
+  "name": "getWallets",
+  "inputs": [
+   {
+    "name": "owner_",
+    "type": "address",
+    "internalType": "address"
+   }
+  ],
+  "outputs": [
+   {
+    "name": "walletAddrs",
+    "type": "address[]",
+    "internalType": "address[]"
+   }
+  ],
+  "stateMutability": "view"
+ },
+ {
+  "type": "function",
+  "name": "initialize",
+  "inputs": [
+   {
+    "name": "initialOwner",
+    "type": "address",
+    "internalType": "address payable"
+   }
+  ],
+  "outputs": [],
+  "stateMutability": "nonpayable"
+ },
+ {
+  "type": "function",
+  "name": "latestWalletImpl",
+  "inputs": [],
+  "outputs": [
+   {
+    "name": "",
+    "type": "address",
+    "internalType": "address"
+   }
+  ],
+  "stateMutability": "view"
+ },
+ {
+  "type": "function",
+  "name": "owner",
+  "inputs": [],
+  "outputs": [
+   {
+    "name": "result",
+    "type": "address",
+    "internalType": "address"
+   }
+  ],
+  "stateMutability": "view"
+ },
+ {
+  "type": "function",
+  "name": "ownershipHandoverExpiresAt",
+  "inputs": [
+   {
+    "name": "pendingOwner",
+    "type": "address",
+    "internalType": "address"
+   }
+  ],
+  "outputs": [
+   {
+    "name": "result",
+    "type": "uint256",
+    "internalType": "uint256"
+   }
+  ],
+  "stateMutability": "view"
+ },
+ {
+  "type": "function",
+  "name": "proxiableUUID",
+  "inputs": [],
+  "outputs": [
+   {
+    "name": "",
+    "type": "bytes32",
+    "internalType": "bytes32"
+   }
+  ],
+  "stateMutability": "view"
+ },
+ {
+  "type": "function",
+  "name": "renounceOwnership",
+  "inputs": [],
+  "outputs": [],
+  "stateMutability": "payable"
+ },
+ {
+  "type": "function",
+  "name": "requestOwnershipHandover",
+  "inputs": [],
+  "outputs": [],
+  "stateMutability": "payable"
+ },
+ {
+  "type": "function",
+  "name": "setCreationFee",
+  "inputs": [
+   {
+    "name": "newFee",
+    "type": "uint256",
+    "internalType": "uint256"
+   }
+  ],
+  "outputs": [],
+  "stateMutability": "nonpayable"
+ },
+ {
+  "type": "function",
+  "name": "setExecuteFee",
+  "inputs": [
+   {
+    "name": "newFee",
+    "type": "uint256",
+    "internalType": "uint256"
+   }
+  ],
+  "outputs": [],
+  "stateMutability": "nonpayable"
+ },
+ {
+  "type": "function",
+  "name": "transferOwnership",
+  "inputs": [
+   {
+    "name": "newOwner",
+    "type": "address",
+    "internalType": "address"
+   }
+  ],
+  "outputs": [],
+  "stateMutability": "payable"
+ },
+ {
+  "type": "function",
+  "name": "undeprecateImplementation",
+  "inputs": [
+   {
+    "name": "impl",
+    "type": "address",
+    "internalType": "address"
+   }
+  ],
+  "outputs": [],
+  "stateMutability": "nonpayable"
+ },
+ {
+  "type": "function",
+  "name": "updateWalletOwner",
+  "inputs": [
+   {
+    "name": "newOwner",
+    "type": "address",
+    "internalType": "address"
+   }
+  ],
+  "outputs": [],
+  "stateMutability": "nonpayable"
+ },
+ {
+  "type": "function",
+  "name": "upgradeToAndCall",
+  "inputs": [
+   {
+    "name": "newImplementation",
+    "type": "address",
+    "internalType": "address"
+   },
+   {
+    "name": "data",
+    "type": "bytes",
+    "internalType": "bytes"
+   }
+  ],
+  "outputs": [],
+  "stateMutability": "payable"
+ },
+ {
+  "type": "function",
+  "name": "vaultIdOf",
+  "inputs": [
+   {
+    "name": "wallet",
+    "type": "address",
+    "internalType": "address"
+   }
+  ],
+  "outputs": [
+   {
+    "name": "",
+    "type": "bytes32",
+    "internalType": "bytes32"
+   }
+  ],
+  "stateMutability": "view"
+ },
+ {
+  "type": "function",
+  "name": "vetImplementation",
+  "inputs": [
+   {
+    "name": "impl",
+    "type": "address",
+    "internalType": "address"
+   }
+  ],
+  "outputs": [],
+  "stateMutability": "nonpayable"
+ },
+ {
+  "type": "function",
+  "name": "vettedWalletImpls",
+  "inputs": [
+   {
+    "name": "codehash",
+    "type": "bytes32",
+    "internalType": "bytes32"
+   }
+  ],
+  "outputs": [
+   {
+    "name": "walletImplementation",
+    "type": "address",
+    "internalType": "address"
+   }
+  ],
+  "stateMutability": "view"
+ },
+ {
+  "type": "function",
+  "name": "walletOwner",
+  "inputs": [
+   {
+    "name": "wallet",
+    "type": "address",
+    "internalType": "address"
+   }
+  ],
+  "outputs": [
+   {
+    "name": "",
+    "type": "address",
+    "internalType": "address"
+   }
+  ],
+  "stateMutability": "view"
+ },
+ {
+  "type": "function",
+  "name": "wallets",
+  "inputs": [
+   {
+    "name": "vaultId",
+    "type": "bytes32",
+    "internalType": "bytes32"
+   }
+  ],
+  "outputs": [
+   {
+    "name": "",
+    "type": "address",
+    "internalType": "address"
+   }
+  ],
+  "stateMutability": "view"
+ },
+ {
+  "type": "function",
+  "name": "withdraw",
+  "inputs": [
+   {
+    "name": "amount",
+    "type": "uint256",
+    "internalType": "uint256"
+   }
+  ],
+  "outputs": [],
+  "stateMutability": "nonpayable"
+ },
+ {
+  "type": "event",
+  "name": "CreationFeeUpdated",
+  "inputs": [
+   {
+    "name": "oldFee",
+    "type": "uint256",
+    "indexed": false,
+    "internalType": "uint256"
+   },
+   {
+    "name": "newFee",
+    "type": "uint256",
+    "indexed": false,
+    "internalType": "uint256"
+   }
+  ],
+  "anonymous": false
+ },
+ {
+  "type": "event",
+  "name": "ExecuteFeeUpdated",
+  "inputs": [
+   {
+    "name": "oldFee",
+    "type": "uint256",
+    "indexed": false,
+    "internalType": "uint256"
+   },
+   {
+    "name": "newFee",
+    "type": "uint256",
+    "indexed": false,
+    "internalType": "uint256"
+   }
+  ],
+  "anonymous": false
+ },
+ {
+  "type": "event",
+  "name": "ImplementationSunset",
+  "inputs": [
+   {
+    "name": "impl",
+    "type": "address",
+    "indexed": true,
+    "internalType": "address"
+   },
+   {
+    "name": "codehash",
+    "type": "bytes32",
+    "indexed": true,
+    "internalType": "bytes32"
+   }
+  ],
+  "anonymous": false
+ },
+ {
+  "type": "event",
+  "name": "ImplementationUndeprecated",
+  "inputs": [
+   {
+    "name": "impl",
+    "type": "address",
+    "indexed": true,
+    "internalType": "address"
+   },
+   {
+    "name": "codehash",
+    "type": "bytes32",
+    "indexed": true,
+    "internalType": "bytes32"
+   }
+  ],
+  "anonymous": false
+ },
+ {
+  "type": "event",
+  "name": "ImplementationVetted",
+  "inputs": [
+   {
+    "name": "impl",
+    "type": "address",
+    "indexed": true,
+    "internalType": "address"
+   },
+   {
+    "name": "codehash",
+    "type": "bytes32",
+    "indexed": true,
+    "internalType": "bytes32"
+   }
+  ],
+  "anonymous": false
+ },
+ {
+  "type": "event",
+  "name": "Initialized",
+  "inputs": [
+   {
+    "name": "version",
+    "type": "uint64",
+    "indexed": false,
+    "internalType": "uint64"
+   }
+  ],
+  "anonymous": false
+ },
+ {
+  "type": "event",
+  "name": "OwnershipHandoverCanceled",
+  "inputs": [
+   {
+    "name": "pendingOwner",
+    "type": "address",
+    "indexed": true,
+    "internalType": "address"
+   }
+  ],
+  "anonymous": false
+ },
+ {
+  "type": "event",
+  "name": "OwnershipHandoverRequested",
+  "inputs": [
+   {
+    "name": "pendingOwner",
+    "type": "address",
+    "indexed": true,
+    "internalType": "address"
+   }
+  ],
+  "anonymous": false
+ },
+ {
+  "type": "event",
+  "name": "OwnershipTransferred",
+  "inputs": [
+   {
+    "name": "oldOwner",
+    "type": "address",
+    "indexed": true,
+    "internalType": "address"
+   },
+   {
+    "name": "newOwner",
+    "type": "address",
+    "indexed": true,
+    "internalType": "address"
+   }
+  ],
+  "anonymous": false
+ },
+ {
+  "type": "event",
+  "name": "Upgraded",
+  "inputs": [
+   {
+    "name": "implementation",
+    "type": "address",
+    "indexed": true,
+    "internalType": "address"
+   }
+  ],
+  "anonymous": false
+ },
+ {
+  "type": "event",
+  "name": "WalletDeployed",
+  "inputs": [
+   {
+    "name": "amount",
+    "type": "uint256",
+    "indexed": false,
+    "internalType": "uint256"
+   },
+   {
+    "name": "when",
+    "type": "uint256",
+    "indexed": false,
+    "internalType": "uint256"
+   },
+   {
+    "name": "vaultId",
+    "type": "bytes32",
+    "indexed": true,
+    "internalType": "bytes32"
+   },
+   {
+    "name": "creator",
+    "type": "address",
+    "indexed": true,
+    "internalType": "address"
+   },
+   {
+    "name": "implementation",
+    "type": "address",
+    "indexed": false,
+    "internalType": "address"
+   },
+   {
+    "name": "quip",
+    "type": "address",
+    "indexed": true,
+    "internalType": "address"
+   }
+  ],
+  "anonymous": false
+ },
+ {
+  "type": "event",
+  "name": "WalletOwnerChanged",
+  "inputs": [
+   {
+    "name": "vaultId",
+    "type": "bytes32",
+    "indexed": true,
+    "internalType": "bytes32"
+   },
+   {
+    "name": "oldOwner",
+    "type": "address",
+    "indexed": true,
+    "internalType": "address"
+   },
+   {
+    "name": "newOwner",
+    "type": "address",
+    "indexed": true,
+    "internalType": "address"
+   }
+  ],
+  "anonymous": false
+ },
+ {
+  "type": "event",
+  "name": "Withdrawn",
+  "inputs": [
+   {
+    "name": "to",
+    "type": "address",
+    "indexed": true,
+    "internalType": "address"
+   },
+   {
+    "name": "amount",
+    "type": "uint256",
+    "indexed": false,
+    "internalType": "uint256"
+   }
+  ],
+  "anonymous": false
+ },
+ {
+  "type": "error",
+  "name": "AlreadyInitialized",
+  "inputs": []
+ },
+ {
+  "type": "error",
+  "name": "AlreadyVetted",
+  "inputs": []
+ },
+ {
+  "type": "error",
+  "name": "EmptyCode",
+  "inputs": []
+ },
+ {
+  "type": "error",
+  "name": "FeeExceedsMax",
+  "inputs": [
+   {
+    "name": "fee",
+    "type": "uint256",
+    "internalType": "uint256"
+   },
+   {
+    "name": "maxFee",
+    "type": "uint256",
+    "internalType": "uint256"
+   }
+  ]
+ },
+ {
+  "type": "error",
+  "name": "ImplementationDeprecated",
+  "inputs": []
+ },
+ {
+  "type": "error",
+  "name": "ImplementationNotVetted",
+  "inputs": []
+ },
+ {
+  "type": "error",
+  "name": "IndexOutOfBounds",
+  "inputs": []
+ },
+ {
+  "type": "error",
+  "name": "InsufficientBalance",
+  "inputs": [
+   {
+    "name": "requested",
+    "type": "uint256",
+    "internalType": "uint256"
+   },
+   {
+    "name": "available",
+    "type": "uint256",
+    "internalType": "uint256"
+   }
+  ]
+ },
+ {
+  "type": "error",
+  "name": "InsufficientCreationFee",
+  "inputs": [
+   {
+    "name": "sent",
+    "type": "uint256",
+    "internalType": "uint256"
+   },
+   {
+    "name": "required",
+    "type": "uint256",
+    "internalType": "uint256"
+   }
+  ]
+ },
+ {
+  "type": "error",
+  "name": "InvalidInitialization",
+  "inputs": []
+ },
+ {
+  "type": "error",
+  "name": "NewOwnerIsZeroAddress",
+  "inputs": []
+ },
+ {
+  "type": "error",
+  "name": "NoActiveImplementation",
+  "inputs": []
+ },
+ {
+  "type": "error",
+  "name": "NoHandoverRequest",
+  "inputs": []
+ },
+ {
+  "type": "error",
+  "name": "NotDeprecated",
+  "inputs": []
+ },
+ {
+  "type": "error",
+  "name": "NotInitializing",
+  "inputs": []
+ },
+ {
+  "type": "error",
+  "name": "OnlyWallet",
+  "inputs": []
+ },
+ {
+  "type": "error",
+  "name": "OwnerStateMismatch",
+  "inputs": []
+ },
+ {
+  "type": "error",
+  "name": "RegistryDesync",
+  "inputs": []
+ },
+ {
+  "type": "error",
+  "name": "RenounceDisabled",
+  "inputs": []
+ },
+ {
+  "type": "error",
+  "name": "SameOwner",
+  "inputs": []
+ },
+ {
+  "type": "error",
+  "name": "Unauthorized",
+  "inputs": []
+ },
+ {
+  "type": "error",
+  "name": "UnauthorizedCallContext",
+  "inputs": []
+ },
+ {
+  "type": "error",
+  "name": "UpgradeFailed",
+  "inputs": []
+ },
+ {
+  "type": "error",
+  "name": "ZeroAddressOwner",
+  "inputs": []
+ },
+ {
+  "type": "error",
+  "name": "ZeroMaxFee",
+  "inputs": []
+ },
+ {
+  "type": "error",
+  "name": "ZeroVaultId",
+  "inputs": []
+ }
+]
