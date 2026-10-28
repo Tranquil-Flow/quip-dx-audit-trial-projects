@@ -1,0 +1,11 @@
+# FRICTION
+- duckduckgo.com in qb: blank chrome-error page. Google: captcha (/sorry). Only Bing worked.
+- Bing, any query with "Quip Network": only Quip (Salesforce docs app), getquip toothbrushes, Wikipedia Quip (software). Never quip.network. Had to guess the domain. Brand name collision; the site has no SEO presence for this query.
+- Bing screenshot right after open showed stale/empty results; had to wait and scroll to see them.
+- developers.quip.network/docs/compute/submit-a-job: for a random 8-node, 18-edge max-cut, default call raised PlacementError after 200000 steps (~a minute). The page only warns about "dense models such as TSP cliques"; a tiny max-cut is not obviously dense. Expected a working first example for max-cut; fix is topology="native" which is buried in the "Placed or native" section near the bottom.
+- Same page: no max-cut/QUBO-from-graph example; the only model shown is 4 variables, 1 edge. Had to derive the QUBO myself.
+- result.sample is an XQMX object, not a list; `list(result.sample)` fails ("'XQMX' object is not iterable"). Docs print it without showing how to extract bits. Found get_linear(i) works by dir().
+- quote() printed "balance 0 / shortfall 1.0019 AGLS" which looks like a blocker, but solve() auto-funds from the faucet. Slightly alarming.
+- solve() took ~102 s for an 8-variable problem with no progress output I noticed beyond the quote.
+- "for_network" docs use ~/.quip/keystore.json (default, created silently w/o password); a pre-existing keystore on my machine was there, so I passed an explicit path.
+- Web search "Quip Network" never surfaces quip.network (see above).

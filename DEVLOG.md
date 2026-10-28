@@ -1,0 +1,12 @@
+# DEVLOG
+- shots 0001-0004: duckduckgo.com and html.duckduckgo.com in qb -> chrome-error blank page (couldn't load).
+- 0005-0012, 0022-0027: Bing (queries "quip network quantum compute", "Quip Network quantum annealing QUBO", etc.). Every result was the Salesforce Quip / toothbrush brand; nothing about Quip Network. Results also did not change between queries until re-scrolled.
+- 0013: Google -> /sorry captcha.
+- 0028: guessed https://quip.network -> homepage "The worldwide quantum computer". Nav has Docs -> developers.quip.network/docs.
+- 0032: docs welcome page. 0034: "Submit Your First Compute Job" (developers.quip.network/docs/compute/submit-a-job): pip install "xquad[quip]", Python 3.13+.
+- 0036-0042: read the same page down to faucet, acceptance floors, placed-vs-native, job lifecycle. Copied both code blocks with qb copy.
+- Commands: python3.13 -m venv .venv; pip install "xquad[quip]" (ok); wrote maxcut.py (8-node G(n,.5) seed 7, 18 edges, QUBO from edges).
+- Local: brute force cut=14; SolverDWaveCPU energy -14, cut 14, 0.01 s.
+- Aglais, default topology: PlacementError "placement search budget exhausted after 200000 steps" (both quote() and solve()).
+- Aglais with topology="native": quote ok (1 AGLS + 0.0019 fee, balance 0), solve auto-drew faucet, returned energy -14, cut 14, 102 s.
+- Note: ~/.quip/keystore.json already exists on the machine (not mine); I did not use it, used ./keys/keystore.json.
