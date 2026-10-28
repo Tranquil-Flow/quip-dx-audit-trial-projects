@@ -1,0 +1,55 @@
+== fork of Base Sepolia at block 47415512; giving EOA 0x417532b34057aa4B0d047746437A56032A892323 1 fork-ETH
+== info
+chain            Base Sepolia (84532) via http://127.0.0.1:8546
+WalletFactory    0xA2B2F71456a799FCf4EF7A3111c4B96b3e928cc8
+EOA              0x417532b34057aa4B0d047746437A56032A892323  balance 1 ETH
+smart account    0x5D923eD6b2FEE4631010d851D62d72AA60D761c1  (counterfactual; keygen 3455 ms)
+  deployed?      no
+  balance        0 ETH
+  explorer       https://sepolia.basescan.org/address/0x5D923eD6b2FEE4631010d851D62d72AA60D761c1
+== create
+creation estimate: {
+  gasUnits: '600261',
+  gasPrice: '1006000000',
+  expectedGasUnits: '500218',
+  expectedGasPrice: '1005000000',
+  creationFee: '0'
+}
+smart account deployed: 0x5D923eD6b2FEE4631010d851D62d72AA60D761c1
+  explorer: https://sepolia.basescan.org/address/0x5D923eD6b2FEE4631010d851D62d72AA60D761c1
+== fund 0.01
+funded 0x5D923eD6b2FEE4631010d851D62d72AA60D761c1 with 0.01 ETH from 0x417532b34057aa4B0d047746437A56032A892323: success
+  tx: 0xe6bc6362e86cd787bcaf0f296ee7d3aadc3e1d5c80abb4550753b41baa3e4cc7 
+  explorer: https://sepolia.basescan.org/tx/0xe6bc6362e86cd787bcaf0f296ee7d3aadc3e1d5c80abb4550753b41baa3e4cc7
+== transfer 0.002 (from smart-account balance)
+SHRINCS stateful leaf 1/64 signed; msg.value=0 ETH (value paid from smart account balance)
+transfer 0.002 ETH -> 0x1111111111111111111111111111111111111111: success (block 47415515, gasUsed 296650)
+  tx: 0x7c5db43c8651e52bf6434b446bea7f51a181b6e8dd72c558a44527ddfba0a83b 
+  explorer: https://sepolia.basescan.org/tx/0x7c5db43c8651e52bf6434b446bea7f51a181b6e8dd72c558a44527ddfba0a83b
+  recipient balance: 0.592250560745601988 ETH
+  smart account balance: 0.008 ETH
+== transfer 0.001 --from-eoa (SDK default semantics)
+SHRINCS stateful leaf 2/64 signed; msg.value=0.001 ETH (paid by EOA)
+transfer 0.001 ETH -> 0x000000000000000000000000000000000000dEaD: success (block 47415516, gasUsed 263208)
+  tx: 0xba06c3ea6098823dfdf589de764585080d4807873e324194f463ecb094ce26d1 
+  explorer: https://sepolia.basescan.org/tx/0xba06c3ea6098823dfdf589de764585080d4807873e324194f463ecb094ce26d1
+  recipient balance: 4341.188465234430633978 ETH
+  smart account balance: 0.008 ETH
+== status
+smart account 0x5D923eD6b2FEE4631010d851D62d72AA60D761c1 
+  explorer: https://sepolia.basescan.org/address/0x5D923eD6b2FEE4631010d851D62d72AA60D761c1
+  balance: 0.008 ETH
+  owner: 0x417532b34057aa4B0d047746437A56032A892323
+  version: 2
+  executeFee: 0
+  shrincsPublicKeyCommitment: 0xed01bd142b4a288ee4bfb15849d4d426c8206284a5e90e4f0b484622e1ccf3a8
+  erc1271PublicKeyCommitment: 0x7994e7f831ee5d51a5aea1fbcc7c82bcd151104914487a4c04b78a30fe2f8085
+  hashSuite: 1
+  erc1271HashSuite: 1
+  keyVersion: 0
+  actionNonce: 2
+  maxSignatures: 64
+  statefulLeavesUsed: 2
+  remainingStatefulSignatures: 62
+== negative test (tampered signed call)
+tampered call rejected: The contract function "execute" reverted. | InvalidSignature
