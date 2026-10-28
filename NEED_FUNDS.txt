@@ -1,0 +1,2 @@
+https://faucet.quicknode.com/base/sepolia 84532 0x5187C255740F8178adb6950B3D0eFDF71cd3E782
+https://portal.cdp.coinbase.com/products/faucet 84532 0x5187C255740F8178adb6950B3D0eFDF71cd3E782

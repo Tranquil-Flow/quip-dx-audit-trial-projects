@@ -1,0 +1,10 @@
+{
+  "name": "swap-test",
+  "version": "1.0.0",
+  "type": "module",
+  "dependencies": {
+    "ethers": "^6.0.0",
+    "@quip.network/ethereum-sdk": "beta",
+    "@quip.network/hashsigs": "rc"
+  }
+}
