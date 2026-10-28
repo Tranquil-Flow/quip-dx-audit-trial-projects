@@ -1,0 +1,19 @@
+/private/tmp/devtrials4/h5-deepseek-v4-flash/.venv/lib/python3.13/site-packages/xqsa/quip.py:1241: UserWarning: 2 encoded coefficient(s) fall outside this topology's allowed-value set (e.g. h[1] = 500 milli). Quip accepts and solves these as-is and real hardware rescales coefficients monotonically (the optimum is preserved), so submission proceeds. See https://gitlab.com/quip.network/xquad/-/blob/main/spec/xqsa/SOLVERS.md#coefficient-encoding-and-allowed-values.
+  self._maybe_warn_allowed_values(job)
+QUOTE BEFORE:
+[quip] job quote (custom endpoint, fee exact)
+[quip]   reward     1.000000000000 AGLS
+[quip]   fee        0.001896569299 AGLS
+[quip]   total      1.001896569299 AGLS
+[quip]   balance    7.996206861402 AGLS
+[quip]   shortfall  0.000000000000 AGLS
+RESULT: XQMX(mode=SAMPLE, domain=BINARY, size=4, linear_terms=1, quadratic_terms=0) -1
+METADATA: {'order_id': 128, 'solver': '5DXr9LokuLE5bs2ZZyhDwbJfR9SqceL7kohQbgMebDcymhfD', 'best_energy_milli': -1000, 'energy_matches_chain': True, 'num_submissions': 3, 'num_solutions': 1}
+TIMING_s: 72.88695037498837
+QUOTE AFTER:
+[quip] job quote (custom endpoint, fee exact)
+[quip]   reward     1.000000000000 AGLS
+[quip]   fee        0.001896569299 AGLS
+[quip]   total      1.001896569299 AGLS
+[quip]   balance    6.994310292103 AGLS
+[quip]   shortfall  0.000000000000 AGLS
