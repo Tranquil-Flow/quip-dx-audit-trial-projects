@@ -1,0 +1,15 @@
+# Local environments and caches
+.venv/
+.python/
+.uv-cache/
+__pycache__/
+*.pyc
+
+# Throwaway testnet private key material (never commit)
+keys/*.json
+
+# Generated run evidence
+outputs/*.json
+
+# Vendored source repositories contain their own metadata
+vendor/xquad/.git/

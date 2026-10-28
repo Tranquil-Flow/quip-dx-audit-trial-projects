@@ -1,0 +1,15 @@
+[project]
+name = "quip-qubo-comparison"
+version = "0.1.0"
+description = "Reproducible local and Aglais-testnet QUBO comparison using Quip's XQuad toolchain"
+requires-python = ">=3.13"
+dependencies = [
+    "quip-signer==0.3.0",
+    "xquad[quip]==0.4.1",
+]
+
+[tool.uv.sources]
+# PyPI's macOS sdist omits the workspace boundaries needed when a parent
+# Cargo.toml exists. This is the official 0.3.0 sdist with only empty
+# [workspace] tables added to its two Cargo manifests; see DEVLOG.md.
+quip-signer = { path = "vendor/quip_signer-0.3.0" }
