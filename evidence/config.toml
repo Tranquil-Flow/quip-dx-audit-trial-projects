@@ -1,0 +1,59 @@
+# First-run config template for the t05 testnet miner.
+#
+# Mounted over the upstream image's /app/config.toml by docker-compose.yml.
+# The miner entrypoint copies this into /data/config.toml on first start, then
+# /data/config.toml becomes the source of truth.
+#
+# This is the v0.3 schema: [miner] / [cpu] / [dashboard].
+# (The legacy [global] / secret = "..." form in upstream's data/config.cpu.toml
+# is v0.1 — see config.example.toml "Removed in v0.3".)
+#
+# Everything in the upstream config/quip-miner.toml template that does not
+# apply to a remote-RPC miner has been trimmed; the values that matter here
+# are the chain RPC URL, the faucet URL, and the node descriptor metadata.
+#
+# PUBLIC HOST/PORT below are the descriptor advertised to the chain, not the
+# miner REST surface. The miner does not need to be reachable from the public
+# internet to mine — submissions go out via the validator's RPC. Leave the
+# placeholder if you have no reachable address; the coordinator will still
+# mine and submit, it just won't file an on-chain descriptor.
+
+[miner]
+# Connect to the long-running quip-validator container on this host over the
+# loopback bridge, on the substrate WS RPC port. This is what makes the miner
+# see Aglais without bringing up a second validator.
+validators = ["ws://host.docker.internal:9944", "ws://127.0.0.1:9944"]
+
+# Aglais faucet. This URL is for Aglais only (the Quip test network) and
+# will not work against mainnet or any private network.
+faucet_url = "https://faucet.aglais.quip.network"
+
+# H4 hybrid sr25519 + FN-DSA-512 keystore. The entrypoint generates a fresh
+# one at this exact path on first boot when the file is missing. The chain
+# account derived from it is the on-chain miner identity. BACK THIS UP.
+signer_key = "/data/keystore.json"
+
+# Public reachability. These populate the on-chain node descriptor; they do
+# not change mining behavior. Set to a placeholder that is at least not empty
+# (an empty string is the one hard failure for the coordinator).
+public_host = "t05-quip-miner.local"
+public_port = 20050
+
+# node_name is the display key — without it, the descriptor is never filed.
+node_name = "t05-quipdev-cpu"
+
+# [miner] log_level is the level advertised in the descriptor, not the
+# process's own verbosity. Set real verbosity with RUST_LOG in the env block.
+log_level = "info"
+
+# At least one backend section is required.
+[cpu]
+# SA is the default. Gibbs variant exists; pick it by editing `binary`.
+binary = "quip-cpu-sa"
+
+# Dashboard REST surface. The miner only needs this if you want to scrape
+# /api/v1/status from the host (the upstream Caddy reverses /api/v1/* here
+# at 8086; we don't run a Caddy, so 8086 is fine for direct host access).
+[dashboard]
+listen = "0.0.0.0:8086"
+data_dir = "/data/attempts"

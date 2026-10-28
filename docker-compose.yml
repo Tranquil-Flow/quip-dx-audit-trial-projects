@@ -1,0 +1,74 @@
+# docker-compose.yml — t05 Quip testnet CPU miner only.
+#
+# Runs a single quip-miner container (v0.3) that connects to the long-running
+# substrate validator already on this host over loopback. We deliberately do
+# NOT bring up a second validator or a dashboard, so this stack has no port
+# collisions with the upstream `quip-validator` (30333, 9944 loopback) or
+# with any other Quip stacks on this machine.
+#
+# Image: registry.gitlab.com/quip.network/quip-miner/v0.3/quip-miner
+# Channel default: beta (latest Aglais prerelease). The miner auto-funds its
+# account from the Aglais faucet on first run, then registers itself.
+#
+# Project: `t05-quipdev` (compose -p), namespaced network + volumes so this
+# stack can never collide with `quip_default`, `aglais-mine`, `cs05quip`,
+# `dev-quip`, `quip-dev`, or `t05quip` already on this host.
+#
+# Ports:
+#   127.0.0.1:8086 -> 8086 (miner REST: /healthz, /api/v1/status, etc.)
+# We intentionally do NOT bind 20049 (dashboard Caddy) or 30333 (libp2p) —
+# those would clash with the existing validator / dashboard containers.
+
+name: t05-quipdev
+
+services:
+  miner:
+    image: registry.gitlab.com/quip.network/quip-miner/v0.3/quip-miner:${QUIP_MINER_TAG:-beta}
+    pull_policy: always
+    container_name: t05-quip-cpu
+    hostname: t05-quip-cpu
+    restart: unless-stopped
+    # Restrict to one CPU so the host stays usable. `nproc` inside the
+    # container reads sched_getaffinity(2) which honors cpuset, so the
+    # miner's autodetect will see 1 and budget accordingly.
+    cpuset: "0"
+    # The SA miner streams samples through a POSIX shared-memory ring
+    # (~75 MiB/worker). Docker's default 64 MiB /dev/shm would SIGBUS it.
+    shm_size: "2gb"
+    # STOPGAP memory cap — see upstream docker-compose.yml comment.
+    mem_limit: 8g
+    # json-file so `docker logs` reads cleanly without a syslog-ng collector.
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "5"
+    environment:
+      # Run the coordinator at info and miners at debug for first boot.
+      RUST_LOG: info,quip_coordinator=debug,quip_miner=debug
+      PUID: "1000"
+      PGID: "1000"
+    volumes:
+      # Miner config + keystore + attempts history. First-run entrypoint
+      # seeds /data/config.toml from the mounted /app/config.toml, then
+      # reads /data/config.toml on every subsequent start.
+      - ./data:/data
+      - ./config/quip-miner.toml:/app/config.toml:ro
+    # host.docker.internal is supported on Docker Desktop (which this is)
+    # and lets the container reach the existing quip-validator over
+    # 127.0.0.1:9944.
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    # Bind 8086 to loopback only so we can curl /api/v1/status and /healthz
+    # from the host. The miner is otherwise an outbound WS-RPC client; it
+    # does not need to be reachable from outside the host to mine.
+    ports:
+      - "127.0.0.1:8086:8086"
+    healthcheck:
+      # Coordinator serves /healthz on the dashboard listen port. Returns
+      # 200 once the coordinator has reached its post-preflight state.
+      test: ["CMD-SHELL", "wget -qO- http://127.0.0.1:8086/healthz >/dev/null || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+      start_period: 5m

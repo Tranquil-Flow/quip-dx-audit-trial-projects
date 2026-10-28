@@ -1,0 +1,148 @@
+2026-09-28T10:11:36.066618096Z entrypoint: seeded /data/config.toml from image template
+2026-09-28T10:11:36.066760680Z entrypoint: first run, generating hybrid keystore at /data/keystore.json
+2026-09-28T10:11:36.069659180Z wrote keystore to /data/keystore.json
+2026-09-28T10:11:36.073681388Z entrypoint: exec quip-coordinator --config /data/config.toml
+2026-09-28T10:11:36.076812846Z 2026-09-28T10:11:36.076730Z  INFO quip_coordinator: quip-coordinator starting version="0.3.4" protocol=1 config=/data/config.toml
+2026-09-28T10:11:36.076823180Z 2026-09-28T10:11:36.076739Z  INFO quip_coordinator: chain validators configured validators=["ws://host.docker.internal:9944", "ws://127.0.0.1:9944"]
+2026-09-28T10:11:36.080752763Z 2026-09-28T10:11:36.080219Z  INFO quip_coordinator::chain::real: validator RPC reachable url=ws://host.docker.internal:9944
+2026-09-28T10:11:36.080770013Z 2026-09-28T10:11:36.080388Z  INFO quip_coordinator::chain::preflight: validator runtime spec_name=quip spec_version=118 transaction_version=7 quantum_pow_api=2
+2026-09-28T10:11:36.094844638Z 2026-09-28T10:11:36.094735Z  WARN quip_coordinator::funding: miner account is underfunded; requesting funds from the faucet balance=0 threshold=2000000000000 top_up=10000000000000 timeout_s=600
+2026-09-28T10:11:42.979860794Z 2026-09-28T10:11:42.979745Z  WARN quip_coordinator::funding: miner account is not funded yet; retrying attempt=1 balance=0 threshold=2000000000000 retry_in_s=2 note=requested
+2026-09-28T10:11:44.986656711Z 2026-09-28T10:11:44.986558Z  INFO quip_coordinator::funding: miner account is now funded balance=10000000000000 attempt=2
+2026-09-28T10:11:48.584010088Z 2026-09-28T10:11:48.583913Z  INFO quip_coordinator::readiness: registered this account as a miner on chain
+2026-09-28T10:11:54.608280758Z 2026-09-28T10:11:54.608168Z  INFO quip_coordinator::readiness: filed node descriptor
+2026-09-28T10:11:54.608301758Z 2026-09-28T10:11:54.608196Z  INFO quip_coordinator: serving miner session socket miners=1 ids=["cpu-0"] socket=/tmp/quip-coordinator-7.sock
+2026-09-28T10:11:54.609667133Z 2026-09-28T10:11:54.609559Z  INFO quip_coordinator::runtime: dashboard enabled listen=0.0.0.0:8086 data_dir=/data/attempts
+2026-09-28T10:11:54.609748216Z 2026-09-28T10:11:54.609694Z  INFO quip_coordinator::dashboard: dashboard: serving /data/attempts at http://0.0.0.0:8086
+2026-09-28T10:11:54.610663758Z 2026-09-28T10:11:54.610623Z  INFO quip_coordinator::supervisor: miner spawned miner=cpu-0 binary=quip-cpu-sa pid=41
+2026-09-28T10:11:54.611726674Z 2026-09-28T10:11:54.611654Z  INFO quip_coordinator::session: miner registered miner=cpu-0 backend=cpu algorithm=sa max_nodes=100000 max_edges=1000000
+2026-09-28T10:11:54.611927924Z 2026-09-28T10:11:54.611868Z DEBUG quip_coordinator::session: miner ready; seeding credits miner=cpu-0 credits=3
+2026-09-28T10:11:54.611938424Z 2026-09-28T10:11:54.611877Z DEBUG quip_coordinator::session: miner requested work miner=cpu-0 credits=3
+2026-09-28T10:11:54.611939799Z 2026-09-28T10:11:54.611879Z DEBUG quip_coordinator::session: dispatch drain miner=cpu-0 added=3 dispatched=0 staged=0
+2026-09-28T10:11:54.611940758Z 2026-09-28T10:11:54.611881Z DEBUG quip_coordinator::session: dispatch drain miner=cpu-0 added=3 dispatched=0 staged=0
+2026-09-28T10:11:54.626830508Z 2026-09-28T10:11:54.626734Z  INFO quip_coordinator::runtime: feeder: mining snapshot available
+2026-09-28T10:11:54.665058133Z 2026-09-28T10:11:54.664939Z  INFO quip_coordinator::runtime: new round generation=1 qblock_id=8036 block=375444 cancelled_jobs=0 miners_told=0 topology=0xcbec1eb4e9dcc7ae343b386902d4dbba19b694a66cebf95bc06bd9260c3270e7 nodes=4577 edges=41514 max_energy=-14698 min_solutions=1 min_diversity_milli=0 allowed_h_milli=[0] allowed_j_milli=[-1000, 1000] allowed_spin_milli=[-1000, 1000]
+2026-09-28T10:11:54.703089924Z 2026-09-28T10:11:54.702972Z DEBUG quip_coordinator::runtime: feeder: poll block=375444 generation=1 miners=[("cpu-0", 0, 0, 256, 256)]
+2026-09-28T10:11:54.703172258Z 2026-09-28T10:11:54.703113Z DEBUG quip_coordinator::session: dispatch drain miner=cpu-0 added=0 dispatched=6 staged=250
+2026-09-28T10:11:55.726503341Z 2026-09-28T10:11:55.726402Z DEBUG quip_coordinator::runtime: feeder: poll block=375444 generation=1 miners=[("cpu-0", 0, 0, 256, 256)]
+2026-09-28T10:11:55.726528508Z 2026-09-28T10:11:55.726421Z DEBUG quip_coordinator::session: dispatch drain miner=cpu-0 added=0 dispatched=0 staged=256
+2026-09-28T10:11:56.745778384Z 2026-09-28T10:11:56.745602Z DEBUG quip_coordinator::runtime: feeder: poll block=375444 generation=1 miners=[("cpu-0", 0, 0, 256, 256)]
+2026-09-28T10:11:56.745798467Z 2026-09-28T10:11:56.745627Z DEBUG quip_coordinator::session: dispatch drain miner=cpu-0 added=0 dispatched=0 staged=256
+2026-09-28T10:11:57.766808467Z 2026-09-28T10:11:57.766682Z DEBUG quip_coordinator::runtime: feeder: poll block=375444 generation=1 miners=[("cpu-0", 0, 0, 256, 256)]
+2026-09-28T10:11:57.766831092Z 2026-09-28T10:11:57.766723Z DEBUG quip_coordinator::session: dispatch drain miner=cpu-0 added=0 dispatched=0 staged=256
+2026-09-28T10:11:58.785508093Z 2026-09-28T10:11:58.785402Z DEBUG quip_coordinator::runtime: feeder: poll block=375444 generation=1 miners=[("cpu-0", 0, 0, 256, 256)]
+2026-09-28T10:11:58.785528218Z 2026-09-28T10:11:58.785420Z DEBUG quip_coordinator::session: dispatch drain miner=cpu-0 added=0 dispatched=0 staged=256
+2026-09-28T10:11:59.804854302Z 2026-09-28T10:11:59.804743Z DEBUG quip_coordinator::runtime: feeder: poll block=375444 generation=1 miners=[("cpu-0", 0, 0, 256, 256)]
+2026-09-28T10:11:59.804873635Z 2026-09-28T10:11:59.804763Z DEBUG quip_coordinator::session: dispatch drain miner=cpu-0 added=0 dispatched=0 staged=256
+2026-09-28T10:12:00.416171052Z 2026-09-28T10:12:00.416037Z  INFO quip_solver_core::session: [quip-miner-cpu] attempt 08239ac398433e86..: energy -14258, valid 0/128 | 5.7s wall, 5.7s device
+2026-09-28T10:12:00.462555594Z 2026-09-28T10:12:00.462399Z  INFO quip_coordinator::session: [quip-miner-cpu-0] attempt 08239ac398433e86..: stashed (stash: -14258 -> -14258, target <= -14698)
+2026-09-28T10:12:00.462575135Z 2026-09-28T10:12:00.462483Z DEBUG quip_coordinator::session: miner requested work miner=cpu-0 credits=1
+2026-09-28T10:12:00.462576302Z 2026-09-28T10:12:00.462498Z DEBUG quip_coordinator::session: dispatch drain miner=cpu-0 added=1 dispatched=1 staged=255
+2026-09-28T10:12:06.079607263Z 2026-09-28T10:12:06.079470Z  INFO quip_solver_core::session: [quip-miner-cpu] attempt 2fdd1a998cd6b98f..: energy -14338, valid 0/128 | 11.4s wall, 5.7s device
+2026-09-28T10:12:06.123309305Z 2026-09-28T10:12:06.123180Z  INFO quip_coordinator::session: [quip-miner-cpu-0] attempt 2fdd1a998cd6b98f..: stashed (stash: -14258 -> -14338, target <= -14698)
+2026-09-28T10:12:06.123331013Z 2026-09-28T10:12:06.123217Z DEBUG quip_coordinator::session: miner requested work miner=cpu-0 credits=1
+2026-09-28T10:12:06.123332055Z 2026-09-28T10:12:06.123232Z DEBUG quip_coordinator::session: dispatch drain miner=cpu-0 added=1 dispatched=1 staged=254
+2026-09-28T10:12:06.976526264Z 2026-09-28T10:12:06.976431Z DEBUG quip_coordinator::runtime: difficulty target changed; broadcasting to miners max_energy=-14697 min_solutions=1 min_diversity_milli=0
+2026-09-28T10:12:06.976741472Z 2026-09-28T10:12:06.976680Z DEBUG quip_coordinator::runtime: feeder: poll block=375445 generation=1 miners=[("cpu-0", 2, 2, 256, 256)]
+2026-09-28T10:12:06.976749014Z 2026-09-28T10:12:06.976695Z DEBUG quip_coordinator::session: dispatch drain miner=cpu-0 added=0 dispatched=0 staged=256
+2026-09-28T10:12:07.995319291Z 2026-09-28T10:12:07.995195Z DEBUG quip_coordinator::runtime: difficulty target changed; broadcasting to miners max_energy=-14697 min_solutions=1 min_diversity_milli=0
+2026-09-28T10:12:07.995336750Z 2026-09-28T10:12:07.995224Z DEBUG quip_coordinator::runtime: feeder: poll block=375446 generation=1 miners=[("cpu-0", 2, 2, 256, 256)]
+2026-09-28T10:12:07.995338416Z 2026-09-28T10:12:07.995231Z DEBUG quip_coordinator::session: dispatch drain miner=cpu-0 added=0 dispatched=0 staged=256
+2026-09-28T10:12:09.017785792Z 2026-09-28T10:12:09.017684Z DEBUG quip_coordinator::runtime: feeder: poll block=375446 generation=1 miners=[("cpu-0", 2, 2, 256, 256)]
+2026-09-28T10:12:09.017808625Z 2026-09-28T10:12:09.017701Z DEBUG quip_coordinator::session: dispatch drain miner=cpu-0 added=0 dispatched=0 staged=256
+2026-09-28T10:12:10.041173084Z 2026-09-28T10:12:10.041058Z DEBUG quip_coordinator::runtime: feeder: poll block=375446 generation=1 miners=[("cpu-0", 2, 2, 256, 256)]
+2026-09-28T10:12:10.041195709Z 2026-09-28T10:12:10.041079Z DEBUG quip_coordinator::session: dispatch drain miner=cpu-0 added=0 dispatched=0 staged=256
+2026-09-28T10:12:11.059782251Z 2026-09-28T10:12:11.059694Z DEBUG quip_coordinator::runtime: feeder: poll block=375446 generation=1 miners=[("cpu-0", 2, 2, 256, 256)]
+2026-09-28T10:12:11.059801751Z 2026-09-28T10:12:11.059711Z DEBUG quip_coordinator::session: dispatch drain miner=cpu-0 added=0 dispatched=0 staged=256
+2026-09-28T10:12:12.081586002Z 2026-09-28T10:12:12.081449Z DEBUG quip_coordinator::runtime: feeder: poll block=375446 generation=1 miners=[("cpu-0", 2, 2, 256, 256)]
+2026-09-28T10:12:12.081625877Z 2026-09-28T10:12:12.081480Z DEBUG quip_coordinator::session: dispatch drain miner=cpu-0 added=0 dispatched=0 staged=256
+2026-09-28T10:12:12.606894002Z 2026-09-28T10:12:12.606749Z  INFO quip_solver_core::session: [quip-miner-cpu] attempt b8c2acdb9c14c941..: energy -14364, valid 0/128 | 17.9s wall, 6.5s device
+2026-09-28T10:12:12.685846335Z 2026-09-28T10:12:12.685731Z  INFO quip_coordinator::session: [quip-miner-cpu-0] attempt b8c2acdb9c14c941..: stashed (stash: -14258 -> -14364, target <= -14697)
+2026-09-28T10:12:12.685866502Z 2026-09-28T10:12:12.685775Z DEBUG quip_coordinator::session: miner requested work miner=cpu-0 credits=1
+2026-09-28T10:12:12.685867960Z 2026-09-28T10:12:12.685790Z DEBUG quip_coordinator::session: dispatch drain miner=cpu-0 added=1 dispatched=1 staged=255
+2026-09-28T10:12:13.102690960Z 2026-09-28T10:12:13.102548Z DEBUG quip_coordinator::runtime: difficulty target changed; broadcasting to miners max_energy=-14697 min_solutions=1 min_diversity_milli=0
+2026-09-28T10:12:13.102739002Z 2026-09-28T10:12:13.102694Z DEBUG quip_coordinator::runtime: feeder: poll block=375447 generation=1 miners=[("cpu-0", 3, 3, 256, 256)]
+2026-09-28T10:12:13.102746335Z 2026-09-28T10:12:13.102706Z DEBUG quip_coordinator::session: dispatch drain miner=cpu-0 added=0 dispatched=0 staged=256
+2026-09-28T10:12:14.127892503Z 2026-09-28T10:12:14.127798Z DEBUG quip_coordinator::runtime: feeder: poll block=375447 generation=1 miners=[("cpu-0", 3, 3, 256, 256)]
+2026-09-28T10:12:14.127912419Z 2026-09-28T10:12:14.127818Z DEBUG quip_coordinator::session: dispatch drain miner=cpu-0 added=0 dispatched=0 staged=256
+2026-09-28T10:12:15.155431211Z 2026-09-28T10:12:15.155229Z DEBUG quip_coordinator::runtime: feeder: poll block=375447 generation=1 miners=[("cpu-0", 3, 3, 256, 256)]
+2026-09-28T10:12:15.155460670Z 2026-09-28T10:12:15.155250Z DEBUG quip_coordinator::session: dispatch drain miner=cpu-0 added=0 dispatched=0 staged=256
+2026-09-28T10:12:16.177267295Z 2026-09-28T10:12:16.177165Z DEBUG quip_coordinator::runtime: feeder: poll block=375447 generation=1 miners=[("cpu-0", 3, 3, 256, 256)]
+2026-09-28T10:12:16.177288045Z 2026-09-28T10:12:16.177185Z DEBUG quip_coordinator::session: dispatch drain miner=cpu-0 added=0 dispatched=0 staged=256
+2026-09-28T10:12:17.199871879Z 2026-09-28T10:12:17.199726Z DEBUG quip_coordinator::runtime: feeder: poll block=375447 generation=1 miners=[("cpu-0", 3, 3, 256, 256)]
+2026-09-28T10:12:17.199894296Z 2026-09-28T10:12:17.199749Z DEBUG quip_coordinator::session: dispatch drain miner=cpu-0 added=0 dispatched=0 staged=256
+2026-09-28T10:12:18.217385713Z 2026-09-28T10:12:18.217255Z DEBUG quip_coordinator::runtime: feeder: poll block=375447 generation=1 miners=[("cpu-0", 3, 3, 256, 256)]
+2026-09-28T10:12:18.217406130Z 2026-09-28T10:12:18.217275Z DEBUG quip_coordinator::session: dispatch drain miner=cpu-0 added=0 dispatched=0 staged=256
+2026-09-28T10:12:19.241482422Z 2026-09-28T10:12:19.241375Z DEBUG quip_coordinator::runtime: difficulty target changed; broadcasting to miners max_energy=-14697 min_solutions=1 min_diversity_milli=0
+2026-09-28T10:12:19.241510588Z 2026-09-28T10:12:19.241394Z DEBUG quip_coordinator::runtime: feeder: poll block=375448 generation=1 miners=[("cpu-0", 3, 3, 256, 256)]
+2026-09-28T10:12:19.241512047Z 2026-09-28T10:12:19.241403Z DEBUG quip_coordinator::session: dispatch drain miner=cpu-0 added=0 dispatched=0 staged=256
+2026-09-28T10:12:19.916226547Z 2026-09-28T10:12:19.916109Z  INFO quip_solver_core::session: [quip-miner-cpu] attempt a2ab62e000eaaa42..: energy -14326, valid 0/128 | 25.2s wall, 7.3s device
+2026-09-28T10:12:19.960535089Z 2026-09-28T10:12:19.960369Z  INFO quip_coordinator::session: [quip-miner-cpu-0] attempt a2ab62e000eaaa42..: stashed (stash: -14258 -> -14364, target <= -14697)
+2026-09-28T10:12:19.960558255Z 2026-09-28T10:12:19.960483Z DEBUG quip_coordinator::session: miner requested work miner=cpu-0 credits=1
+2026-09-28T10:12:19.960559589Z 2026-09-28T10:12:19.960498Z DEBUG quip_coordinator::session: dispatch drain miner=cpu-0 added=1 dispatched=1 staged=255
+2026-09-28T10:12:20.266204214Z 2026-09-28T10:12:20.266104Z DEBUG quip_coordinator::runtime: feeder: poll block=375448 generation=1 miners=[("cpu-0", 4, 4, 256, 256)]
+2026-09-28T10:12:20.266229131Z 2026-09-28T10:12:20.266123Z DEBUG quip_coordinator::session: dispatch drain miner=cpu-0 added=0 dispatched=0 staged=256
+2026-09-28T10:12:21.287040589Z 2026-09-28T10:12:21.286940Z DEBUG quip_coordinator::runtime: feeder: poll block=375448 generation=1 miners=[("cpu-0", 4, 4, 256, 256)]
+2026-09-28T10:12:21.287060339Z 2026-09-28T10:12:21.286958Z DEBUG quip_coordinator::session: dispatch drain miner=cpu-0 added=0 dispatched=0 staged=256
+2026-09-28T10:12:22.309845507Z 2026-09-28T10:12:22.309742Z DEBUG quip_coordinator::runtime: feeder: poll block=375448 generation=1 miners=[("cpu-0", 4, 4, 256, 256)]
+2026-09-28T10:12:22.309864798Z 2026-09-28T10:12:22.309760Z DEBUG quip_coordinator::session: dispatch drain miner=cpu-0 added=0 dispatched=0 staged=256
+2026-09-28T10:12:23.336707132Z 2026-09-28T10:12:23.336572Z DEBUG quip_coordinator::runtime: feeder: poll block=375448 generation=1 miners=[("cpu-0", 4, 4, 256, 256)]
+2026-09-28T10:12:23.336728299Z 2026-09-28T10:12:23.336591Z DEBUG quip_coordinator::session: dispatch drain miner=cpu-0 added=0 dispatched=0 staged=256
+2026-09-28T10:12:24.354784466Z 2026-09-28T10:12:24.354676Z DEBUG quip_coordinator::runtime: difficulty target changed; broadcasting to miners max_energy=-14696 min_solutions=1 min_diversity_milli=0
+2026-09-28T10:12:24.354808966Z 2026-09-28T10:12:24.354693Z DEBUG quip_coordinator::runtime: feeder: poll block=375449 generation=1 miners=[("cpu-0", 4, 4, 256, 256)]
+2026-09-28T10:12:24.354810591Z 2026-09-28T10:12:24.354699Z DEBUG quip_coordinator::session: dispatch drain miner=cpu-0 added=0 dispatched=0 staged=256
+2026-09-28T10:12:25.371279091Z 2026-09-28T10:12:25.371180Z DEBUG quip_coordinator::runtime: feeder: poll block=375449 generation=1 miners=[("cpu-0", 4, 4, 256, 256)]
+2026-09-28T10:12:25.371303508Z 2026-09-28T10:12:25.371197Z DEBUG quip_coordinator::session: dispatch drain miner=cpu-0 added=0 dispatched=0 staged=256
+2026-09-28T10:12:26.349472300Z 2026-09-28T10:12:26.349337Z  INFO quip_solver_core::session: [quip-miner-cpu] attempt 211f363536f5eb7d..: energy -14236, valid 0/128 | 31.6s wall, 6.4s device
+2026-09-28T10:12:26.389752175Z 2026-09-28T10:12:26.389645Z  INFO quip_coordinator::session: [quip-miner-cpu-0] attempt 211f363536f5eb7d..: stashed (stash: -14236 -> -14364, target <= -14696)
+2026-09-28T10:12:26.389778842Z 2026-09-28T10:12:26.389689Z DEBUG quip_coordinator::session: miner requested work miner=cpu-0 credits=1
+2026-09-28T10:12:26.389780342Z 2026-09-28T10:12:26.389703Z DEBUG quip_coordinator::session: dispatch drain miner=cpu-0 added=1 dispatched=1 staged=255
+2026-09-28T10:12:26.408411633Z 2026-09-28T10:12:26.408288Z DEBUG quip_coordinator::runtime: feeder: poll block=375449 generation=1 miners=[("cpu-0", 5, 5, 256, 256)]
+2026-09-28T10:12:26.408434550Z 2026-09-28T10:12:26.408307Z DEBUG quip_coordinator::session: dispatch drain miner=cpu-0 added=0 dispatched=0 staged=256
+2026-09-28T10:12:27.428416634Z 2026-09-28T10:12:27.428318Z DEBUG quip_coordinator::runtime: feeder: poll block=375449 generation=1 miners=[("cpu-0", 5, 5, 256, 256)]
+2026-09-28T10:12:27.428446301Z 2026-09-28T10:12:27.428337Z DEBUG quip_coordinator::session: dispatch drain miner=cpu-0 added=0 dispatched=0 staged=256
+2026-09-28T10:12:28.444882468Z 2026-09-28T10:12:28.444754Z DEBUG quip_coordinator::runtime: feeder: poll block=375449 generation=1 miners=[("cpu-0", 5, 5, 256, 256)]
+2026-09-28T10:12:28.444900426Z 2026-09-28T10:12:28.444773Z DEBUG quip_coordinator::session: dispatch drain miner=cpu-0 added=0 dispatched=0 staged=256
+2026-09-28T10:12:29.464838343Z 2026-09-28T10:12:29.464683Z DEBUG quip_coordinator::runtime: feeder: poll block=375449 generation=1 miners=[("cpu-0", 5, 5, 256, 256)]
+2026-09-28T10:12:29.464859760Z 2026-09-28T10:12:29.464710Z DEBUG quip_coordinator::session: dispatch drain miner=cpu-0 added=0 dispatched=0 staged=256
+2026-09-28T10:12:30.483285260Z 2026-09-28T10:12:30.483179Z DEBUG quip_coordinator::runtime: difficulty target changed; broadcasting to miners max_energy=-14696 min_solutions=1 min_diversity_milli=0
+2026-09-28T10:12:30.483311385Z 2026-09-28T10:12:30.483201Z DEBUG quip_coordinator::runtime: feeder: poll block=375450 generation=1 miners=[("cpu-0", 5, 5, 256, 256)]
+2026-09-28T10:12:30.483312969Z 2026-09-28T10:12:30.483210Z DEBUG quip_coordinator::session: dispatch drain miner=cpu-0 added=0 dispatched=0 staged=256
+2026-09-28T10:12:31.499938886Z 2026-09-28T10:12:31.499788Z DEBUG quip_coordinator::runtime: feeder: poll block=375450 generation=1 miners=[("cpu-0", 5, 5, 256, 256)]
+2026-09-28T10:12:31.499959844Z 2026-09-28T10:12:31.499806Z DEBUG quip_coordinator::session: dispatch drain miner=cpu-0 added=0 dispatched=0 staged=256
+2026-09-28T10:12:32.526904553Z 2026-09-28T10:12:32.526760Z DEBUG quip_coordinator::runtime: feeder: poll block=375450 generation=1 miners=[("cpu-0", 5, 5, 256, 256)]
+2026-09-28T10:12:32.526925011Z 2026-09-28T10:12:32.526782Z DEBUG quip_coordinator::session: dispatch drain miner=cpu-0 added=0 dispatched=0 staged=256
+2026-09-28T10:12:32.753397761Z 2026-09-28T10:12:32.753281Z  INFO quip_solver_core::session: [quip-miner-cpu] attempt 6f14181db62d4a63..: energy -14288, valid 0/128 | 38.0s wall, 6.4s device
+2026-09-28T10:12:32.811513553Z 2026-09-28T10:12:32.811386Z  INFO quip_coordinator::session: [quip-miner-cpu-0] attempt 6f14181db62d4a63..: stashed (stash: -14236 -> -14364, target <= -14696)
+2026-09-28T10:12:32.811533345Z 2026-09-28T10:12:32.811441Z DEBUG quip_coordinator::session: miner requested work miner=cpu-0 credits=1
+2026-09-28T10:12:32.811534595Z 2026-09-28T10:12:32.811455Z DEBUG quip_coordinator::session: dispatch drain miner=cpu-0 added=1 dispatched=1 staged=255
+2026-09-28T10:12:33.548681887Z 2026-09-28T10:12:33.548576Z DEBUG quip_coordinator::runtime: feeder: poll block=375450 generation=1 miners=[("cpu-0", 6, 6, 256, 256)]
+2026-09-28T10:12:33.548703804Z 2026-09-28T10:12:33.548596Z DEBUG quip_coordinator::session: dispatch drain miner=cpu-0 added=0 dispatched=0 staged=256
+2026-09-28T10:12:34.578917387Z 2026-09-28T10:12:34.578776Z DEBUG quip_coordinator::runtime: feeder: poll block=375450 generation=1 miners=[("cpu-0", 6, 6, 256, 256)]
+2026-09-28T10:12:34.578934512Z 2026-09-28T10:12:34.578796Z DEBUG quip_coordinator::session: dispatch drain miner=cpu-0 added=0 dispatched=0 staged=256
+2026-09-28T10:12:35.596267305Z 2026-09-28T10:12:35.596172Z DEBUG quip_coordinator::runtime: feeder: poll block=375450 generation=1 miners=[("cpu-0", 6, 6, 256, 256)]
+2026-09-28T10:12:35.596286430Z 2026-09-28T10:12:35.596191Z DEBUG quip_coordinator::session: dispatch drain miner=cpu-0 added=0 dispatched=0 staged=256
+2026-09-28T10:12:36.615784972Z 2026-09-28T10:12:36.615680Z DEBUG quip_coordinator::runtime: difficulty target changed; broadcasting to miners max_energy=-14696 min_solutions=1 min_diversity_milli=0
+2026-09-28T10:12:36.615810805Z 2026-09-28T10:12:36.615698Z DEBUG quip_coordinator::runtime: feeder: poll block=375451 generation=1 miners=[("cpu-0", 6, 6, 256, 256)]
+2026-09-28T10:12:36.615812597Z 2026-09-28T10:12:36.615706Z DEBUG quip_coordinator::session: dispatch drain miner=cpu-0 added=0 dispatched=0 staged=256
+2026-09-28T10:12:37.641639791Z 2026-09-28T10:12:37.641521Z DEBUG quip_coordinator::runtime: feeder: poll block=375451 generation=1 miners=[("cpu-0", 6, 6, 256, 256)]
+2026-09-28T10:12:37.641661666Z 2026-09-28T10:12:37.641553Z DEBUG quip_coordinator::session: dispatch drain miner=cpu-0 added=0 dispatched=0 staged=256
+2026-09-28T10:12:38.659985667Z 2026-09-28T10:12:38.659883Z DEBUG quip_coordinator::runtime: feeder: poll block=375451 generation=1 miners=[("cpu-0", 6, 6, 256, 256)]
+2026-09-28T10:12:38.660008250Z 2026-09-28T10:12:38.659899Z DEBUG quip_coordinator::session: dispatch drain miner=cpu-0 added=0 dispatched=0 staged=256
+2026-09-28T10:12:39.681795250Z 2026-09-28T10:12:39.681654Z DEBUG quip_coordinator::runtime: feeder: poll block=375451 generation=1 miners=[("cpu-0", 6, 6, 256, 256)]
+2026-09-28T10:12:39.681822667Z 2026-09-28T10:12:39.681678Z DEBUG quip_coordinator::session: dispatch drain miner=cpu-0 added=0 dispatched=0 staged=256
+2026-09-28T10:12:39.694754334Z 2026-09-28T10:12:39.694651Z  INFO quip_solver_core::session: [quip-miner-cpu] attempt b62cc5cf98072179..: energy -14358, valid 0/128 | 39.2s wall, 6.9s device
+2026-09-28T10:12:39.737271042Z 2026-09-28T10:12:39.737147Z  INFO quip_coordinator::session: [quip-miner-cpu-0] attempt b62cc5cf98072179..: stashed (stash: -14236 -> -14364, target <= -14696)
+2026-09-28T10:12:39.737504292Z 2026-09-28T10:12:39.737449Z DEBUG quip_coordinator::session: miner requested work miner=cpu-0 credits=1
+2026-09-28T10:12:39.737509876Z 2026-09-28T10:12:39.737472Z DEBUG quip_coordinator::session: dispatch drain miner=cpu-0 added=1 dispatched=1 staged=255
+2026-09-28T10:12:40.699594334Z 2026-09-28T10:12:40.699461Z DEBUG quip_coordinator::runtime: feeder: poll block=375451 generation=1 miners=[("cpu-0", 7, 7, 256, 256)]
+2026-09-28T10:12:40.699625626Z 2026-09-28T10:12:40.699490Z DEBUG quip_coordinator::session: dispatch drain miner=cpu-0 added=0 dispatched=0 staged=256
+2026-09-28T10:12:41.723047335Z 2026-09-28T10:12:41.722904Z DEBUG quip_coordinator::runtime: feeder: poll block=375451 generation=1 miners=[("cpu-0", 7, 7, 256, 256)]
+2026-09-28T10:12:41.723100293Z 2026-09-28T10:12:41.723038Z DEBUG quip_coordinator::session: dispatch drain miner=cpu-0 added=0 dispatched=0 staged=256
+2026-09-28T10:12:42.746989294Z 2026-09-28T10:12:42.746858Z DEBUG quip_coordinator::runtime: difficulty target changed; broadcasting to miners max_energy=-14695 min_solutions=1 min_diversity_milli=0
+2026-09-28T10:12:42.747022252Z 2026-09-28T10:12:42.746878Z DEBUG quip_coordinator::runtime: feeder: poll block=375452 generation=1 miners=[("cpu-0", 7, 7, 256, 256)]
+2026-09-28T10:12:42.747023919Z 2026-09-28T10:12:42.746887Z DEBUG quip_coordinator::session: dispatch drain miner=cpu-0 added=0 dispatched=0 staged=256
+2026-09-28T10:12:43.766265002Z 2026-09-28T10:12:43.766152Z DEBUG quip_coordinator::runtime: feeder: poll block=375452 generation=1 miners=[("cpu-0", 7, 7, 256, 256)]
+2026-09-28T10:12:43.766321711Z 2026-09-28T10:12:43.766259Z DEBUG quip_coordinator::session: dispatch drain miner=cpu-0 added=0 dispatched=0 staged=256
+2026-09-28T10:12:44.790482378Z 2026-09-28T10:12:44.790378Z DEBUG quip_coordinator::runtime: feeder: poll block=375452 generation=1 miners=[("cpu-0", 7, 7, 256, 256)]
+2026-09-28T10:12:44.790504295Z 2026-09-28T10:12:44.790401Z DEBUG quip_coordinator::session: dispatch drain miner=cpu-0 added=0 dispatched=0 staged=256
