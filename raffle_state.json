@@ -1,0 +1,33 @@
+{
+  "contract": "0x1179b9b7d5e9DA6dA2a594b2721874842048aEe7",
+  "deploy_tx": "0x5a6c5e26646943d6ca4a6dc0224e6b8fcf0b4df2b2e0547644ec98e76ca9b3f0",
+  "deploy_block": 378268,
+  "salts": {
+    "alice_tx": "0x4fc8ef9ab79e23c935015973abc84df3a7e1cbcb499eda4e1c5884e51f05e264",
+    "bob_tx": "0x88e3c897d6a45a699485a8d8f2a0a52af1b7f6aa1bae0657458a6cb91964df9a",
+    "carol_tx": "0x649dbda00d935f8dfd8f7844af3fbd613beac87a703166b914d9fdae99789d42"
+  },
+  "reveal_txs": {
+    "alice": "0xe246fe5da0d5ad805094ad6a96262d3f75526dc455373f866ec4467d92c30869",
+    "bob": "0x171d2918816202ba854d1014ea088f1285da5e5e2b1149b100f1d2b24b985cab",
+    "carol": "0x191ad6593b9f438f0709b0ab5b23a93ffbdbf485a978a759826e19d2ed8d5809"
+  },
+  "close_tx": "0xc4f7af4ed68e516cfe4d8076fc055a6327a91d8f91eb5b1b5d4e21c61b7e77be",
+  "draw_tx": "0x124b8c2154bbe06f40d894cd67148daebe2fe97d8e55050f3db4725ec234eb8b",
+  "claim_tx": "0x820f3e47be9003682305680164b530fdd2a77882050b52fdd2bc8c3549574188",
+  "refund_txs": {
+    "alice": "0x2649aff5175bfbe743e2626719808a8ff6d3f679d6c0f1d3bc33712aaaeaa568",
+    "carol": "0x07d441a6366309e02281b96a6d13ea781d806b4d2a3f0a52f88b31f74c623b15"
+  },
+  "winner": "0xc69EA47F15916e3195BB10F2B51624d26E786bB8",
+  "winner_index": 1,
+  "winner_name": "bob",
+  "verification": {
+    "recomputedWinnerIndex": 1,
+    "recomputedWinner": "0xc69EA47F15916e3195BB10F2B51624d26E786bB8",
+    "aggregateMatches": true,
+    "anchorHashesMatchChain": true,
+    "anchorHashMatches": true,
+    "winnerMatches": true
+  }
+}
