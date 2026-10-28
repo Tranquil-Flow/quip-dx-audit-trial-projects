@@ -1,0 +1,15 @@
+{
+  "name": "quip-counter-deploy",
+  "version": "1.0.0",
+  "description": "Counter contract deployment on Quip Network testnet (via Sepolia)",
+  "scripts": {
+    "compile": "npx hardhat compile",
+    "deploy": "npx hardhat run scripts/deploy.ts --network sepolia",
+    "increment": "npx hardhat run scripts/increment.ts --network sepolia"
+  },
+  "devDependencies": {
+    "hardhat": "^2.22.0",
+    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "dotenv": "^16.4.0"
+  }
+}
