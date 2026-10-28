@@ -1,0 +1,14 @@
+import { loadHashSigs } from "@quip.network/hashsigs-wasm";
+import { createHash, randomBytes } from "node:crypto";
+const { sphincsPlusC, shrincs, profileName } = await loadHashSigs();
+console.log("profile", profileName);
+const message32 = createHash("sha256").update("hello quip").digest();
+let t=Date.now();
+const seed = crypto.getRandomValues(new Uint8Array(32));
+const keys = shrincs.keygen(seed, 16);
+console.log("keygen ms", Date.now()-t, Object.keys(keys));
+t=Date.now();
+const sig = shrincs.sign(message32, keys);
+console.log("sign ms", Date.now()-t, "sig bytes", sig.length, "remaining", keys.stateful.remaining);
+console.log("verify", shrincs.verify(sig, message32, keys.publicKeyCommitment));
+console.log("verify tampered", shrincs.verify(sig, createHash("sha256").update("other").digest(), keys.publicKeyCommitment));
