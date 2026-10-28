@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "@quip.network/ethereum-sdk": "0.3.0-beta.8",
+    "@quip.network/hashsigs-wasm": "0.2.1-rc9",
+    "ethers": "6.13.4"
+  }
+}
