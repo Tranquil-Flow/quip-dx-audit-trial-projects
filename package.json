@@ -1,0 +1,13 @@
+{
+  "name": "quip-raffle",
+  "version": "1.0.0",
+  "description": "Raffle service using quantum randomness from Quip Network (when available)",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node test.js"
+  },
+  "dependencies": {
+    "express": "^4.21.0"
+  }
+}
