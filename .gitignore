@@ -1,0 +1,5 @@
+node_modules/
+.npm-cache/
+keys/
+offer.json
+NEED_FUNDS.txt
