@@ -1,0 +1,74 @@
+[
+  {
+    "attempt": 0,
+    "order_id": 110,
+    "miner": "5F8JSnuLkeqo8tYj1NVAmpJ2aCh6qdd8VVBCB8D4yGKUshWu",
+    "energy": -955,
+    "best_energy_milli": -1606000,
+    "energy_matches_chain": true,
+    "num_submissions": 19,
+    "loads": [
+      8,
+      10,
+      9
+    ],
+    "assignment_job_to_machine": [
+      1,
+      2,
+      0,
+      1,
+      2,
+      0
+    ],
+    "imbalance": 2,
+    "sum_of_squares": 245
+  },
+  {
+    "attempt": 1,
+    "order_id": 112,
+    "miner": "5DXeTU5xcTuukNfgDLZsZn8Xxr1qpsfTxdYTjfzbYtDsu541",
+    "energy": -955,
+    "best_energy_milli": -1606000,
+    "energy_matches_chain": true,
+    "num_submissions": 6,
+    "loads": [
+      10,
+      9,
+      8
+    ],
+    "assignment_job_to_machine": [
+      0,
+      1,
+      2,
+      0,
+      1,
+      2
+    ],
+    "imbalance": 2,
+    "sum_of_squares": 245
+  },
+  {
+    "attempt": 2,
+    "order_id": 113,
+    "miner": "5DegFptD8BCv4m8ZgeS2WiuemVYLFf5w6qtcpfooYhywdHHT",
+    "energy": -957,
+    "best_energy_milli": -1608000,
+    "energy_matches_chain": true,
+    "num_submissions": 36,
+    "loads": [
+      9,
+      9,
+      9
+    ],
+    "assignment_job_to_machine": [
+      0,
+      1,
+      2,
+      2,
+      1,
+      0
+    ],
+    "imbalance": 0,
+    "sum_of_squares": 243
+  }
+]

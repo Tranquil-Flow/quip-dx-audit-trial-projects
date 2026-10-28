@@ -1,0 +1,16 @@
+Jobs (durations): [3, 5, 2, 7, 4, 6]
+Total load = 27, ideal per machine = 9.0
+[brute force] best sum-of-squares = 243, loads = [9, 9, 9], imbalance = 0, assign(job->machine) = [0, 1, 2, 2, 1, 0]
+model: XQMX(mode=MODEL, domain=BINARY, size=18, linear_terms=18, quadratic_terms=63)
+  linear terms: 18, quadratic terms: 63
+[quip] quote: [quip] job quote (network aglais, fee exact)
+[quip]   reward     1.000000000000 AGLS
+[quip]   fee        0.001905750333 AGLS
+[quip]   total      1.001905750333 AGLS
+[quip]   balance    0.000000000000 AGLS
+[quip]   shortfall  1.001905750333 AGLS
+[Quip network] energy = -5733
+  machines (job indices, 0-based) = [[0, 4, 5], [3], [1, 2]]
+  machine durations               = [[3, 4, 6], [7], [5, 2]]
+  loads = [13, 7, 7], imbalance = 6
+  metadata = {'order_id': 108, 'solver': '5DXr9LokuLE5bs2ZZyhDwbJfR9SqceL7kohQbgMebDcymhfD', 'best_energy_milli': -6384000, 'energy_matches_chain': True, 'num_submissions': 14, 'num_solutions': 1}
