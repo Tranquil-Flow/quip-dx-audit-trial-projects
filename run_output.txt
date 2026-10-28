@@ -1,0 +1,9 @@
+local  : [1, 1, 0, 1, 0] energy -5 cut 5
+quote  : [quip] job quote (network aglais, fee exact)
+[quip]   reward     1.000000000000 AGLS
+[quip]   fee        0.001897757702 AGLS
+[quip]   total      1.001897757702 AGLS
+[quip]   balance    7.996205672999 AGLS
+[quip]   shortfall  0.000000000000 AGLS
+network: [1, 0, 0, 1, 0] energy -5 cut 5
+metadata: {'order_id': 183, 'solver': '5DXr9LokuLE5bs2ZZyhDwbJfR9SqceL7kohQbgMebDcymhfD', 'best_energy_milli': -2000, 'energy_matches_chain': True, 'num_submissions': 8, 'num_solutions': 1} seconds: 87.6

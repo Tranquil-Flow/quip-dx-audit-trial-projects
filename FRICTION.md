@@ -1,0 +1,13 @@
+# FRICTION
+- duckduckgo.com fails to load in qb (chrome-error://chromewebdata, blank).
+- Search "Quip Network developer docs" on Bing (fr locale): top results are Salesforce Quip, getquip toothbrush, Wikipedia. Name collision; Quip Network not discoverable with that query.
+- Bing result pages initially render blank (only search box, shots/0004.png, 0006.png) until a scroll; results then appear.
+- Three different queries incl. "quip.network", "Aglais testnet" returned the same Salesforce/toothbrush/Wikipedia results. No SEO presence for Quip Network dev docs; had to guess domain quip.network.
+- quip.network nav 'Docs' opens a new tab silently; original tab looks unchanged (shots/0009.png), so it seems the click did nothing.
+- Quickstart says 'Right now there's not much to do other than mine blocks' - unclear whether a dev can build anything; no code sample on quickstart.
+- Docs default keystore ~/.quip/keystore.json created with no password on first use; I redirect to ./keys/. Also install log shows 'Cache entry deserialization failed' warning (harmless?).
+- Docs example `print(result.sample, result.energy)` hides that result.sample is an XQMX object (not a list/dict); `result.sample[i]` raises "TypeError: 'XQMX' object is not subscriptable". Had to dir() it to find get_linear(i). Unset/zero vars are omitted, so reading them is non-obvious.
+- Metadata best_energy_milli=-2000 while result.energy=-5 for the same job; unexplained (chain energy vs. local re-eval?) despite energy_matches_chain=True.
+- First quote showed balance 0 / shortfall 1.0019 AGLS, then solve() silently funded via faucet; a solve takes ~85s with little progress output when I filtered warnings. 
+- Output warning about coefficients outside allowed values is noisy on the docs' own example.
+- Docs said macOS needs a Rust toolchain for quip-signer; worked here because cargo was preinstalled - a newcomer without Rust may hit a long build/fail.
