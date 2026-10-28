@@ -1,0 +1,13 @@
+{
+  "network": "aglais",
+  "chain_id": 20033,
+  "rpc_url": "https://evm-rpc.aglais.quip.network:20049",
+  "deployer": "0x90bc4324c0772887F9c04D75a28cccc41Df739d8",
+  "contract_address": "0x86846DC4136DB93d067b6fF6F78D8882FfF7589a",
+  "deployment_tx_hash": "0x7f7621ad1229b120f6cab0e677b2f8693702465d13db140856d887f9346a1ccc",
+  "block_number": 377010,
+  "compute_job_id": 144,
+  "asset_mask": 24,
+  "energy": -30,
+  "result_hash": "0xafb150980ee7433f431ed8e19d77c717738db2248446d9c83862508c17fe731b"
+}

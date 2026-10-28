@@ -1,0 +1,114 @@
+{
+  "schema": "quip-portfolio-result-v1",
+  "network": "aglais",
+  "backend": "quip-aglais",
+  "problem": {
+    "assets": [
+      {
+        "symbol": "ALFA",
+        "sector": "technology",
+        "cost": 7
+      },
+      {
+        "symbol": "BRAV",
+        "sector": "technology",
+        "cost": 2
+      },
+      {
+        "symbol": "CYGN",
+        "sector": "technology",
+        "cost": 5
+      },
+      {
+        "symbol": "DRAY",
+        "sector": "technology",
+        "cost": 4
+      },
+      {
+        "symbol": "ECHO",
+        "sector": "healthcare",
+        "cost": 6
+      },
+      {
+        "symbol": "FJRD",
+        "sector": "healthcare",
+        "cost": 3
+      },
+      {
+        "symbol": "GAMA",
+        "sector": "healthcare",
+        "cost": 1
+      },
+      {
+        "symbol": "HELI",
+        "sector": "healthcare",
+        "cost": 5
+      }
+    ],
+    "groups": [
+      [
+        0,
+        1,
+        2,
+        3
+      ],
+      [
+        4,
+        5,
+        6,
+        7
+      ]
+    ],
+    "one_hot_penalty": 20
+  },
+  "solution_bits": [
+    0,
+    0,
+    0,
+    1,
+    1,
+    0,
+    0,
+    0
+  ],
+  "canonical_result": {
+    "asset_mask": 24,
+    "energy": -30,
+    "job_id": 144,
+    "selected_indices": [
+      3,
+      4
+    ],
+    "selected_symbols": [
+      "DRAY",
+      "ECHO"
+    ]
+  },
+  "result_hash": "0xafb150980ee7433f431ed8e19d77c717738db2248446d9c83862508c17fe731b",
+  "human_objective": 10,
+  "brute_force_optimum": {
+    "solution_bits": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "human_objective": 3,
+    "solver_energy": -37,
+    "optimality_gap": 7
+  },
+  "compute_metadata": {
+    "order_id": 144,
+    "solver": "5Dn1SzVHV4Be4TGzgiUqSkAXUnYoSP9hTBrxwYBKZAC3rAsW",
+    "best_energy_milli": -86500,
+    "energy_matches_chain": true,
+    "num_submissions": 4,
+    "num_solutions": 1
+  },
+  "hardware_attested": false,
+  "hardware_note": "Quip metadata identifies the winning miner, not whether it used CPU, GPU, or QPU hardware."
+}

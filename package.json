@@ -1,0 +1,14 @@
+{
+  "name": "quip-quantum-portfolio-demo",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "compile": "node scripts/compile.mjs",
+    "deploy": "node scripts/deploy-record.mjs",
+    "read": "node scripts/read-result.mjs"
+  },
+  "dependencies": {
+    "ethers": "^6.15.0"
+  }
+}

@@ -1,0 +1,18 @@
+# Secrets and generated output
+keys/*
+!keys/.gitkeep
+artifacts/*.json
+artifacts/*.bin
+artifacts/*.abi
+artifacts/resolc/
+artifacts/forge/
+cache/
+
+# Environments and caches
+.venv/
+node_modules/
+__pycache__/
+.pytest_cache/
+
+# Vendored research checkouts (commit hashes are in DEVLOG.md)
+vendor/

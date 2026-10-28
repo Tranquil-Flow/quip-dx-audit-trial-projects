@@ -1,0 +1,15 @@
+{
+  "assets": [
+    {"symbol": "ALFA", "sector": "technology", "cost": 7},
+    {"symbol": "BRAV", "sector": "technology", "cost": 2},
+    {"symbol": "CYGN", "sector": "technology", "cost": 5},
+    {"symbol": "DRAY", "sector": "technology", "cost": 4},
+    {"symbol": "ECHO", "sector": "healthcare", "cost": 6},
+    {"symbol": "FJRD", "sector": "healthcare", "cost": 3},
+    {"symbol": "GAMA", "sector": "healthcare", "cost": 1},
+    {"symbol": "HELI", "sector": "healthcare", "cost": 5}
+  ],
+  "groups": [[0, 1, 2, 3], [4, 5, 6, 7]],
+  "one_hot_penalty": 20,
+  "description": "Synthetic integer risk-minus-return costs. Select exactly one asset from each sector. Lower is better."
+}
