@@ -1,0 +1,19 @@
+{
+  "name": "v2-gpt-6-sol",
+  "version": "1.0.0",
+  "description": "Foundry ERC-20 deployment exercise on Quip Aglais testnet",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "forge test"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@openzeppelin/contracts": "^5.6.1"
+  }
+}
