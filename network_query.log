@@ -1,0 +1,87 @@
+{
+  "assignment_penalty_units": 0,
+  "assignments_zero_based": [
+    2,
+    1,
+    0,
+    0,
+    1,
+    2
+  ],
+  "backend": "xqsa.SolverQuip/Aglais query",
+  "bits": [
+    0,
+    0,
+    1,
+    0,
+    1,
+    0,
+    1,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    1
+  ],
+  "constant_offset": 843,
+  "exact_valid_check": {
+    "first_optimum": {
+      "assignments_zero_based": [
+        0,
+        1,
+        2,
+        2,
+        1,
+        0
+      ],
+      "loads": [
+        9,
+        9,
+        9
+      ],
+      "squared_imbalance": 0
+    },
+    "minimum_squared_imbalance": 0,
+    "number_of_labelled_optima": 6
+  },
+  "load_range": 0,
+  "loads": [
+    9,
+    9,
+    9
+  ],
+  "machine_jobs_one_based": [
+    [
+      3,
+      4
+    ],
+    [
+      2,
+      5
+    ],
+    [
+      1,
+      6
+    ]
+  ],
+  "objective_F": 0,
+  "penalized_objective": 0,
+  "qubo_energy_without_constant": -843,
+  "solver_metadata": {
+    "best_energy_milli": -765000,
+    "energy_matches_chain": true,
+    "num_solutions": 1,
+    "num_submissions": 19,
+    "order_id": 111,
+    "solver": "5DPhy7jpFj3ikUZgVpwkrXnjFLYXqsWWPNUCrEvmzq2AEwFJ"
+  },
+  "squared_imbalance": 0,
+  "timing_seconds": 0.0,
+  "valid": true
+}

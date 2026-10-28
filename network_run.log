@@ -1,0 +1,108 @@
+[quip] job quote (custom endpoint, fee exact)
+[quip]   reward     1.000000000000 AGLS
+[quip]   fee        0.001905750333 AGLS
+[quip]   total      1.001905750333 AGLS
+[quip]   balance    0.000000000000 AGLS
+[quip]   shortfall  1.001905750333 AGLS
+2026-09-28 11:08:15,102 INFO xqsa.quip [quip] job quote (custom endpoint, fee exact)
+2026-09-28 11:08:15,102 INFO xqsa.quip [quip]   reward     1.000000000000 AGLS
+2026-09-28 11:08:15,102 INFO xqsa.quip [quip]   fee        0.001905750333 AGLS
+2026-09-28 11:08:15,102 INFO xqsa.quip [quip]   total      1.001905750333 AGLS
+2026-09-28 11:08:15,102 INFO xqsa.quip [quip]   balance    0.000000000000 AGLS
+2026-09-28 11:08:15,102 INFO xqsa.quip [quip]   shortfall  1.001905750333 AGLS
+2026-09-28 11:08:18,781 INFO xqsa.quip.faucet faucet https://faucet.aglais.quip.network/request funded 0xb1744a60242126067a277e3067cffdb88110e2bd4c68b5ed60ae38dbc3092b22: 10000000000000 planck
+2026-09-28 11:08:25,791 INFO xqsa.quip proposed Quip job: order_id=111 spec_id=0x8f46f3a31321d1d093314fc769c42cbe7a83d71a0b69e6571a0f68e2a04067f0 reward=1000000000000 planck (block 0x11c81f6eb952b3a5e3680bdfbe14694e44515837e703cf51bf8087dffc2bb25f)
+{
+  "assignment_penalty_units": 0,
+  "assignments_zero_based": [
+    2,
+    1,
+    0,
+    0,
+    1,
+    2
+  ],
+  "backend": "xqsa.SolverQuip/Aglais",
+  "bits": [
+    0,
+    0,
+    1,
+    0,
+    1,
+    0,
+    1,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    1
+  ],
+  "constant_offset": 843,
+  "exact_valid_check": {
+    "first_optimum": {
+      "assignments_zero_based": [
+        0,
+        1,
+        2,
+        2,
+        1,
+        0
+      ],
+      "loads": [
+        9,
+        9,
+        9
+      ],
+      "squared_imbalance": 0
+    },
+    "minimum_squared_imbalance": 0,
+    "number_of_labelled_optima": 6
+  },
+  "load_range": 0,
+  "loads": [
+    9,
+    9,
+    9
+  ],
+  "machine_jobs_one_based": [
+    [
+      3,
+      4
+    ],
+    [
+      2,
+      5
+    ],
+    [
+      1,
+      6
+    ]
+  ],
+  "objective_F": 0,
+  "penalized_objective": 0,
+  "qubo_energy_without_constant": -843,
+  "quote": {
+    "balance_planck_before": 0,
+    "fee_exact": true,
+    "fee_planck": 1905750333,
+    "reward_planck": 1000000000000,
+    "total_planck": 1001905750333
+  },
+  "solver_metadata": {
+    "best_energy_milli": -765000,
+    "energy_matches_chain": true,
+    "num_solutions": 1,
+    "num_submissions": 19,
+    "order_id": 111,
+    "solver": "5DPhy7jpFj3ikUZgVpwkrXnjFLYXqsWWPNUCrEvmzq2AEwFJ"
+  },
+  "squared_imbalance": 0,
+  "timing_seconds": 77.26605945895426,
+  "valid": true
+}

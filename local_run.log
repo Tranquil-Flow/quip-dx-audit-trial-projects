@@ -1,0 +1,91 @@
+{
+  "assignment_penalty_units": 0,
+  "assignments_zero_based": [
+    0,
+    2,
+    1,
+    1,
+    2,
+    0
+  ],
+  "backend": "xqsa.SolverDWaveCPU",
+  "bits": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    1,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    1,
+    1,
+    0,
+    0
+  ],
+  "constant_offset": 843,
+  "exact_valid_check": {
+    "first_optimum": {
+      "assignments_zero_based": [
+        0,
+        1,
+        2,
+        2,
+        1,
+        0
+      ],
+      "loads": [
+        9,
+        9,
+        9
+      ],
+      "squared_imbalance": 0
+    },
+    "minimum_squared_imbalance": 0,
+    "number_of_labelled_optima": 6
+  },
+  "load_range": 0,
+  "loads": [
+    9,
+    9,
+    9
+  ],
+  "machine_jobs_one_based": [
+    [
+      1,
+      6
+    ],
+    [
+      3,
+      4
+    ],
+    [
+      2,
+      5
+    ]
+  ],
+  "objective_F": 0,
+  "penalized_objective": 0,
+  "qubo_energy_without_constant": -843,
+  "solver_metadata": {
+    "params": {
+      "beta_range": null,
+      "num_betas": 5000,
+      "num_occurrences": 1,
+      "num_sweeps": 5000,
+      "num_sweeps_per_beta": 1,
+      "raw_energy": -843.0
+    },
+    "reads": 1000,
+    "seed": 20260928
+  },
+  "squared_imbalance": 0,
+  "timing_seconds": 0.602740625035949,
+  "valid": true
+}

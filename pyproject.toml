@@ -1,0 +1,5 @@
+[project]
+name = "quip-scheduling-demo"
+version = "0.1.0"
+requires-python = ">=3.13"
+dependencies = ["xquad[quip]==0.4.1"]

@@ -1,0 +1,16 @@
+{
+  "network": "Aglais public Quip testnet",
+  "job_order_id": 111,
+  "submission_extrinsic_hash": "0x3b73ed6b8757a5f270a844e5fabcc9eac190b0fe2e90d814583ad5ae2bae886b",
+  "inclusion_block_hash": "0x11c81f6eb952b3a5e3680bdfbe14694e44515837e703cf51bf8087dffc2bb25f",
+  "inclusion_block_number": 374812,
+  "extrinsic_index": 6,
+  "call": "QuantumComputeMempool.propose_job",
+  "submitter_ss58": "5G5NsthyBhwv2Ks4vgWDAmnE7aM2C8aZWWZsYH2UYjzGDoDf",
+  "submitter_account_id_hex": "0xb1744a60242126067a277e3067cffdb88110e2bd4c68b5ed60ae38dbc3092b22",
+  "winning_solver_ss58": "5DPhy7jpFj3ikUZgVpwkrXnjFLYXqsWWPNUCrEvmzq2AEwFJ",
+  "best_energy_milli": -765000,
+  "energy_matches_chain": true,
+  "num_submissions": 19,
+  "num_solutions_in_winning_submission": 1
+}
