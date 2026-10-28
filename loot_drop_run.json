@@ -1,0 +1,36 @@
+{
+  "rpc": "https://evm-rpc.aglais.quip.network",
+  "chainId": 20033,
+  "wallet": "0xc231a9C993D8CE0a2fBf818a29573AdEc896499A",
+  "lootDropAddress": "0xcb1a5cf991adfc81720c9fe872e3f86182aeb80e",
+  "deployTx": "0x7e0fd8cc742c0ae59a4f5b9d0e535327e9865dfd1c142a6f6f199bcb04f4f927",
+  "openLootTx": "0x23d33bbcd7957241b4d6885815ebcea74ac49ada71f2cbff04ea63a13c0f14d1",
+  "fulfillRandomnessTx": "0xf68902766b262053968f00636d5ff259af4db4bbcc25a3831f30bb6cecceea6b",
+  "revealLootTx": "0x6de55698065704e69a4344379f9e15ff9226776c86a938bf39dccbe01be3eb00",
+  "requestId": 0,
+  "randomness": "0xd39e1b5990cde9cfa305fa1a9ae9312417a068f4b4c15d04ca5307e760884208",
+  "transcript": {
+    "output": "0xd39e1b5990cde9cfa305fa1a9ae9312417a068f4b4c15d04ca5307e760884208",
+    "samples": 0,
+    "seed_manifest": "0xc86a7aaad696af18f6fff509254af8b4304c799b5144ce90b0faa8fc6b433952",
+    "merklroot": "0x2eb7ba7ca848de7fe57a4cf95d4cb0d74b43765f3e7b066fc613d5e3f8ae2d01",
+    "audited": 0,
+    "xeb_score": 0,
+    "extractor": "toeplitz",
+    "block_hash": "afbb339dbd0df2781a70a2c8bfd534dbe7ca7c87ec761aa6980f305d33386f21",
+    "block_number": 478818,
+    "public_nonce": "0x5831461bc048f23156388eeb4ad7cb22"
+  },
+  "loot": {
+    "player": "0xc231a9C993D8CE0a2fBf818a29573AdEc896499A",
+    "itemIndex": 0,
+    "rarity": 0,
+    "name": "WoodenSword"
+  },
+  "explorer": {
+    "contract": "https://explorer.aglais.quip.network/address/0xcb1a5cf991adfc81720c9fe872e3f86182aeb80e",
+    "open": "https://explorer.aglais.quip.network/tx/0x23d33bbcd7957241b4d6885815ebcea74ac49ada71f2cbff04ea63a13c0f14d1",
+    "fulfill": "https://explorer.aglais.quip.network/tx/0xf68902766b262053968f00636d5ff259af4db4bbcc25a3831f30bb6cecceea6b",
+    "reveal": "https://explorer.aglais.quip.network/tx/0x6de55698065704e69a4344379f9e15ff9226776c86a938bf39dccbe01be3eb00"
+  }
+}
