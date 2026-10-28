@@ -1,0 +1,13 @@
+[package]
+name = "quip-pq-demo"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.95"
+
+[dependencies]
+hashsigs-rs = "=0.2.1-rc9"
+sha2 = "0.10"
+getrandom = "0.3"
+
+[profile.release]
+opt-level = 3
