@@ -1,0 +1,68 @@
+{
+  "rpc": "http://127.0.0.1:8545",
+  "chainId": 84532,
+  "quip": {
+    "chainId": 84532,
+    "WalletFactory": "0xA2B2F71456a799FCf4EF7A3111c4B96b3e928cc8",
+    "ShrincsWalletImplementation": "0xc4E4652898bB12C4f0Ba9083829689B1963135E7",
+    "ShrincsVerifier": "0xF2f9E6D692da41b089c3c261c41509669eEc5567",
+    "ShrincsPaymaster": "0xC4209cD353CF7B1dbBf6F6B4d08bC5461aC7E145",
+    "EntryPointV07": "0x0000000071727De22E5E9d8BAf0edAc6f37da032"
+  },
+  "phases": {
+    "partyA-makerWallet": {
+      "wallet": "0x27B345F1fBEb310604BD90313a0d243894a7B9De",
+      "owner": "0x8A213B9Ad159D9750F0477594cE91323430299B9",
+      "commitment": "0xc794bc65fac81234986ac16de80994061464dac0fca58effcc0f70e01bdec008"
+    },
+    "partyB-takerWallet": {
+      "wallet": "0x433528Dc07e3284124B9F30ACe44f723a3f4Ac8C",
+      "owner": "0x964d6fbdD86ACe275a19A464eA19fB50d78854B8",
+      "commitment": "0xf7317c1cbe9439e0180e1d24e430b05bc553e59fca045d7a56ba5eb450dab297"
+    },
+    "orders": {
+      "scheme": "SHRINCS-256s-keccak",
+      "maker": {
+        "eoa": "0x8A213B9Ad159D9750F0477594cE91323430299B9",
+        "pqCommitment": "0x63c7c85802303aac18615e8f5d07513a12d8dd89409a4f3bbeef0c067c5aaa05"
+      },
+      "taker": {
+        "eoa": "0x964d6fbdD86ACe275a19A464eA19fB50d78854B8",
+        "pqCommitment": "0x90c414c1b29a3d822b4f0c771e61e9dba4d5a10888637a08e174b82e3ff39696"
+      },
+      "digest": "0x1d36afdf17029202ad98822e09cdfc40e68136f44da2950051989f42d26674aa",
+      "signatureBytes": 2784,
+      "checks": {
+        "makerVerified": true,
+        "takerVerified": true,
+        "symmetricDigest": true
+      }
+    },
+    "deploy": {
+      "address": "0x885d69fd207299472935c41add252b0f97b3fe42",
+      "tx": "0x73648a4a1d387e05acef96636e35928986a08c314f4a8bca0ac12175adcecf95",
+      "quipFactory": "0xA2B2F71456a799FCf4EF7A3111c4B96b3e928cc8"
+    },
+    "trade1_settled": {
+      "digest": "0x1d36afdf17029202ad98822e09cdfc40e68136f44da2950051989f42d26674aa",
+      "secret": "0x5e4f65bf09dd6bc84f7978add1704ce9db47d395212f187aeac41d53048acd0a",
+      "secretHash": "0xa0ad6eeb4c73ce1b8a53f9225aee86d3290902c52764395eac29cf18ed04f9fe",
+      "commits": [
+        "0x4fe3ccdc0b0d7c7a0afe904ee3f969a198423d2585eea6d4ea37eab8b4700f35",
+        "0xb9b735f1e4558aa142304d48393b673e4c554e87796c91868a623e393fa4ef56"
+      ],
+      "executes": [
+        "0xb76590830ca2beaa6026e74f04432624f960c07f102be76df8aeea0e0f950c00",
+        "0x86555ecf46c652fe538a7d895b19d28a177c732526f4ba2d0f4013847f158270"
+      ]
+    },
+    "trade2_expired": {
+      "secretHash": "0x0c4360952fb1634d656be370bbbcef3d2450701e76c46f51b8263e60d3f1c60d",
+      "commit": "0x7f7a299d5b06a57d8d77ed1c9ab1fa54adfda4b3a49f00488a1819a3e6824dc3",
+      "reclaim": "0xa8d282aea56294900f3b3c8d2bb77b5e20988c7131210d015e1ba9e48b7c3c29",
+      "walletBalanceBeforeReclaim": "1.7",
+      "walletBalanceAfterReclaim": "2"
+    }
+  },
+  "settlementContract": "0x885d69fd207299472935c41add252b0f97b3fe42"
+}
