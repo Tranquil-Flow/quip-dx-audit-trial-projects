@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.coverage/
+keys/*.private.json
+keys/*.signature.json
+keys/*.body
+keys/demo-*
+.DS_Store

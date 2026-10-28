@@ -1,0 +1,38 @@
+{
+  "name": "quip-hybrid-api-sign",
+  "version": "0.1.0",
+  "description": "Hybrid ed25519 + ML-DSA-44 API request signing with Quip Network pqhybridsign",
+  "private": true,
+  "type": "module",
+  "license": "AGPL-3.0-or-later",
+  "engines": {
+    "node": ">=20"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "bin": {
+    "quip-api-sign": "./dist/cli.js"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "postbuild": "node scripts/postbuild.mjs",
+    "test": "npm run build && node --test test/*.test.mjs",
+    "demo": "npm run build && node scripts/interop-demo.mjs"
+  },
+  "dependencies": {
+    "@quip.network/pqhybridsign": "0.0.0-rc9"
+  },
+  "devDependencies": {
+    "@types/node": "26.6.3",
+    "typescript": "7.0.2"
+  }
+}
