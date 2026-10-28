@@ -1,0 +1,63 @@
+
+> quip-pq-demo@1.0.0 demo
+> tsx src/demo.ts
+
+
+=== 1. Load Quip SHRINCS wasm ===
+   wasm version : 0.2.1-rc9
+   profile      : shrincs-256s-keccak
+   (signatures from one profile do NOT verify under another)
+
+=== 2. Generate a post-quantum keypair (fresh throwaway key) ===
+   key fingerprint (seed)   : 0xfdb2b628a3bde283…(32 bytes)
+   publicKeyCommitment      : 0x8f72d1e21f1976674c38dba62fe1a7a1bdc2e53d662e5a8205b9fb09c3fa0e7a
+   stateless pkSeed         : 0x8ad4c578c08be131…(32 bytes)
+   stateless root           : 0x090229f3e562baf6…(32 bytes)
+   stateful leaves remaining: 16/16
+   saved secret  -> /private/tmp/devtrials2/t01-deepseek-v4-flash/keys/shrincs-demo-signing-key.hex
+   saved public  -> /private/tmp/devtrials2/t01-deepseek-v4-flash/keys/shrincs-demo-public.json
+
+=== 3. Message to sign ===
+   message      : "EVM dApp action: transfer 1.00 ETH to 0x1111...1111 (nonce 7)"
+   keccak-256   : 0xe5b5a5c93270dd60c7d044253dc97600fb1b734d599297b5bdd59aca28c7c02a  (32-byte digest that gets signed)
+
+=== 4. Sign with the stateful SHRINCS path ===
+   signature    : 2784 bytes in 60.8 ms
+   sig prefix   : 0x00000000000000000000000000000000…(2784 bytes)
+   leaves now   : 15 remaining (advanced in place)
+
+=== 5. Verify the genuine signature (expect PASS) ===
+   [PASS] shrincs.verify(sig, msg, commitment): got=true want=true
+
+=== 6. Tamper with the message (expect verification to FAIL) ===
+   original : "EVM dApp action: transfer 1.00 ETH to 0x1111...1111 (nonce 7)"
+   tampered : "EVM dApp action: transfer 1.00 ETH to 0xBAD0...BAD0 (nonce 7)"
+   digest original: 0xe5b5a5c93270dd60c7d044253dc97600fb1b734d599297b5bdd59aca28c7c02a
+   digest tampered: 0x52be436ecbfe313fb92624fb250edb0e120c1ccd8f5ef7b3ff939b112a551adc
+   [PASS] shrincs.verify(sig, TAMPERED msg, commitment): got=false want=false
+
+=== 7. Tamper with the signature bytes (expect FAIL) ===
+   flipped last bit of the 2784-byte signature
+   [PASS] shrincs.verify(TAMPERED sig, msg, commitment): got=false want=false
+
+=== 8. Verify against a different keypair's commitment (expect FAIL) ===
+   other commitment: 0x65b84842e33cae1354fd909f5a7e03b9a23a51f324a3b7018cc52fa4baf99074
+   [PASS] shrincs.verify(sig, msg, OTHER commitment): got=false want=false
+
+=== 9. Stateless (SPHINCS+C) recovery path — same guarantees ===
+   stateless sig: 91200 bytes
+   [PASS] shrincs.verifyStateless(sig, msg, stateless pk): got=true want=true
+   [PASS] shrincs.verifyStateless(sig, TAMPERED msg, stateless pk): got=false want=false
+   [PASS] sphincsPlusC.verify(genuine): got=true want=true
+   [PASS] sphincsPlusC.verify(tampered msg): got=false want=false
+
+=== 10. Persist / re-import the secret key round-trip ===
+   [PASS] re-imported commitment matches original: got="0x8f72d1e21f1976674c38dba62fe1a7a1bdc2e53d662e5a8205b9fb09c3fa0e7a" want="0x8f72d1e21f1976674c38dba62fe1a7a1bdc2e53d662e5a8205b9fb09c3fa0e7a"
+   secret key   : 264 bytes (flat SHRINCS secret)
+   re-signed sig still verifies: true
+
+=== SUMMARY ===
+   checks passed: 9
+   checks failed: 0
+
+RESULT: OK — post-quantum sign/verify works and tampering is rejected.

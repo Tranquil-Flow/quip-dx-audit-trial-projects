@@ -1,0 +1,19 @@
+{
+  "name": "quip-pq-demo",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Quip Network SHRINCS post-quantum signature demo (keygen/sign/verify + tamper detection)",
+  "scripts": {
+    "demo": "tsx src/demo.ts"
+  },
+  "dependencies": {
+    "@noble/hashes": "^1.8.0",
+    "@quip.network/hashsigs-wasm": "0.2.1-rc9"
+  },
+  "devDependencies": {
+    "@types/node": "^22.9.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.6.3"
+  }
+}
