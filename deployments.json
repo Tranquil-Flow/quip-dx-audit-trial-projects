@@ -1,0 +1,9 @@
+{
+  "network": "Quip Aglais testnet (pallet-revive EVM sidecar)",
+  "chainId": 20033,
+  "evmRpc": "https://evm-rpc.aglais.quip.network",
+  "explorer": "https://explorer.aglais.quip.network",
+  "QuipResultRegistry": "0x29ae4f0C3B375F1C4fD542974b64cf9DFC9DB8AE",
+  "deployTx": "0xc58ce6173609e7afd05a83de3a93547d32ca7b96805986d84ecfbbd425668809",
+  "deployer": "0x51Af88B2FA682A9383FB1fc417fb96E3F21C1eCD"
+}
