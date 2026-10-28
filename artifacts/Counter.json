@@ -1,0 +1,30 @@
+{
+  "contractName": "Counter",
+  "sourceName": "Counter.sol",
+  "compiler": "0.8.30+commit.73712a01.Emscripten.clang",
+  "evmVersion": "paris",
+  "abi": [
+    {
+      "inputs": [],
+      "name": "count",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "increment",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x6080604052348015600f57600080fd5b50609680601d6000396000f3fe6080604052348015600f57600080fd5b506004361060325760003560e01c806306661abd146037578063d09de08a146051575b600080fd5b603f60005481565b60405190815260200160405180910390f35b605e600080546001019055565b00fea2646970667358221220f786c695b03922eb9e5136c7e89b91fdb66844f213dff0ee41585482658bb66964736f6c634300081e0033",
+  "deployedBytecode": "0x6080604052348015600f57600080fd5b506004361060325760003560e01c806306661abd146037578063d09de08a146051575b600080fd5b603f60005481565b60405190815260200160405180910390f35b605e600080546001019055565b00fea2646970667358221220f786c695b03922eb9e5136c7e89b91fdb66844f213dff0ee41585482658bb66964736f6c634300081e0033"
+}

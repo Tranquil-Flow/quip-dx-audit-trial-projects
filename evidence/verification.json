@@ -1,0 +1,31 @@
+{
+  "verifiedAt": "2026-09-28T09:20:49.412Z",
+  "chainId": 20033,
+  "contractAddress": "0x9E81d0b542b759D8A23141ba92da0d71C025C13d",
+  "bytecodeBytes": 150,
+  "count": "1",
+  "rpc": {
+    "deployment": {
+      "hash": "0x6cabc5376ca3aaea85ee7c818acff1130cefc727bcf45f7205f53b84435f8618",
+      "status": 1,
+      "blockNumber": 374903
+    },
+    "increment": {
+      "hash": "0x5b136fa215d2657030c4223c4a45b6c28482e3a9d0aa3dfa1c1aba4283b722c1",
+      "status": 1,
+      "blockNumber": 374907
+    }
+  },
+  "explorer": {
+    "deployment": {
+      "hash": "0x6cabc5376ca3aaea85ee7c818acff1130cefc727bcf45f7205f53b84435f8618",
+      "status": "ok",
+      "blockNumber": 374903
+    },
+    "increment": {
+      "hash": "0x5b136fa215d2657030c4223c4a45b6c28482e3a9d0aa3dfa1c1aba4283b722c1",
+      "status": "ok",
+      "blockNumber": 374907
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "name": "quip-aglais-counter",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Deploy and exercise a simple Counter on Quip Network's Aglais EVM testnet",
+  "scripts": {
+    "wallet:new": "node scripts/create-wallet.mjs",
+    "compile": "node scripts/compile.mjs",
+    "deploy": "node scripts/deploy.mjs",
+    "increment": "node scripts/increment-and-read.mjs",
+    "read": "node scripts/read-count.mjs",
+    "verify:rpc": "node scripts/check-rpc.mjs",
+    "verify:evidence": "node scripts/verify-evidence.mjs"
+  },
+  "dependencies": {
+    "ethers": "6.15.0",
+    "solc": "0.8.30"
+  }
+}

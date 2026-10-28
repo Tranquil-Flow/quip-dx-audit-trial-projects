@@ -1,0 +1,19 @@
+{
+  "network": "Aglais Testnet (Quip Network)",
+  "chainId": 20033,
+  "rpcUrl": "https://evm-rpc.aglais.quip.network:20049",
+  "explorerUrl": "https://explorer.aglais.quip.network",
+  "deployer": "0xf2DE0655F31660A988F01619e12dF845c7180c59",
+  "deployerBalanceBefore": "9.999",
+  "contractAddress": "0x9E81d0b542b759D8A23141ba92da0d71C025C13d",
+  "deploymentTransactionHash": "0x6cabc5376ca3aaea85ee7c818acff1130cefc727bcf45f7205f53b84435f8618",
+  "deploymentBlockNumber": 374903,
+  "gasUsed": "727364444",
+  "deployedAt": "2026-09-28T09:17:37.857Z",
+  "incrementTransactionHash": "0x5b136fa215d2657030c4223c4a45b6c28482e3a9d0aa3dfa1c1aba4283b722c1",
+  "incrementBlockNumber": 374907,
+  "incrementGasUsed": "4591837",
+  "countBefore": "0",
+  "countAfter": "1",
+  "incrementedAt": "2026-09-28T09:18:01.614Z"
+}
