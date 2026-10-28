@@ -1,0 +1,162 @@
+{
+  "chainId": 84532,
+  "treasury": {
+    "address": "0xbd5b07fC46ce5b7DdF2826Bd44d2a24c2C9246EB",
+    "commitment": "0xbceb46d505f845b5365e21ee553f74cff8cd09a8b5aaaddeb4bf0370b3749593",
+    "owner": "0x1eEE5e6C6bce95D80D691e43EA777BC81E25742e",
+    "maxSignatures": 16
+  },
+  "fundTx": {
+    "tx": "0xb683c96dee204355f9c0efc2e5bd8222316133e736e767890146d75efec07472",
+    "block": "47415482",
+    "status": "success",
+    "gasUsed": "25810"
+  },
+  "token": {
+    "address": "0x85ce9dd38948fe4d61a62d8a40a2d7a8d9be1633",
+    "deployTx": "0xfff85c9b989dcb3df1ebee08de44e0be357c7465ee617e9ab21246845678eb63"
+  },
+  "approval": {
+    "payoutHash": "0xc8e79db005e2c6000af9cbbe89cb73e1958f37a4e0bb9882cc6c004f4ca8a910",
+    "leaf": 2,
+    "approverCommitment": "0x769383a6b7ed4188b57f2db9c2ab036b64094f12879923471690ff513f0c85b3",
+    "offchain": true,
+    "onchain": "0x024ad318",
+    "negative": "0xffffffff",
+    "payout": {
+      "treasury": "0xbd5b07fC46ce5b7DdF2826Bd44d2a24c2C9246EB",
+      "recipient": "0xAE207CE0db3e58bfFeCF44c2e56c26A67726EC1F",
+      "sellAsset": "native",
+      "sellAmount": "2000000000000000",
+      "buyToken": "0x85ce9dd38948fe4d61a62d8a40a2d7a8d9be1633",
+      "minBuyAmount": "5000000",
+      "nonce": "2",
+      "deadline": "1790686303",
+      "chainId": "84532"
+    }
+  },
+  "swap": {
+    "lock": "0x08d66d26f000e227625bb842cc1e21e74f8d286f63c95b6fcf6ed9b2c8ce4f66",
+    "treasuryTerms": {
+      "chainId": "84532",
+      "reclaimRecipient": "0xbd5b07fC46ce5b7DdF2826Bd44d2a24c2C9246EB",
+      "recipient": "0xAE207CE0db3e58bfFeCF44c2e56c26A67726EC1F",
+      "commitmentDeadline": "1790600203",
+      "claimDeadline": "1790600803",
+      "reclaimRelease": "1790601403",
+      "assets": [
+        {
+          "assetType": 0,
+          "target": "0x0000000000000000000000000000000000000000",
+          "id": "0",
+          "amount": "2000000000000000"
+        }
+      ]
+    },
+    "makerTerms": {
+      "chainId": "84532",
+      "reclaimRecipient": "0x53d563238f9809396A4F0846b4A88f12e51853C3",
+      "recipient": "0x53d563238f9809396A4F0846b4A88f12e51853C3",
+      "commitmentDeadline": "1790600503",
+      "claimDeadline": "1790601103",
+      "reclaimRelease": "1790601703",
+      "assets": [
+        {
+          "assetType": 1,
+          "target": "0x85ce9dd38948fe4d61a62d8a40a2d7a8d9be1633",
+          "id": "0",
+          "amount": "5000000"
+        }
+      ]
+    },
+    "commitTreasury": {
+      "tx": "0x998faeb83db5fd3b5ebf5b862cc7e182ecfb8948da7442f9d3194a522d7b55ea",
+      "block": "47415490",
+      "status": "success",
+      "gasUsed": "370487"
+    },
+    "canonicalDigest": "0x1559f857cb6b73cc0409904b43b94c503aa35763f10afefd9e81620a1cdb30c8",
+    "commitMaker": {
+      "tx": "0xc915f81d8598b14d4121256425c71f1332909f57550855e1361a235e15391c02",
+      "block": "47415493",
+      "status": "success",
+      "gasUsed": "311110"
+    },
+    "approveTx": "0x815ad946838a500eb7f2c2f3118ee9d926da2aeb47c11345f8aeb25acb223a5d",
+    "claim": {
+      "tx": "0xbd029ec44154484b3f03c115c5693108e9d2d8c421ed23f00610655e4f588e80",
+      "block": "47415495",
+      "status": "success",
+      "gasUsed": "73725"
+    }
+  },
+  "report": {
+    "treasury": "0xbd5b07fC46ce5b7DdF2826Bd44d2a24c2C9246EB",
+    "treasuryETH": "0.003",
+    "treasurySlotsUsed": 2,
+    "treasurySlotsRemaining": 14,
+    "recipient": "0xAE207CE0db3e58bfFeCF44c2e56c26A67726EC1F",
+    "recipientTUSD": "10",
+    "makerTUSD": "990",
+    "makerETH": "1.00256531957134074",
+    "swapStatus": "settled"
+  },
+  "payoutNonce": 2,
+  "history": [
+    {
+      "lock": "0x498cc019047fbe4eb074b06da8c13eb26dbb56c9458032715ba4983f0df253fc",
+      "treasuryTerms": {
+        "chainId": "84532",
+        "reclaimRecipient": "0xbd5b07fC46ce5b7DdF2826Bd44d2a24c2C9246EB",
+        "recipient": "0xAE207CE0db3e58bfFeCF44c2e56c26A67726EC1F",
+        "commitmentDeadline": "1790599603",
+        "claimDeadline": "1790600203",
+        "reclaimRelease": "1790600803",
+        "assets": [
+          {
+            "assetType": 0,
+            "target": "0x0000000000000000000000000000000000000000",
+            "id": "0",
+            "amount": "2000000000000000"
+          }
+        ]
+      },
+      "makerTerms": {
+        "chainId": "84532",
+        "reclaimRecipient": "0x53d563238f9809396A4F0846b4A88f12e51853C3",
+        "recipient": "0x53d563238f9809396A4F0846b4A88f12e51853C3",
+        "commitmentDeadline": "1790599903",
+        "claimDeadline": "1790600503",
+        "reclaimRelease": "1790601103",
+        "assets": [
+          {
+            "assetType": 1,
+            "target": "0x85ce9dd38948fe4d61a62d8a40a2d7a8d9be1633",
+            "id": "0",
+            "amount": "5000000"
+          }
+        ]
+      },
+      "commitTreasury": {
+        "tx": "0x3b1f8d6717d7200d98f0d53d7c373e16bdbba3112f2c86ac8f28d1a1ddf38d57",
+        "block": "47415484",
+        "status": "success",
+        "gasUsed": "403765"
+      },
+      "canonicalDigest": "0xf5973ea7976a89fc6147652159f99a4dbe79e05aa23fa9b373e0d07c30c4dcbf",
+      "commitMaker": {
+        "tx": "0xb61dbb0573bbc733e0a7ea2190fbf22d451ddff979c8bc267e158eae95ddf8f2",
+        "block": "47415487",
+        "status": "success",
+        "gasUsed": "310184"
+      },
+      "approveTx": "0xecc64e64c161c2dd66dff60edd55125a0ca2bb50a482336e2ee799414c432df0",
+      "claim": {
+        "tx": "0xab9787b8570469ae9ade5c69cabd8d5af935d880fd174582586ce7da421a99f5",
+        "block": "47415489",
+        "status": "success",
+        "gasUsed": "90816"
+      }
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+[2026-09-28T12:41:59.578Z] === step: commit-treasury ===
+[2026-09-28T12:41:59.588Z] swap plan ok; lock 0x498cc019047fbe4eb074b06da8c13eb26dbb56c9458032715ba4983f0df253fc canonical digest 0xf5973ea7976a89fc6147652159f99a4dbe79e05aa23fa9b373e0d07c30c4dcbf
+[2026-09-28T12:42:02.233Z] prepared commit Call {
+  to: '0xA7955981D5759a799267063110Be0F7AeCc26F8A',
+  value: '2000000000000000',
+  dataLen: 1092
+}
+[2026-09-28T12:42:02.554Z] treasury commit executed via PQ-signed ShrincsWallet.execute in 320ms {
+  tx: '0x3b1f8d6717d7200d98f0d53d7c373e16bdbba3112f2c86ac8f28d1a1ddf38d57',
+  block: '47415484',
+  status: 'success',
+  gasUsed: '403765'
+}

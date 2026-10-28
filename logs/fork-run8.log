@@ -1,0 +1,48 @@
+[2026-09-28T12:42:57.934Z] === step: approve ===
+[2026-09-28T12:43:01.179Z] approver signed payout 0xc8e79db005e2c6000af9cbbe89cb73e1958f37a4e0bb9882cc6c004f4ca8a910 at leaf 2 in 183ms; envelope 2816 bytes
+[2026-09-28T12:43:01.180Z] off-chain wasm verify: true
+[2026-09-28T12:43:01.188Z] on-chain SHRINCSVerifier.verify(0xF2f9E6D692da41b089c3c261c41509669eEc5567) -> 0x024ad318 VALID
+[2026-09-28T12:43:01.194Z] negative control (tampered hash) -> 0xffffffff
+[2026-09-28T12:43:01.194Z] === step: commit-treasury ===
+[2026-09-28T12:43:01.202Z] swap plan ok; lock 0x08d66d26f000e227625bb842cc1e21e74f8d286f63c95b6fcf6ed9b2c8ce4f66 canonical digest 0x1559f857cb6b73cc0409904b43b94c503aa35763f10afefd9e81620a1cdb30c8
+[2026-09-28T12:43:06.257Z] prepared commit Call {
+  to: '0xA7955981D5759a799267063110Be0F7AeCc26F8A',
+  value: '2000000000000000',
+  dataLen: 1092
+}
+[2026-09-28T12:43:06.982Z] treasury ETH 0.005 -> 0.003 (paid from the Quip account itself)
+[2026-09-28T12:43:06.982Z] treasury commit executed via PQ-signed ShrincsWallet.execute in 724ms {
+  tx: '0x998faeb83db5fd3b5ebf5b862cc7e182ecfb8948da7442f9d3194a522d7b55ea',
+  block: '47415490',
+  status: 'success',
+  gasUsed: '370487'
+}
+[2026-09-28T12:43:06.984Z] === step: commit-maker ===
+[2026-09-28T12:43:06.991Z] (fork) warped chain time 1790599951 -> 1790600203
+[2026-09-28T12:43:12.257Z] maker commit (keyed SHRINCS route) {
+  tx: '0xc915f81d8598b14d4121256425c71f1332909f57550855e1361a235e15391c02',
+  block: '47415493',
+  status: 'success',
+  gasUsed: '311110'
+}
+[2026-09-28T12:43:12.258Z] === step: claim ===
+[2026-09-28T12:43:12.265Z] (fork) warped chain time 1790600208 -> 1790600503
+[2026-09-28T12:43:12.308Z] claim (secret revealed by treasury operator EOA) {
+  tx: '0xbd029ec44154484b3f03c115c5693108e9d2d8c421ed23f00610655e4f588e80',
+  block: '47415495',
+  status: 'success',
+  gasUsed: '73725'
+}
+[2026-09-28T12:43:12.310Z] recipient tUSD 5 -> 10
+[2026-09-28T12:43:12.311Z] === step: report ===
+[2026-09-28T12:43:12.565Z] REPORT {
+  treasury: '0xbd5b07fC46ce5b7DdF2826Bd44d2a24c2C9246EB',
+  treasuryETH: '0.003',
+  treasurySlotsUsed: 2,
+  treasurySlotsRemaining: 14,
+  recipient: '0xAE207CE0db3e58bfFeCF44c2e56c26A67726EC1F',
+  recipientTUSD: '10',
+  makerTUSD: '990',
+  makerETH: '1.00256531957134074',
+  swapStatus: 'settled'
+}

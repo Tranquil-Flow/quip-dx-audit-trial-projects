@@ -1,0 +1,23 @@
+[2026-09-28T12:42:18.232Z] === step: claim ===
+[2026-09-28T12:42:18.249Z] (fork) warped chain time 1790599610 -> 1790599903
+[2026-09-28T12:42:18.351Z] claim (secret revealed by treasury operator EOA) {
+  tx: '0xab9787b8570469ae9ade5c69cabd8d5af935d880fd174582586ce7da421a99f5',
+  block: '47415489',
+  status: 'success',
+  gasUsed: '90816'
+}
+[2026-09-28T12:42:18.360Z] recipient tUSD 0 -> 5
+[2026-09-28T12:42:18.360Z] === step: report ===
+[2026-09-28T12:42:23.235Z] REPORT {
+  treasury: '0xbd5b07fC46ce5b7DdF2826Bd44d2a24c2C9246EB',
+  treasuryETH: '0.005',
+  treasurySlotsUsed: 1,
+  treasurySlotsRemaining: 15,
+  recipient: '0xAE207CE0db3e58bfFeCF44c2e56c26A67726EC1F',
+  recipientTUSD: '5',
+  makerTUSD: '995',
+  makerETH: '1.000923425329554442',
+  swapStatus: {
+    error: "Cannot read properties of undefined (reading 'canonicalDigest')"
+  }
+}

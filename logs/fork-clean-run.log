@@ -1,0 +1,107 @@
+[2026-09-28T12:51:49.045Z] === step: setup ===
+[2026-09-28T12:51:49.046Z] chainId 84532 rpc http://127.0.0.1:8547 fork? true
+[2026-09-28T12:51:49.046Z] operator 0x1eEE5e6C6bce95D80D691e43EA777BC81E25742e maker 0x53d563238f9809396A4F0846b4A88f12e51853C3 recipient 0xAE207CE0db3e58bfFeCF44c2e56c26A67726EC1F
+[2026-09-28T12:51:49.046Z] Quip SHRINCS addresses {
+  EntryPoint: '0x0000000071727De22E5E9d8BAf0edAc6f37da032',
+  ShrincsWalletImplementation: '0xc4E4652898bB12C4f0Ba9083829689B1963135E7',
+  ShrincsPaymaster: '0x430c8c89492E3541e141148Dd7a7D6dD432e5890',
+  ShrincsPaymasterImpl: '0xAd31002F1a0ea4A1DbBA827b1eF0f15e9FF86Ca4',
+  ShrincsVerifier: '0xF2f9E6D692da41b089c3c261c41509669eEc5567'
+}
+[2026-09-28T12:51:49.047Z] Omnibus (QuipSwap) deployment {
+  chainId: 84532n,
+  omnibusAddress: '0xA7955981D5759a799267063110Be0F7AeCc26F8A',
+  version: 'QUIP:Omnibus:v1.0.0-beta.3',
+  walletFactory: '0xA2B2F71456a799FCf4EF7A3111c4B96b3e928cc8',
+  deployed: true
+}
+[2026-09-28T12:51:49.242Z]   code@EntryPoint 0x0000000071727De22E5E9d8BAf0edAc6f37da032: 16035 bytes
+[2026-09-28T12:51:49.400Z]   code@ShrincsWalletImplementation 0xc4E4652898bB12C4f0Ba9083829689B1963135E7: 19510 bytes
+[2026-09-28T12:51:49.542Z]   code@ShrincsPaymaster 0x430c8c89492E3541e141148Dd7a7D6dD432e5890: 76 bytes
+[2026-09-28T12:51:49.776Z]   code@ShrincsPaymasterImpl 0xAd31002F1a0ea4A1DbBA827b1eF0f15e9FF86Ca4: 8892 bytes
+[2026-09-28T12:51:49.959Z]   code@ShrincsVerifier 0xF2f9E6D692da41b089c3c261c41509669eEc5567: 4581 bytes
+[2026-09-28T12:51:50.109Z]   code@Omnibus 0xA7955981D5759a799267063110Be0F7AeCc26F8A: 13064 bytes
+[2026-09-28T12:51:50.289Z]   code@WalletFactory 0xA2B2F71456a799FCf4EF7A3111c4B96b3e928cc8: 76 bytes
+[2026-09-28T12:51:50.606Z]   balance operator: 1 ETH
+[2026-09-28T12:51:50.633Z]   balance maker: 1 ETH
+[2026-09-28T12:51:50.634Z] === step: create-wallet ===
+[2026-09-28T12:51:50.731Z] estimating creation cost...
+[2026-09-28T12:52:02.990Z] creation estimate {
+  gasUnits: 600261n,
+  gasPrice: 1006000000n,
+  expectedGasUnits: 500218n,
+  expectedGasPrice: 1005000000n,
+  creationFee: 0n
+}
+[2026-09-28T12:52:15.564Z] created treasury Quip account 0xbd5b07fC46ce5b7DdF2826Bd44d2a24c2C9246EB in 12573ms; commitment 0xbceb46d505f845b5365e21ee553f74cff8cd09a8b5aaaddeb4bf0370b3749593
+[2026-09-28T12:52:15.856Z] wallet state {
+  owner: '0x1eEE5e6C6bce95D80D691e43EA777BC81E25742e',
+  version: 2n,
+  executeFee: 0n,
+  shrincsPublicKeyCommitment: '0x3b67f59de788de9a777bfa6922448ed6e1feb5cbd809aa0f02b2a39e74430bb8',
+  erc1271PublicKeyCommitment: '0xc20cacecb9ef59bbf1735de61cb57ffd17c3aee51687ff76279dce6fa80bdc3d',
+  hashSuite: 1,
+  erc1271HashSuite: 1,
+  keyVersion: 0n,
+  actionNonce: 0n,
+  maxSignatures: 16,
+  statefulLeavesUsed: 0,
+  remainingStatefulSignatures: 16
+}
+[2026-09-28T12:52:15.856Z] === step: fund ===
+[2026-09-28T12:52:15.879Z] funded treasury with 0.005 ETH {
+  tx: '0xc354dd54f5896fe39f52e135e7f4ee907c7d44c96fa8cdc920e70fe8c6a6210c',
+  block: '47415808',
+  status: 'success',
+  gasUsed: '25810'
+} balance now 0.005
+[2026-09-28T12:52:15.879Z] === step: deploy-token ===
+[2026-09-28T12:52:16.127Z] maker deployed tUSD at 0x85ce9dd38948fe4d61a62d8a40a2d7a8d9be1633 tx 0x2aa6e78406ed6ca72d5eb57f6278400c0ffc1112406bac6d0508e8b6560cae67
+[2026-09-28T12:52:16.127Z] === step: approve ===
+[2026-09-28T12:52:18.844Z] approver signed payout 0x395fbed288b531a507b104a4029946a1900725ac243aba461317b439a6013878 at leaf 3 in 179ms; envelope 2848 bytes
+[2026-09-28T12:52:18.849Z] off-chain wasm verify: true
+[2026-09-28T12:52:18.852Z] on-chain SHRINCSVerifier.verify(0xF2f9E6D692da41b089c3c261c41509669eEc5567) -> 0x024ad318 VALID
+[2026-09-28T12:52:18.857Z] negative control (tampered hash) -> 0xffffffff
+[2026-09-28T12:52:18.858Z] === step: commit-treasury ===
+[2026-09-28T12:52:18.863Z] swap plan ok; lock 0x4de15b2e6bbf5d8066fbf86d0f652da08c187d1b6bec7fd41c0c3b5369166ced canonical digest 0xe4b0741262cb5fe7348991f547b3ec3da711a78fbef87d3a37377bf5d49477c9
+[2026-09-28T12:52:21.899Z] prepared commit Call {
+  to: '0xA7955981D5759a799267063110Be0F7AeCc26F8A',
+  value: '2000000000000000',
+  dataLen: 1092
+}
+[2026-09-28T12:52:22.276Z] treasury ETH 0.005 -> 0.003 (paid from the Quip account itself)
+[2026-09-28T12:52:22.276Z] treasury commit executed via PQ-signed ShrincsWallet.execute in 377ms {
+  tx: '0xcca62f3667f311591f4a54d614ec987430a6c1937097ea5a4428123a23321f5c',
+  block: '47415810',
+  status: 'success',
+  gasUsed: '403738'
+}
+[2026-09-28T12:52:22.276Z] === step: commit-maker ===
+[2026-09-28T12:52:22.279Z] (fork) warped chain time 1790599941 -> 1790600235
+[2026-09-28T12:52:24.806Z] maker commit (keyed SHRINCS route) {
+  tx: '0xcc95e84a17cf57de23bbbf0498dbae31539e1c0b520ff0c9bcb3af57cd48c827',
+  block: '47415813',
+  status: 'success',
+  gasUsed: '312034'
+}
+[2026-09-28T12:52:24.807Z] === step: claim ===
+[2026-09-28T12:52:24.811Z] (fork) warped chain time 1790600237 -> 1790600535
+[2026-09-28T12:52:24.864Z] claim (secret revealed by treasury operator EOA) {
+  tx: '0x8793b285b6be8466f229d2440b1804ac15d1af3e428945e076970723173bbc85',
+  block: '47415815',
+  status: 'success',
+  gasUsed: '90825'
+}
+[2026-09-28T12:52:24.866Z] recipient tUSD 0 -> 5
+[2026-09-28T12:52:24.866Z] === step: report ===
+[2026-09-28T12:52:25.062Z] REPORT {
+  treasury: '0xbd5b07fC46ce5b7DdF2826Bd44d2a24c2C9246EB',
+  treasuryETH: '0.003',
+  treasurySlotsUsed: 1,
+  treasurySlotsRemaining: 15,
+  recipient: '0xAE207CE0db3e58bfFeCF44c2e56c26A67726EC1F',
+  recipientTUSD: '5',
+  makerTUSD: '995',
+  makerETH: '1.000921571322468886',
+  swapStatus: 'settled'
+}

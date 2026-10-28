@@ -1,0 +1,31 @@
+[2026-09-28T12:41:29.687Z] === step: create-wallet ===
+[2026-09-28T12:41:29.740Z] estimating creation cost...
+[2026-09-28T12:41:34.827Z] creation estimate {
+  gasUnits: 600261n,
+  gasPrice: 1006000000n,
+  expectedGasUnits: 500218n,
+  expectedGasPrice: 1005000000n,
+  creationFee: 0n
+}
+[2026-09-28T12:41:40.587Z] created treasury Quip account 0xbd5b07fC46ce5b7DdF2826Bd44d2a24c2C9246EB in 5759ms; commitment 0xbceb46d505f845b5365e21ee553f74cff8cd09a8b5aaaddeb4bf0370b3749593
+[2026-09-28T12:41:40.883Z] wallet state {
+  owner: '0x1eEE5e6C6bce95D80D691e43EA777BC81E25742e',
+  version: 2n,
+  executeFee: 0n,
+  shrincsPublicKeyCommitment: '0x3b67f59de788de9a777bfa6922448ed6e1feb5cbd809aa0f02b2a39e74430bb8',
+  erc1271PublicKeyCommitment: '0xc20cacecb9ef59bbf1735de61cb57ffd17c3aee51687ff76279dce6fa80bdc3d',
+  hashSuite: 1,
+  erc1271HashSuite: 1,
+  keyVersion: 0n,
+  actionNonce: 0n,
+  maxSignatures: 16,
+  statefulLeavesUsed: 0,
+  remainingStatefulSignatures: 16
+}
+[2026-09-28T12:41:40.883Z] === step: fund ===
+[2026-09-28T12:41:40.895Z] funded treasury with 0.005 ETH {
+  tx: '0xb683c96dee204355f9c0efc2e5bd8222316133e736e767890146d75efec07472',
+  block: '47415482',
+  status: 'success',
+  gasUsed: '25810'
+} balance now 0.005

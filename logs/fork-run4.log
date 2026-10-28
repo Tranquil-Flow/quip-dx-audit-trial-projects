@@ -1,0 +1,5 @@
+[2026-09-28T12:41:53.474Z] === step: approve ===
+[2026-09-28T12:41:54.884Z] approver signed payout 0xb4a65489bb1e3a7e60a6853efaa3fcfd50f57519129d66a4b92baa9944340b6b at leaf 1 in 84ms; envelope 2784 bytes
+[2026-09-28T12:41:54.885Z] off-chain wasm verify: true
+[2026-09-28T12:41:54.888Z] on-chain SHRINCSVerifier.verify(0xF2f9E6D692da41b089c3c261c41509669eEc5567) -> 0x024ad318 VALID
+[2026-09-28T12:41:54.890Z] negative control (tampered hash) -> 0xffffffff

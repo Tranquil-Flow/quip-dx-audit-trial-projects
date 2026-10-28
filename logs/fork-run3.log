@@ -1,0 +1,22 @@
+[2026-09-28T12:41:45.366Z] === step: deploy-token ===
+[2026-09-28T12:41:45.614Z] maker deployed tUSD at 0x85ce9dd38948fe4d61a62d8a40a2d7a8d9be1633 tx 0xfff85c9b989dcb3df1ebee08de44e0be357c7465ee617e9ab21246845678eb63
+[2026-09-28T12:41:45.614Z] === step: approve ===
+/private/tmp/devtrials4/m5-claude-opus/node_modules/@quip.network/hashsigs-wasm/dist/profiles/256s-keccak/nodejs/hashsigs_rs.js:678
+    const ret = new Error(getStringFromWasm0(arg0, arg1));
+                ^
+
+Error: leafIndex must be in 1..=16, got 0
+    at module.exports.__wbg_new_c68d7209be747379 (/private/tmp/devtrials4/m5-claude-opus/node_modules/@quip.network/hashsigs-wasm/dist/profiles/256s-keccak/nodejs/hashsigs_rs.js:678:17)
+    at hashsigs_rs.wasm.__wbg_new_c68d7209be747379 externref shim (wasm://wasm/hashsigs_rs.wasm-0008aa0e:wasm-function[240]:0x1c057)
+    at hashsigs_rs.wasm.js_sys::Error::new::h7d2aac38743d2734 (wasm://wasm/hashsigs_rs.wasm-0008aa0e:wasm-function[278]:0x1c2ca)
+    at hashsigs_rs.wasm.hashsigs_rs::wasm::js_error::hd287e0d82756fc09 (wasm://wasm/hashsigs_rs.wasm-0008aa0e:wasm-function[96]:0x1718a)
+    at hashsigs_rs.wasm.shrincsSignStatefulRawAt (wasm://wasm/hashsigs_rs.wasm-0008aa0e:wasm-function[119]:0x18eaa)
+    at hashsigs_rs.wasm.shrincsSignStatefulRawAt multivalue shim (wasm://wasm/hashsigs_rs.wasm-0008aa0e:wasm-function[192]:0x1b951)
+    at module.exports.shrincsSignStatefulRawAt (/private/tmp/devtrials4/m5-claude-opus/node_modules/@quip.network/hashsigs-wasm/dist/profiles/256s-keccak/nodejs/hashsigs_rs.js:173:22)
+    at ShrincsKeyPair.signStatefulRawAt (file:///private/tmp/devtrials4/m5-claude-opus/node_modules/@quip.network/ethereum-sdk/dist/src/v1/shrincs/shrincsSigner.js:176:36)
+    at Object.approve (file:///private/tmp/devtrials4/m5-claude-opus/flow.mjs:198:26)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5) {
+  code: 'ERR_INVALID_INPUT'
+}
+
+Node.js v22.22.2
