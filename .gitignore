@@ -1,0 +1,7 @@
+node_modules/
+keys/
+approval.json
+tampered.json
+audit.json
+github-repos.json
+vendor/
