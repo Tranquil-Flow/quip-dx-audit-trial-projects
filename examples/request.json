@@ -1,0 +1,7 @@
+{
+  "method": "POST",
+  "path": "/v1/transfer",
+  "body": "{\"from\":\"alice\",\"to\":\"bob\",\"amount\":42}",
+  "timestamp": "2026-09-29T12:00:00.000Z",
+  "nonce": "n-example-001"
+}

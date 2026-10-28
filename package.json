@@ -1,0 +1,20 @@
+{
+  "name": "quip-hybrid-sig",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Thin wrapper library + CLI around @quip.network/pqhybridsign for hybrid classical/post-quantum API request signing. Throwaway, no mainnet.",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "demo:roundtrip": "node demo/roundtrip.mjs",
+    "demo:interop": "node demo/interop.mjs",
+    "demo:tamper": "node demo/tamper.mjs",
+    "demo:deterministic": "node demo/deterministic.mjs",
+    "demo": "node demo/roundtrip.mjs && node demo/deterministic.mjs && node demo/interop.mjs && node demo/tamper.mjs"
+  },
+  "dependencies": {
+    "@quip.network/pqhybridsign": "0.0.0-rc9"
+  }
+}
