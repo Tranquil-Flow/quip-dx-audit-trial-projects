@@ -1,0 +1,15 @@
+import { chromium } from 'playwright';
+const [url, out] = process.argv.slice(2);
+const b = await chromium.launch();
+const p = await b.newPage({ viewport: { width: 1400, height: 1000 } });
+const reqs = [];
+p.on('request', r => { const u = r.url(); if (/rpc|wss?:|api|infura|alchemy|quip/i.test(u) && !/\.(js|css|woff2?|png|svg|jpg|webp)(\?|$)/.test(u)) reqs.push(r.method()+' '+u); });
+await p.goto(url, { waitUntil: 'networkidle', timeout: 60000 }).catch(e => console.log('goto err', e.message));
+await p.waitForTimeout(3000);
+console.log('TITLE:', await p.title(), '\nURL:', p.url());
+console.log((await p.innerText('body')).slice(0, 6000));
+const links = await p.$$eval('a', as => as.map(a => (a.innerText.trim().slice(0,40)) + ' -> ' + a.href));
+console.log('\nLINKS:\n' + [...new Set(links)].join('\n'));
+console.log('\nREQS:\n' + [...new Set(reqs)].slice(0,40).join('\n'));
+if (out) await p.screenshot({ path: out, fullPage: false });
+await b.close();

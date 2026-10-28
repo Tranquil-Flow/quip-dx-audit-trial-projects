@@ -1,0 +1,133 @@
+TITLE: QUIP Account 
+URL: https://account.quip.network/terms
+ACCOUNT
+Terms and Conditions
+
+Last updated: April, 2025
+
+Table of Contents
+What is the scope of the Terms?
+What do some of the capitalized terms mean in the Agreement?
+What are the Services offered?
+What do the Services not consist of?
+What do you need to know about Third-Party Quip Apps and Third-Party Services?
+What are the fees for the Services?
+Are we responsible for the security of your Private Keys, Recovery Material or other credentials?
+Are we responsible for recovering your Quip Account?
+Are we responsible for notifying you about events occuring in your Quip Account?
+Are we responsible for flagging malicious transactions?
+Are we responsible for the issuance of the Quip Token and any related functionalities or reward programs?
+Can we terminate or limit your right to use our Services?
+Can you terminate your Agreement with us?
+What licenses and access do we grant to you?
+What can you expect from the Services and can we make changes to them?
+What do you agree, warrant and represent?
+What about our liability to you?
+What about viruses, bugs and security vulnerabilities?
+What if an event outside our control happens that affects our Services?
+Who is responsible for your tax liabilities?
+What if a court disagrees with part of this Agreement?
+What if we do not enforce certain rights under this Agreement?
+Do third parties have rights?
+Can this Agreement be assigned?
+Which Clauses of this Agreement survive termination?
+Data Protection
+Which laws apply to the Agreement?
+How can you get support for Quip Accounts and tell us about any problems?
+Where is the place of legal proceedings?
+Is this all?
+1. What is the scope of the Terms?
+
+These Terms and Conditions ("Terms") become part of any contract ("Agreement") between you ("you", "yours" or "User") and Hadamard Gate Inc dba Postquant Labs, a Delaware Corporation ("Postquant", "we", "our" or "us"), provided we made these Terms accessible to you prior to entering into the Agreement and you consent to these Terms. You can contact us by writing to info@postquant.xyz.
+
+2. What do some of the capitalized terms mean in the Agreement?
+
+"Blockchain" means a mathematically secured consensus ledger such as the Ethereum Virtual Machine, the Solana Virtual Machine, any compatible validation mechanism with such a virtual machine, or other decentralized validation mechanisms.
+
+"Transaction" means a change to the data set through a new entry in the continuous Blockchain.
+
+"Smart Contract" means a piece of source code deployed as an application on the Blockchain which can be executed, including self-execution of Transactions as well as execution triggered by 3rd parties.
+
+"Token" means a digital asset transferred in a Transaction, including BTC, ETH, ERC20, ERC721, ERC1155, SOL, and SPL tokens, or other similar tokens and standards using a Blockchain.
+
+"Wallet" means a cryptographic storage solution permitting you to store cryptographic assets by correlation of a (i) Public Key and (ii) a Private Key, or a Smart Contract to receive, manage and send Tokens.
+
+"Recovery Material" means a series of secret words used to generate one or more Private Keys and derived Public Keys, and any additional entropy necessary to uniquely recreate such Private Keys and derived Public Keys.
+
+"Public Key" means a unique sequence of numbers and letters within the Blockchain to distinguish the network participants from each other.
+
+"Private Key" means a unique sequence of numbers and/or letters required to initiate a Blockchain Transaction and should only be known by the legal owner of the Wallet.
+
+3. What are the Services offered?
+
+Our services ("Services") primarily consist of enabling users to create their Quip Accounts and ongoing interaction with it on the Blockchain.
+
+1. "Quip Account"
+
+A Quip Account is a modular, self-custodial (i.e. not supervised by us) smart contract-based wallet not provided by Postquant. Quip Accounts are open-source released under GNU AGPL-3.0.
+
+Smart contract wallet means, unlike a standard private key Wallet, that access control for authorizing any Transaction is defined in code. An example are multi-signature wallets which require that any Transaction must be signed by a minimum number of signing wallets whereby the specifics of the requirements to authorize a Transaction can be configured in code.
+
+Owners need to connect a signing wallet with a Quip Account. Quip Accounts are compatible inter alia with standard private key Wallets such as hardware wallets, browser extension wallets and mobile wallets that support WalletConnect.
+
+2. "Quip App"
+
+You may access Quip Accounts using a Quip web app, mobile app for iOS and android, or browser extension released and signed by Postquant (each a "Quip App"). The Quip App may be used to manage your personal digital assets on Ethereum and other common Blockchains when you connect a Quip Account with third-party services (as defined below). The Quip App provides certain features that may be amended from time to time.
+
+3. "Third-Party Quip Apps"
+
+The Quip App allows you to connect Quip Accounts to third-party applications ("Third-Party Quip Apps") and use third-party services such as from the decentralized finance sector, DAO tools or services related to NFTs ("Third-Party Services"). The Third-Party Quip Apps are integrated in the user interface of the Quip App via inline framing. The provider of the Third-Party Quip App and/or related Third-Party Services is responsible for the operation of the service and the correctness, completeness and actuality of any information provided therein. We make a pre-selection of Third-Party Quip Apps that we show in the Quip App. However, we only perform a rough triage in advance for obvious problems and functionality in terms of loading time and resolution capability of the transactions. Accordingly, in the event of any (technical) issues concerning the Third-Party Services, the user must only contact the respective service provider directly. The terms of service, if any, s
+
+LINKS:
+ -> https://www.quip.network/
+ACCOUNT -> https://account.quip.network/
+What is the scope of the Terms? -> https://account.quip.network/terms#scope
+What do some of the capitalized terms me -> https://account.quip.network/terms#terms
+What are the Services offered? -> https://account.quip.network/terms#services
+What do the Services not consist of? -> https://account.quip.network/terms#not-services
+What do you need to know about Third-Par -> https://account.quip.network/terms#third-party
+What are the fees for the Services? -> https://account.quip.network/terms#fees
+Are we responsible for the security of y -> https://account.quip.network/terms#security
+Are we responsible for recovering your Q -> https://account.quip.network/terms#recovery
+Are we responsible for notifying you abo -> https://account.quip.network/terms#notifications
+Are we responsible for flagging maliciou -> https://account.quip.network/terms#malicious-transactions
+Are we responsible for the issuance of t -> https://account.quip.network/terms#token
+Can we terminate or limit your right to  -> https://account.quip.network/terms#termination-by-us
+Can you terminate your Agreement with us -> https://account.quip.network/terms#termination-by-you
+What licenses and access do we grant to  -> https://account.quip.network/terms#licenses
+What can you expect from the Services an -> https://account.quip.network/terms#service-changes
+What do you agree, warrant and represent -> https://account.quip.network/terms#warranties
+What about our liability to you? -> https://account.quip.network/terms#liability
+What about viruses, bugs and security vu -> https://account.quip.network/terms#security-vulnerabilities
+What if an event outside our control hap -> https://account.quip.network/terms#force-majeure
+Who is responsible for your tax liabilit -> https://account.quip.network/terms#tax
+What if a court disagrees with part of t -> https://account.quip.network/terms#severability
+What if we do not enforce certain rights -> https://account.quip.network/terms#no-waiver
+Do third parties have rights? -> https://account.quip.network/terms#third-party-rights
+Can this Agreement be assigned? -> https://account.quip.network/terms#assignment
+Which Clauses of this Agreement survive  -> https://account.quip.network/terms#survival
+Data Protection -> https://account.quip.network/terms#data-protection
+Which laws apply to the Agreement? -> https://account.quip.network/terms#governing-law
+How can you get support for Quip Account -> https://account.quip.network/terms#support
+Where is the place of legal proceedings? -> https://account.quip.network/terms#legal-proceedings
+Is this all? -> https://account.quip.network/terms#final
+https://telegram.quip.network -> https://t.me/+Pbld47s3BO44YmUx
+https://discord.quip.network -> https://discord.com/invite/BuFPTaMSht
+https://x.quip.network -> https://x.com/quipnetwork
+Your Accounts -> https://account.quip.network/accounts
+Inscribe -> https://account.quip.network/inscribe
+FAQ -> https://account.quip.network/faq
+Privacy Policy -> https://account.quip.network/privacy
+Terms -> https://account.quip.network/terms
+Disclaimer -> https://account.quip.network/disclaimer
+Quip Network -> https://quip.network/
+GitHub -> https://github.com/quipnetwork
+X / Twitter -> https://x.com/quipnetwork
+
+REQS:
+GET https://account.quip.network/terms
+GET https://feedback.quip.network/widget
+GET https://feedback.quip.network/api/widget/config.json
+GET https://api.web3modal.org/appkit/v1/config?projectId=444d10467d4ce0b12bf553e44d87c6b9&st=appkit&sv=react-ethers-1.8.19
+GET https://api.web3modal.org/appkit/v1/project-limits?projectId=444d10467d4ce0b12bf553e44d87c6b9&st=appkit&sv=react-ethers-1.8.19
+GET https://api.web3modal.org/projects/v1/origins?projectId=444d10467d4ce0b12bf553e44d87c6b9&st=appkit&sv=react-ethers-1.8.19

@@ -1,0 +1,17 @@
+{
+  "name": "sdk",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "@quip.network/ethereum-sdk": "^0.3.0-beta.8",
+    "@quip.network/hashsigs-wasm": "^0.2.1-rc9"
+  }
+}

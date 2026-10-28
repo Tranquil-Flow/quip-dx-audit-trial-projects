@@ -1,0 +1,168 @@
+# Quip Node Manager
+
+Desktop application for running and monitoring [Quip](https://gitlab.com/quip.network) network nodes. Supports Docker and native execution modes on macOS, Linux, and Windows.
+
+## Quick Install
+
+**macOS / Linux:**
+
+```sh
+curl -fsSL https://gitlab.com/quip.network/quip-node-manager/-/raw/main/scripts/install.sh | sh
+```
+
+**Windows (PowerShell):**
+
+```powershell
+irm https://gitlab.com/quip.network/quip-node-manager/-/raw/main/scripts/install.ps1 | iex
+```
+
+## Manual Download
+
+Download the latest release from the [Releases page](https://gitlab.com/quip.network/quip-node-manager/-/releases).
+
+### macOS
+
+Download the `.dmg`, open it, and drag the app to `/Applications`.
+
+### Linux
+
+The recommended format is **AppImage** (works on any distro):
+
+```sh
+chmod +x quip-node-manager-linux-x86_64.AppImage
+./quip-node-manager-linux-x86_64.AppImage
+```
+
+A `.deb` package is also available for Debian/Ubuntu:
+
+```sh
+sudo dpkg -i quip-node-manager-linux-x86_64.deb
+```
+
+### Windows
+
+Download the `.exe` and run it. Windows names HADAMARD GATE INCORPORATED as the
+publisher. SmartScreen may still warn until the certificate builds reputation
+across enough downloads. Click **More info**, then **Run anyway**.
+
+To check a signature or a checksum by hand, see the verification steps on the
+[release page](https://gitlab.com/quip.network/quip-node-manager/-/releases).
+
+## Features
+
+- **Full compose stack** -- runs miner, validator, and dashboard containers via Docker Compose; the dashboard image embeds the Caddy front door and the log collector, and its UI is embedded in the app's Dashboard tab
+- **Two run modes** -- Docker (default on Windows/Linux) drives the full container stack; Native (macOS) runs a standalone binary on the host and still runs the validator and dashboard containers, wired to the host via `host.docker.internal`
+- **CPU or CUDA image** -- chosen automatically from the GPU device toggles (CUDA whenever an NVIDIA device is enabled); D-Wave mining runs on the CPU image via the `[dwave]` config section
+- **TLS toggle** -- the dashboard, with its embedded Caddy front door, is always part of the stack; TLS is optional, with automatic Let's Encrypt or ZeroSSL certificates
+- **Pre-flight checklist** -- verifies Docker + Compose v2 availability (plus WSL on Windows, the miner binary in Native mode, and the D-Wave token when QPU mining is configured), node secret, public IP, hostname, and external port reachability before starting (images aren't pre-checked -- Start always pulls them)
+- **Live log streaming** -- tails `docker compose logs -f <node>` in a collapsible drawer; switches to `data/node.log` once the node writes to it
+- **GPU configuration** -- detects CUDA and Metal devices, per-device enable/disable, utilization slider, yielding mode
+- **D-Wave QPU support** -- optional quantum processing unit configuration with a monthly QPU time budget
+- **Background update monitor** -- checks for new node + dashboard image digests and manager app releases every 30 minutes; optional auto-restart on digest change
+- **TLS certificate guidance** -- the dashboard's embedded Caddy ACME (Let's Encrypt or ZeroSSL) is wired up out of the box; set a DNS name + email and TLS "just works"
+
+## Development
+
+### Prerequisites
+
+- [Rust](https://rustup.rs/) (stable)
+- [Bun](https://bun.sh/) (or Node.js)
+- [Docker Compose v2](https://docs.docker.com/compose/install/) (bundled with Docker Desktop; standalone `docker-compose` v1 is **not** supported)
+- Platform-specific Tauri v2 dependencies ([see Tauri docs](https://v2.tauri.app/start/prerequisites/))
+
+### Setup
+
+This repo vendors the compose stack via a git submodule. After cloning, fetch the
+submodule at the commit locked by this repo:
+
+```sh
+make fetch-submodules
+```
+
+(Equivalent to `git submodule update --init --recursive`, or clone with
+`git clone --recurse-submodules` to do this in one step.)
+
+### Commands
+
+```sh
+bun install          # Install JS dependencies
+bun run dev          # Launch development build
+bun run build        # Production build for current platform
+```
+
+```sh
+cd src-tauri
+cargo check          # Type-check Rust code
+cargo clippy         # Lint
+```
+
+### CLI Mode
+
+The app also supports a terminal UI mode:
+
+```sh
+quip-node-manager --cli
+```
+
+The terminal UI starts and stops the stack, runs the pre-flight checklist,
+streams logs, and edits the node configuration. Configuration covers the storage
+directory, ports, run mode, update channel, CPU and GPU settings, and the D-Wave
+keys. The dashboard, the health panel, TLS settings, and in-app updates stay in
+the desktop app.
+
+## Architecture
+
+- **Frontend**: `src/` -- vanilla HTML/CSS/JS with Tauri IPC (`withGlobalTauri: true`). Dashboard tab embeds the running dashboard container in an iframe.
+- **Backend**: `src-tauri/src/` -- Rust + Tauri v2 commands. `compose.rs` drives the stack via `docker compose`; `stack_assets.rs` stages the bundled compose files into `~/quip-data/`.
+- **Stack definition**: `vendor/nodes.quip.network/` -- git submodule tracking the upstream Docker Compose setup (miner, validator, dashboard).
+- **Config**: TOML generation matching quip-protocol format; `.env` generated from settings on every Start.
+- **Data**: `~/quip-data/` (configurable at first boot) holds app settings, runtime config, secrets, native binaries, and the staged compose files.
+
+Advanced settings in both interfaces group host ports by service. Each port has
+an on/off switch and a host port field. Internal Docker addresses stay fixed,
+including `quip-validator:9944` and `quip-miner:8086`.
+
+Native mode requires validator RPC on a host port, which defaults to 9944.
+It stays on loopback unless you select public access. The native miner REST API
+binds to `0.0.0.0:20100` by default so the dashboard's embedded Caddy can reach it through the Docker host gateway.
+Its host port is also editable in advanced settings.
+
+Container logs attach before stack startup. Logs remain visible if startup fails or waits
+for another service. The follower retries if the Compose file is not ready yet.
+
+
+### Overriding the bundled stack
+
+Node Manager rewrites `~/quip-data/docker-compose.yml` from its embedded copy on every Start and Apply, discarding whatever you edited there. Put changes in `~/quip-data/docker-compose.override.yml` instead. Staging never touches that file, and compose merges it over the base.
+
+```yaml
+services:
+  quip-validator:
+    environment:
+      RUST_LOG: debug
+```
+
+Compose loads an override file automatically only when it discovers the compose file itself. Node Manager always passes `-f`, so it adds the override explicitly when the file exists, after the base file so the override wins.
+
+Two things to watch:
+
+- `command:` replaces the whole list rather than merging it. To change one validator flag, copy the entire `command:` block and edit the line you want.
+- Copy that block from the staged `~/quip-data/docker-compose.yml`, not from `vendor/nodes.quip.network/`. Staging adds flags the vendored file doesn't contain, such as `--public-addr`.
+
+The compose file caps the miner container at 16 GiB, which stops a runaway round from triggering a host-wide out-of-memory kill. On a dedicated miner with more RAM, raise it by setting `miner_mem_limit_gb` in `~/quip-data/app-settings.json`:
+
+```json
+{ "miner_mem_limit_gb": 48 }
+```
+
+Set it there rather than in `.env`, which Node Manager regenerates on every Start. There's no UI control for this yet.
+
+> **Validator pruning isn't recommended.** The validator runs `--state-pruning=archive --blocks-pruning=archive`, keeping every state trie and block body from genesis. Size the disk for that. Pruning reclaims disk, but it breaks the dashboard: the descriptor worker scans from genesis and fails with `State already discarded` once it reads past the pruning window. Pruning also likely reduces your point awards on the SNAG platform. Only prune if you accept losing the dashboard.
+
+See [AGENTS.md](AGENTS.md) for detailed architecture documentation.
+
+## License
+
+[AGPL-3.0-or-later](LICENSE)
+
+Copyright (c) Postquant Labs

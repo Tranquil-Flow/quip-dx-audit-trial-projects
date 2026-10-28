@@ -1,0 +1,169 @@
+quip.network ↗
+AGLAIS TESTNET IS LIVE
+Aglais is the Quip Network Testnet
+
+Aglais runs as quip-testnet, the public test network for Quip Network. It is where developers, node operators, and researchers try things out and break them. Its token, AGLS, holds no value: it cannot be bought, sold, or redeemed, and balances can be reset at any time.
+
+Read the docs
+Run a testnet node
+THE FUNDS ARE NOT REAL
+Test tokens that hold no value
+
+AGLS exists to make the test network work. Read about the network's own token in the token documentation.
+
+AGLS is not for sale
+There is no sale, no presale, and no allocation. Anyone offering to sell you AGLS is running a scam, no matter whose name or logo they use.
+It holds no value
+AGLS is not redeemable for anything. Any price quoted for it is fabricated.
+It is not the QUIP token
+QUIP is the token of the live Quip Network. AGLS is only its stand-in on the test network, and it does not convert into QUIP.
+Balances are disposable
+The test network can be reset, wiped, or relaunched from a new genesis at any time. Balances disappear with it and are not compensated.
+CHAIN DETAILS
+One chain, two front doors
+
+Node operators and runtime work go through the substrate RPC; wallets and Solidity tooling go through the EVM JSON-RPC. Same chain, same balances — but the two sides do not share account formats or token precision.
+
+INTERFACE 01
+Substrate
+LOCAL RPC
+
+ws://127.0.0.1:9944
+
+NETWORK
+quip-testnet
+TOKEN
+AGLS · 12 decimals
+SS58 PREFIX
+42
+CHAIN SPEC
+aglais-network.json
+EXPLORER
+subscan.aglais.quip.network
+POLKADOT-JS
+portal.aglais.quip.network
+PUBLIC RPCS
+wss://bootnode-{1-3}.aglais.quip.network:20049/rpc
+BOOTNODES
+bootnode-1.aglais.quip.network
+bootnode-2.aglais.quip.network
+bootnode-3.aglais.quip.network
+
+Bootnodes ship inside the chain spec, so peer discovery is automatic. Start a node and the RPC above answers locally.
+
+INTERFACE 02
+EVM
+PUBLIC JSON-RPC
+
+https://evm-rpc.aglais.quip.network:20049
+
+CHAIN ID
+20033 · 0x4e41
+TOKEN
+AGLS · 18 decimals
+GAS PRICE
+1 gwei · 0x3b9aca00
+NETWORK NAME
+Aglais Testnet (Quip Network)
+BACKEND
+pallet-revive
+EXPLORER
+explorer.aglais.quip.network
+
+Add it as a custom network in any EVM wallet, over an HTTP transport rather than WebSocket. There is no pubsub or filter API, and internal transactions and the gas tracker are unavailable. Balances read one existential deposit low, so confirm exact amounts on the substrate side.
+
+SHARED BY BOTH SIDES
+GENESIS
+0x59e064bddd49a920d1392693c728c3bf9867f2cf3e0f8fea8c2498b389b0c286
+FAUCET
+faucet.aglais.quip.network
+POST /request
+ONE BALANCE, TWO SCALES
+
+AGLS is denominated differently on each side. It is the same balance, scaled at the boundary — so one AGLS is:
+
+1012
+NATIVE PLANCK
+1018
+EVM WEI
+FAUCET
+Get testnet tokens
+
+Dispenses 10 AGLS per request, rate-limited per destination. Paste an SS58 address, a 0x-prefixed AccountId, or an EVM address — the faucet funds whichever side that address belongs to.
+
+PUBLIC FAUCET
+
+faucet.aglais.quip.network
+
+10
+AGLS PER REQUEST
+SS58 · 0X
+FROM THE BROWSER
+Testnet address
+Request AGLS
+FROM A TERMINAL
+CURL
+COPY
+$
+curl -X POST https://faucet.aglais.quip.network/request \
+  -H 'content-type: application/json' \
+  -d '{"dest":"YOUR_ADDRESS"}'
+
+The endpoint refuses browser calls, so run the curl from a terminal or a server. The form does the same thing through this site.
+
+AGLS is a test token on this network only — no value, not QUIP, and gone at the next reset.
+
+EVM:BLOCKSCOUT
+SUBSTRATE:SUBSCAN
+Explore the testnet
+
+Blockscout indexes the Ethereum view of the chain — addresses, transactions and contracts, from genesis onward.
+
+Search the explorer
+Search
+LIVE FROM BLOCKSCOUT
+375,835
+TOTAL BLOCKS
+6s
+AVERAGE BLOCK TIME
+0%
+NETWORK UTILISATION
+LATEST BLOCKS
+#376,647
+1 txn · 33s ago
+#376,646
+1 txn · 39s ago
+#376,645
+1 txn · 45s ago
+#376,644
+1 txn · 51s ago
+LATEST TRANSACTIONS
+0xebdd0245…828a84
+0.0000 AGLS · 33s ago
+0x6251f4b6…9fed9d
+0 AGLS · 39s ago
+0x43db298f…00d2ba
+0 AGLS · 45s ago
+0xb965d8ea…6fd96b
+0 AGLS · 51s ago
+0x511add87…13e581
+0 AGLS · 57s ago
+Take part in the testnet
+
+The testnet is open to anyone. Run a node on a CPU, GPU, ASIC, or QPU, submit jobs, and help find the failure modes before they matter.
+
+Run a testnet node
+Read the docs
+NODE MANAGER
+Desktop and terminal app for running a node.
+SERVER DEPLOYMENT
+Docker compose setup for always-on nodes.
+PROTOCOL SOURCE
+Build from source and experiment with the protocol.
+DISCORD
+Ask questions and report what you break.
+© 2026 Quantum Unit Interlock Protocol. All rights reserved.
+Docs
+X (Twitter)
+Discord
+LinkedIn
