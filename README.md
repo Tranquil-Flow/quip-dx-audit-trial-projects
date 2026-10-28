@@ -6,6 +6,14 @@ Source code that AI coding agents built while testing how easy it is to build on
 
 87 of 97 trials have source on a branch. The rest are listed with their report card but no code (see below).
 
+## Running a project
+
+- [`docs/RUNNING.md`](docs/RUNNING.md): how to get a project running with your own test accounts, common pitfalls, and a table of every project's stack. Each `trial/<id>` branch also has its own `RUNNING.md`.
+- [`docs/AGENT_PROMPT.md`](docs/AGENT_PROMPT.md): a prompt you can hand to an AI agent to repair a project with your own throwaway accounts.
+- [`docs/REDACTIONS.md`](docs/REDACTIONS.md): exactly what was removed or replaced before publishing, and why the test-account values in logs and fixtures were left in.
+
+In short: key files, dependencies, clones of Quip's own repositories and large files are not included; only personal details were replaced; the test-account values the agents left in logs and fixtures were kept after checking that none holds mainnet value. Projects were not edited to make them run.
+
 ## Trials
 
 | Trial | Round | Task | Model | Outcome | Source | Link |
@@ -190,14 +198,6 @@ The rounds 3-5 agents (trial ids starting `g`, `v`, `p`, `s` and `x`) worked in 
 - **Neutral IDs.** The letter after the dash only separates builders on the same brief. The model that did each build is named in the table.
 - **Rounds.** Round 1: single-product builds (`t*`). Round 2: simulated developers and multi-product builds (`h*`, `m*`). Later rounds (`g*`, `v*`, `p*`, `s*`, `x*`) were run in temporary directories that were later deleted. Most of those projects were recovered from the agent runner's file snapshots and session logs (see [REDACTIONS.md](docs/REDACTIONS.md), section 5); the rest are listed with their card only.
 - **Builders worked only from public docs and the public internet, on testnets, with throwaway keys.**
-
-## Running a project
-
-- [`docs/RUNNING.md`](docs/RUNNING.md): how to get a project running with your own test accounts, common pitfalls, and a table of every project's stack. Each `trial/<id>` branch also has its own `RUNNING.md`.
-- [`docs/AGENT_PROMPT.md`](docs/AGENT_PROMPT.md): a prompt you can hand to an AI agent to repair a project with your own throwaway accounts.
-- [`docs/REDACTIONS.md`](docs/REDACTIONS.md): exactly what was removed or replaced before publishing, and why the test-account values in logs and fixtures were left in.
-
-In short: key files, dependencies, clones of Quip's own repositories and large files are not included; only personal details were replaced; the test-account values the agents left in logs and fixtures were kept after checking that none holds mainnet value. Projects were not edited to make them run.
 
 ## Authorship and licence
 
