@@ -1,0 +1,24 @@
+{
+  "network": {
+    "name": "anvil-local",
+    "rpc": "http://127.0.0.1:8545",
+    "chainId": 31337
+  },
+  "wotsPlus": "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512",
+  "quipFactory": "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0",
+  "settlement": "0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9",
+  "aliceVault": "0xB6E6DCC799E2b193aDe19001b312530C4943753d",
+  "bobVault": "0x789D375285EC3d5FFF5efc3475109F1C4921B4Dd",
+  "parties": {
+    "alice": {
+      "eoa": "0x67ab9014c5B8F2da606cc16B700Fa6930110d5D1",
+      "vault": "0xB6E6DCC799E2b193aDe19001b312530C4943753d",
+      "vaultId": "6519a99ddbda9f9530a5758ee397865ef1a65014d415f6f9c9aee0cacc3bb5ef"
+    },
+    "bob": {
+      "eoa": "0x6AeA873b72d219a69BAafd80760FE60B06aB03DB",
+      "vault": "0x789D375285EC3d5FFF5efc3475109F1C4921B4Dd",
+      "vaultId": "bd086c3f9b8e233587d5909b3302b13b473e84279abf6d1e63e16cf5c066233c"
+    }
+  }
+}

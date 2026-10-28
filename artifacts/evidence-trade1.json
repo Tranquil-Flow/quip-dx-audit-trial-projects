@@ -1,0 +1,32 @@
+{
+  "trade": "trade1",
+  "network": "anvil-local",
+  "steps": [
+    {
+      "step": "alice commit (PQ-signed vault call)",
+      "tx": "0xfbf4c8f71b4dc48cea8bf767332bb003ebe1f0df62a53f8f3d2e2ae3621cf86d",
+      "block": 32
+    },
+    {
+      "step": "bob commit (PQ-signed vault call)",
+      "tx": "0x5ef7e42cd23b6de43d880263769e294067361d0c75ba67561281c901f41ac441",
+      "block": 33
+    },
+    {
+      "step": "alice executes (reveals secret)",
+      "tx": "0x9e240b6a5cf9e0f0c88aaa6c058068216e0f1207e11fd56d614127da5aea5051",
+      "block": 34
+    },
+    {
+      "step": "bob executes with revealed secret",
+      "tx": "0x0988f0dbfa03c489ca7eb58a5459fa0be041b6e0beffca3ddfa71c064f51fc02",
+      "block": 35
+    }
+  ],
+  "final": {
+    "aliceVaultBalance": "1.3",
+    "bobVaultBalance": "1.15",
+    "settlementBalance": "0.0",
+    "outcome": "BOTH LEGS SETTLED"
+  }
+}

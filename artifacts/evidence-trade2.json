@@ -1,0 +1,32 @@
+{
+  "trade": "trade2",
+  "network": "anvil-local",
+  "steps": [
+    {
+      "step": "alice commit",
+      "tx": "0x25d6e1dec331a3dcd5d14d86a3b49044fd87b7a0b3d9eb52434e5eaf44a3ff1b",
+      "block": 18
+    },
+    {
+      "step": "bob commit",
+      "tx": "0x3b43f59947e60f7982811bf076619c14bae686d722fa90ac0995cc49420ef06f",
+      "block": 19
+    },
+    {
+      "step": "alice reclaim legA",
+      "tx": "0x15b05eda8b443a40bfc1c3b3e32c451ed1579856bba03ee1798d281cc62289b0",
+      "block": 21
+    },
+    {
+      "step": "bob reclaim legB",
+      "tx": "0x1f7053261e36cd3f6b64ae510e7098940a895fe78c7099585ea133a707778889",
+      "block": 22
+    }
+  ],
+  "final": {
+    "aliceVaultBalance": "0.55",
+    "bobVaultBalance": "0.65",
+    "settlementBalance": "0.0",
+    "outcome": "EXPIRED — BOTH LEGS REFUNDED"
+  }
+}

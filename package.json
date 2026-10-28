@@ -1,0 +1,22 @@
+{
+  "name": "quip-otc-prototype",
+  "version": "0.1.0",
+  "private": true,
+  "description": "OTC desk prototype: post-quantum-signed off-chain orders + on-chain settlement via QuipSwap-style escrow (Quip WOTS+ + reference HtlcEscrow).",
+  "type": "commonjs",
+  "scripts": {
+    "otc:create-trade-1": "node scripts/01_create_signed_offers.js trade1.json",
+    "otc:create-trade-2": "node scripts/01_create_signed_offers.js trade2.json",
+    "deploy": "node scripts/02_deploy_quip_and_htlc.js",
+    "trade1:settle": "node scripts/03_trade1_settle.js",
+    "trade2:refund": "node scripts/04_trade2_refund.js",
+    "all": "node scripts/01_create_signed_offers.js trade1.json && node scripts/01_create_signed_offers.js trade2.json && node scripts/02_deploy_quip_and_htlc.js && node scripts/03_trade1_settle.js && node scripts/04_trade2_refund.js",
+    "anvil": "anvil --host 127.0.0.1 --port 8545 --silent"
+  },
+  "dependencies": {
+    "@noble/hashes": "^1.7.1",
+    "@quip.network/ethereum-sdk": "^0.1.7",
+    "@quip.network/hashsigs": "^0.1.0",
+    "ethers": "^6.13.4"
+  }
+}
