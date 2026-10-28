@@ -1,0 +1,28 @@
+{
+  "name": "quip-pq-next-demo",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Browser WOTS+ signing and backend verification demo using Quip Network's TypeScript library",
+  "license": "UNLICENSED",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@noble/hashes": "1.7.1",
+    "@quip.network/hashsigs": "0.1.0",
+    "next": "16.3.8",
+    "react": "19.3.0",
+    "react-dom": "19.3.0"
+  },
+  "devDependencies": {
+    "@types/node": "24.10.1",
+    "@types/react": "19.2.2",
+    "@types/react-dom": "19.2.2",
+    "typescript": "5.9.3",
+    "vitest": "^3.2.7"
+  }
+}
