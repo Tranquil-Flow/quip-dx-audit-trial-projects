@@ -1,0 +1,10 @@
+# Python >=3.13. Vendor docs prescribe pip install "xquad[quip]".
+# The project ships pip-installable macOS arm64 wheels for xqffi and
+# quip-signer, built from the officially documented PyPI sdists, so a fresh
+# macOS venv can avoid a Rust build. Other platforms resolve PyPI wheels or
+# vendor-documented sdists as appropriate.
+--find-links ./dist
+xquad[quip]==0.4.2
+# Optional earlier-generation Quip WOTS+ signer (python sign_demo.py --legacy-wots).
+hashsigs==0.0.2
+pycryptodome>=3.20,<4

@@ -1,0 +1,10 @@
+.venv/
+keys/
+.cargo/
+.pip-cache/
+.tmp/
+dist/*.tar.gz
+dist/maturin-*.whl
+.verify-venv/
+__pycache__/
+*.pyc
