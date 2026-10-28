@@ -1,0 +1,31 @@
+{
+  "reward": 5000000000000,
+  "order_id": 115,
+  "solver": "5F8JSnuLkeqo8tYj1NVAmpJ2aCh6qdd8VVBCB8D4yGKUshWu",
+  "chain_best_energy_milli": -759000,
+  "energy": -837,
+  "num_submissions": 12,
+  "assignment": [
+    1,
+    1,
+    2,
+    0,
+    0,
+    2
+  ],
+  "loads": [
+    11,
+    8,
+    8
+  ],
+  "imbalance": 6,
+  "sample_set_vars": [
+    1,
+    4,
+    8,
+    9,
+    12,
+    17
+  ],
+  "wall_seconds": 77.00076100003207
+}

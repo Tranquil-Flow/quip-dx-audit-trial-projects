@@ -1,0 +1,6 @@
+brute force (A=100, W=15): min energy -4245, 6 optima, e.g. [0, 1, 2, 2, 1, 0]
+  example optimum loads: [9, 9, 9]
+submitting reweighted job ...
+order_id: 116 | submissions: 13 | chain best_energy_milli: -3075000
+assignment [1, 2, 0, 0, 2, 1] loads [9, 9, 9] imbalance 0 | model energy -4245
+saved -> network_result3.json

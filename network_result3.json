@@ -1,0 +1,24 @@
+{
+  "order_id": 116,
+  "energy": -4245,
+  "best_energy_milli": -3075000,
+  "num_submissions": 13,
+  "assignment": [
+    1,
+    2,
+    0,
+    0,
+    2,
+    1
+  ],
+  "loads": [
+    9,
+    9,
+    9
+  ],
+  "imbalance": 0,
+  "A": 100,
+  "W": 15,
+  "brute_min": -4245,
+  "wall_seconds": 74.27316224999959
+}

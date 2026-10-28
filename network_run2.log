@@ -1,0 +1,16 @@
+submitting job (reward 5000000000000 AGLS) to Quip network 'aglais' ...
+
+=== network result (retry, reward=5) ===
+order_id (job id): 115
+solver           : 5F8JSnuLkeqo8tYj1NVAmpJ2aCh6qdd8VVBCB8D4yGKUshWu
+chain energy(milli): -759000
+energy (model)   : -837
+wall time        : 77.0s
+num submissions  : 12
+
+assignment: job -> machine [1, 1, 2, 0, 0, 2]
+loads     : [11, 8, 8] (durations [3, 5, 2, 7, 4, 6] )
+imbalance : sum((L-9)^2) = 6
+schedule  : M0=7+4; M1=3+5; M2=2+6
+
+saved -> network_result2.json
