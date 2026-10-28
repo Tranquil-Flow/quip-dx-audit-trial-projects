@@ -1,0 +1,5 @@
+head 375779 {'deposit': '1000000000000', 'proofs_submitted': 0, 'proofs_won': 0, 'registered_at': 375750, 'rewards_earned': '0'} {'contexts_dispatched': 78, 'duplicate_result_drops': 0, 'heads_observed': 29, 'proofs_submitted': 0, 'results_received': 64, 'stale_drops': 0, 'submission_errors': 0} uptime 176
+2026-09-28T10:45:18.612310Z  INFO quip_solver_core::session: [quip-miner-cpu] progress: 60 jobs | 0.4 jobs/s | reads=128 sweeps=1024 | best=-14436 | requires energy<=-14704, solutions>=1
+attempt log lines: 64
+True {'deposit': '1000000000000', 'proofs_submitted': 0, 'proofs_won': 0, 'registered_at': 375750, 'rewards_earned': '0'} {'contexts_dispatched': 11, 'duplicate_result_drops': 0, 'heads_observed': 2, 'proofs_submitted': 0, 'results_received': 4, 'stale_drops': 0, 'submission_errors': 0}
+2026-09-28T10:45:18.612310Z  INFO quip_solver_core::session: [quip-miner-cpu] progress: 60 jobs | 0.4 jobs/s | reads=128 sweeps=1024 | best=-14436 | requires energy<=-14704, solutions>=1
