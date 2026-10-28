@@ -1,0 +1,15 @@
+{
+  "name": "quip-raffle",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Raffle service with commit-reveal draws anchored on the Quip Aglais testnet. QVRF (Quip quantum randomness) is a stub until Quip publishes a request interface.",
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "node --test test/*.test.js",
+    "demo": "node scripts/demo.js",
+    "keygen": "node scripts/keygen.js"
+  },
+  "engines": { "node": ">=20" },
+  "dependencies": { "ethers": "^6.13.0" }
+}

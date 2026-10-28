@@ -1,0 +1,48 @@
+{
+  "e20ed108-7a7a-4af4-adcc-876c86c7e880": {
+    "id": "e20ed108-7a7a-4af4-adcc-876c86c7e880",
+    "name": "demo raffle",
+    "winners": 2,
+    "entries": [
+      "alice",
+      "bob",
+      "carol",
+      "dave",
+      "erin",
+      "frank"
+    ],
+    "state": "drawn",
+    "createdAt": "2026-09-28T09:24:12.850Z",
+    "entriesHash": "0xef41e5ccb25737a0fe698f9cb130cf03b2fb26af170e73e235b742ceccf36939",
+    "commitment": "0xbbf514de975f59726e68db42396a8181eeedec8c55b8203434e409b40e85ea40",
+    "anchor": {
+      "txHash": "0x210539392544fcd40900cfcd2f089dc377e19e9bef52af854b6b88089939260e",
+      "blockNumber": 374970,
+      "blockHash": "0x5ce85c54b777b3c35d6cc28c270b1629422886fffee73702edde447815136f77",
+      "beaconBlock": 374973
+    },
+    "entropy": {
+      "provider": "csprng",
+      "label": "os-csprng (not quantum)",
+      "quantum": false
+    },
+    "beaconHash": "0xcc89dac577deab2ef3049216a10ff679b7764b081157868849bc4226696d2ced",
+    "seed": "0x842613fe668c9ba9ecb098318ceb317618aa8c9e95b24834d28cb52bcc73a23f",
+    "winnerList": [
+      "bob",
+      "carol"
+    ],
+    "secret": "0x88859e554114140afbab241cd988eb4ef5704eae34797ea2e78445a35b65df74",
+    "drawnAt": "2026-09-28T09:24:39.485Z"
+  },
+  "16cf6cbf-d8de-406c-81cd-fa574f17f392": {
+    "id": "16cf6cbf-d8de-406c-81cd-fa574f17f392",
+    "name": "q",
+    "winners": 1,
+    "entries": [
+      "a"
+    ],
+    "state": "open",
+    "createdAt": "2026-09-28T09:24:51.050Z"
+  }
+}
