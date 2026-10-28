@@ -1,0 +1,23 @@
+{
+  "name": "quip-pq-wallet-cli",
+  "version": "0.1.0",
+  "description": "Post-quantum smart account CLI on Quip Network asset layer (Solana devnet)",
+  "main": "index.js",
+  "scripts": {
+    "build": "esbuild src/cli.mjs --bundle --platform=node --format=cjs --outfile=dist/quipwallet.cjs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@noble/curves": "^2.4.0",
+    "@quip.network/hashsigs": "^0.1.0",
+    "@quip.network/solana-sdk": "^0.0.1",
+    "@solana/web3.js": "^1.99.0",
+    "bs58": "^6.0.0"
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.2"
+  },
+  "type": "commonjs"
+}
