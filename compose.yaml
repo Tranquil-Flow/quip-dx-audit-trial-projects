@@ -1,0 +1,61 @@
+# Aglais public testnet ONLY. The compose names are scoped to devnodeb-quip.
+name: devnodeb-quip
+services:
+  node:
+    image: registry.gitlab.com/quip.network/quip-validator/quip-network-node@sha256:6071afd5925dd28c23a112b9de45ac3644a49b2862cabcbbeef7dba15cc9275b
+    container_name: devnodeb-node
+    restart: 'no'
+    environment:
+      # Miner image always chowns ./keys to uid/gid 1000; share that uid so
+      # the node can read ./keys/node-key on subsequent starts.
+      PUID: '1000'
+      PGID: '1000'
+    volumes:
+      - ./data/chain:/data
+      - ./keys:/keys:ro
+      - ./vendor-nodes/chain-specs/aglais-network.json:/etc/quip/aglais-network.json:ro
+    ports:
+      - '127.0.0.1:31200:9944/tcp'
+      - '127.0.0.1:31201:30333/tcp'
+      - '127.0.0.1:31201:30333/udp'
+    networks:
+      - devnodeb-net
+    command:
+      - --chain=/etc/quip/aglais-network.json
+      - --base-path=/data
+      - --name=devnodeb-quip-testnet
+      - --node-key-file=/keys/node-key
+      - --port=30333
+      - --rpc-port=9944
+      - --rpc-external
+      - --rpc-methods=safe
+      - --rpc-cors=all
+      - --no-mdns
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: '3'
+  miner:
+    image: registry.gitlab.com/quip.network/quip-miner/v0.3/quip-miner@sha256:d50fdb5f3501834a036b6393b11e5663ddc147900491ba36d817cc64e8305d8b
+    container_name: devnodeb-miner
+    restart: 'no'
+    cpuset: '0'
+    mem_limit: 4g
+    shm_size: 512m
+    volumes:
+      - ./keys:/data
+    ports:
+      - '127.0.0.1:31202:8086/tcp'
+    networks:
+      - devnodeb-net
+    depends_on:
+      - node
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: '3'
+networks:
+  devnodeb-net:
+    name: devnodeb-net
