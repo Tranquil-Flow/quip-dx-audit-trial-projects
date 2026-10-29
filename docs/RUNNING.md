@@ -117,4 +117,6 @@ Stack and what to expect, per trial. "Builder steps" means the branch's `RUNNING
 | [`v7-a`](https://github.com/Tranquil-Flow/quip-dx-audit-trial-projects/tree/trial/v7-a) | Python (scripts) | yes | yes | Aglais testnet |
 | [`v7-b`](https://github.com/Tranquil-Flow/quip-dx-audit-trial-projects/tree/trial/v7-b) | Python | yes | yes | Aglais testnet |
 | [`v7-c`](https://github.com/Tranquil-Flow/quip-dx-audit-trial-projects/tree/trial/v7-c) | Python (scripts) | yes | check | Aglais testnet |
+| [`x1-a`](https://github.com/Tranquil-Flow/quip-dx-audit-trial-projects/tree/trial/x1-a) | Docker Compose | yes | check | Aglais testnet |
+| [`x1-b`](https://github.com/Tranquil-Flow/quip-dx-audit-trial-projects/tree/trial/x1-b) | Python (scripts) | no | check | Aglais testnet |
 | [`x2-a`](https://github.com/Tranquil-Flow/quip-dx-audit-trial-projects/tree/trial/x2-a) | Python (scripts) | yes | yes | Aglais testnet |

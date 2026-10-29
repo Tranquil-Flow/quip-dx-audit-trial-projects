@@ -4,7 +4,7 @@ Source code that AI coding agents built while testing how easy it is to build on
 
 **How to browse:** each trial lives on its own branch, `trial/<id>`. Pick a row below, open the branch, and start with `TRIAL.md` (what it built, which Quip products it touched, the evidence, what got in the way). `RESULT.md` and `DEVLOG.md` are the builder's own write-ups; `EXCLUDED.md` lists what was left out.
 
-87 of 97 trials have source on a branch. The rest are listed with their report card but no code (see below).
+89 of 97 trials have source on a branch. The rest are listed with their report card but no code (see below).
 
 ## Running a project
 
@@ -112,8 +112,8 @@ In short: key files, dependencies, clones of Quip's own repositories and large f
 | `v7-a` | Round 3 | Hackathon (screenshot-only): anything in an hour | Claude Sonnet 5.5 | Built and working on testnet | source on branch | [`trial/v7-a`](https://github.com/Tranquil-Flow/quip-dx-audit-trial-projects/tree/trial/v7-a) |
 | `v7-b` | Round 3 | Hackathon (screenshot-only): anything in an hour | GPT-6 | Built and working on testnet | source on branch | [`trial/v7-b`](https://github.com/Tranquil-Flow/quip-dx-audit-trial-projects/tree/trial/v7-b) |
 | `v7-c` | Round 3 | Hackathon (screenshot-only): anything in an hour | MiMo-V2.5, then DeepSeek V4 Pro for the last part | Built and working on testnet | source on branch | [`trial/v7-c`](https://github.com/Tranquil-Flow/quip-dx-audit-trial-projects/tree/trial/v7-c) |
-| `x1-a` | Round 5 | Node and miner on a shared Linux server (Docker, ops runbook) | Claude Sonnet 5.5 | Built and working on testnet: node synced and miner registered and running; no proofs submitted yet | source not retained | [card](cards/x1-a.md) |
-| `x1-b` | Round 5 | Node and miner on a shared Linux server (Docker, ops runbook) | GPT-6 | Built and working on testnet: node synced and miner registered; no proofs submitted | source not retained | [card](cards/x1-b.md) |
+| `x1-a` | Round 5 | Node and miner on a shared Linux server (Docker, ops runbook) | Claude Sonnet 5.5 | Built and working on testnet: node synced and miner registered and running; no proofs submitted yet | source on branch | [`trial/x1-a`](https://github.com/Tranquil-Flow/quip-dx-audit-trial-projects/tree/trial/x1-a) |
+| `x1-b` | Round 5 | Node and miner on a shared Linux server (Docker, ops runbook) | GPT-6 | Built and working on testnet: node synced and miner registered; no proofs submitted | source on branch | [`trial/x1-b`](https://github.com/Tranquil-Flow/quip-dx-audit-trial-projects/tree/trial/x1-b) |
 | `x2-a` | Round 5 | Compute from a Linux server: 6-job QUBO locally and as a network job | MiMo-V2.5 | Built and working on testnet: three live jobs; the third, with a longer window, returned the optimum | source on branch | [`trial/x2-a`](https://github.com/Tranquil-Flow/quip-dx-audit-trial-projects/tree/trial/x2-a) |
 
 Machine-readable: [`trials.csv`](trials.csv).
@@ -122,9 +122,9 @@ Columns: `status` is `source on branch` or `source not retained`; `branch` is th
 
 ## Rounds 3-5: recovered projects
 
-The rounds 3-5 agents (trial ids starting `g`, `v`, `p`, `s` and `x`) worked in temporary folders that were deleted after the audit. 40 of their 50 projects were recovered and are on branches; the other 10 have their card only.
+The rounds 3-5 agents (trial ids starting `g`, `v`, `p`, `s` and `x`) worked in temporary folders that were deleted after the audit. 42 of their 50 projects are on branches; the other 8 have their card only.
 
-**Where the files came from.** The agent runner used for most of these trials keeps a snapshot of the working folder before each file the agent writes (only the latest snapshot per folder survives). Each branch starts from the last snapshot of either the trial's own folder or the copy that an independent rebuild made of the finished project. The session log of each run records every file the agent wrote or patched, with the content or the exact patch.
+**Where the files came from.** Two trials, `x1-a` and `x1-b`, ran on a separate Linux server where their folders were kept, so their branches are copies of the original folders. For the rest, the agent runner used for most of these trials keeps a snapshot of the working folder before each file the agent writes (only the latest snapshot per folder survives). Each branch starts from the last snapshot of either the trial's own folder or the copy that an independent rebuild made of the finished project. The session log of each run records every file the agent wrote or patched, with the content or the exact patch.
 
 **How each branch was made to match the trial's own result.**
 - Files the agent wrote or patched after the last snapshot were rebuilt from the log (its last full write plus every later patch). They are listed in the branch's `RESTORED.md`.
@@ -180,6 +180,8 @@ The rounds 3-5 agents (trial ids starting `g`, `v`, `p`, `s` and `x`) worked in 
 | [`v7-a`](https://github.com/Tranquil-Flow/quip-dx-audit-trial-projects/tree/trial/v7-a) | rebuild's copy of the finished project | no | - | 1 | - | Claude Code run: mostly written with shell commands, so not checkable file by file |
 | [`v7-b`](https://github.com/Tranquil-Flow/quip-dx-audit-trial-projects/tree/trial/v7-b) | rebuild's copy of the finished project | yes | 5 | - | - | - |
 | [`v7-c`](https://github.com/Tranquil-Flow/quip-dx-audit-trial-projects/tree/trial/v7-c) | rebuild's copy of the finished project | yes | - | 2 | - | - |
+| [`x1-a`](https://github.com/Tranquil-Flow/quip-dx-audit-trial-projects/tree/trial/x1-a) | trial's own folder, kept on the server where it ran | n/a | - | - | - | copied from the original folder; nothing to reconstruct |
+| [`x1-b`](https://github.com/Tranquil-Flow/quip-dx-audit-trial-projects/tree/trial/x1-b) | trial's own folder, kept on the server where it ran | n/a | - | - | - | copied from the original folder; nothing to reconstruct |
 | [`x2-a`](https://github.com/Tranquil-Flow/quip-dx-audit-trial-projects/tree/trial/x2-a) | rebuild's copy of the finished project | no | - | 3 | - | ran on a separate Linux server; its session log is not available |
 | `g3-a` ([card](cards/g3-a.md)) | not recovered | n/a | - | - | - | files not in any snapshot; session log kept |
 | `p4-a` ([card](cards/p4-a.md)) | not recovered | n/a | - | - | - | files not in any snapshot; session log kept |
@@ -189,8 +191,6 @@ The rounds 3-5 agents (trial ids starting `g`, `v`, `p`, `s` and `x`) worked in 
 | `v4-a` ([card](cards/v4-a.md)) | not recovered | n/a | - | - | - | files not in any snapshot; session log kept |
 | `v5-a` ([card](cards/v5-a.md)) | not recovered | n/a | - | - | - | files not in any snapshot; session log kept |
 | `v6-a` ([card](cards/v6-a.md)) | not recovered | n/a | - | - | - | files not in any snapshot; session log kept |
-| `x1-a` ([card](cards/x1-a.md)) | not recovered | n/a | - | - | - | ran on a separate Linux server; not recovered |
-| `x1-b` ([card](cards/x1-b.md)) | not recovered | n/a | - | - | - | ran on a separate Linux server; not recovered |
 
 ## What you are looking at
 
