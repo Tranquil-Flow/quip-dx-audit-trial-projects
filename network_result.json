@@ -1,0 +1,59 @@
+{
+  "network": "aglais",
+  "topology": "native",
+  "keystore": "keys/keystore.json",
+  "jobs": [
+    3,
+    5,
+    2,
+    7,
+    4,
+    6
+  ],
+  "machines": 3,
+  "penalty_A": 1000,
+  "balance_B": 1,
+  "order_id": 248,
+  "miner": "5Eb82sAEyRToSgRK51njamL6xMT2gGriDKtXTMBfR31PSvwk",
+  "best_energy_milli": -6370000,
+  "energy_matches_chain": true,
+  "num_submissions": 4,
+  "num_solutions": 1,
+  "result_energy": -5719,
+  "recomputed_energy": -5719,
+  "values": [
+    0,
+    0,
+    1,
+    0,
+    1,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    1,
+    1,
+    0,
+    0
+  ],
+  "assignment": [
+    2,
+    1,
+    1,
+    2,
+    2,
+    0
+  ],
+  "loads": [
+    6,
+    7,
+    14
+  ],
+  "imbalance": 8,
+  "elapsed_seconds": 95.3
+}

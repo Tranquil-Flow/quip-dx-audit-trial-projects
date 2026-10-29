@@ -1,0 +1,113 @@
+
+ Introduction
+
+XQuad is a hardware-agnostic toolchain for expressing and running quadratic
+optimisation problems – QUBO, Ising, and integer formulations – on quantum
+annealers and classical solvers. A problem is written once against the XQVM
+instruction set and runs unchanged on any backend the toolchain supports.
+
+Think of it as LLVM for quantum computing: write a problem once, compile
+it to XQVM bytecode, and run it on any supported backend.
+
+What XQuad solves
+
+Combinatorial optimisation problems – travelling salesman, graph colouring,
+knapsack, set cover, and their relatives – can be expressed as quadratic
+binary models and handed to a quantum annealer or a classical sampler. XQuad
+gives that pipeline a single intermediate representation, XQVM bytecode, and
+a reference virtual machine, so the same compiled program runs on a D-Wave
+QPU, a local simulated-annealing sampler, or the Quip network without a
+rewrite. See Quadratic Models for what a
+QUBO/Ising model actually is, and Backends for the
+solvers XQuad targets.
+
+The real components
+
+The toolchain is dual-language: a Rust core (VM, assembler, bytecode, CLI)
+with Python interfaces (reference VM, constraint-programming DSL, solver
+adapters, FFI bindings).
+
+Three Rust crates, published to crates.io:
+
+CrateBinaryRole
+
+xqvm–Bytecode definitions, opcode table, instruction builder, binary codec, an incremental instruction-stream reader, the VM interpreter, and a disassembler
+
+xqasm–Text assembler: .xqasm source to bytecode
+
+xqclixquadThe unified CLI – xquad asm, xquad dism, xquad run, xquad verify
+
+A fourth crate, xqffi,
+is a PyO3 bridge that exposes xqvm and xqasm to Python. It ships as a
+Python wheel rather than a crates.io library.
+
+Five Python distributions, published to PyPI:
+
+PackageRole
+
+xqvm_pyPure-Python reference VM, used as the cross-implementation conformance oracle
+
+xqcpHigh-level constraint-programming DSL that compiles to XQVM assembly
+
+xqsaSolver adapters for XQMX models: local simulated annealing, D-Wave, and the Quip network
+
+xqffiThe PyO3 FFI bindings crate above, packaged as a wheel
+
+xquadUmbrella package re-exporting xqffi, xqcp, and xqsa under one namespace, with an interactive Program / Session / RunResult API
+
+Parity on every committed conformance vector between the Rust xqvm
+interpreter and the Python xqvm_py reference VM is enforced mechanically:
+each vector runs on both implementations in CI, and disagreement fails the
+build. See Conformance for what a vector does
+and does not cover.
+
+Architecture at a glance
+
+XQVM is a stack-based interpreter with a 256-slot register file. The value
+stack holds i64 integers; registers hold typed values (RegVal): integers,
+integer vectors, QUBO/Ising/integer models (XqmxModel), model vectors, and
+candidate solutions (XqmxSample). A dedicated loop stack drives RANGE and
+ITER iteration.
+
+The instruction set comprises 93 instructions, declared once in the
+opcodes! table at
+xqvm/src/bytecode/types/table.rs.
+The Opcode enum, the Instruction enum, mnemonic strings, and operand
+arity are all derived from that single table.
+
+Every .xqb file opens with a fixed 15-byte XQBC header – magic bytes,
+format version, calldata/output-slot counts, instruction-stream length, and
+a CRC-32 checksum – followed by the raw instruction stream: an opcode byte
+followed by its operands in big-endian byte order. See
+Bytecode Format for the full field layout.
+
+Where to go next
+
+Getting Started – install the toolchain and run
+your first program.
+
+Concepts – what a QUBO/Ising model is, the ways
+to use XQuad, and the backends it targets.
+
+Modelling with XQCP – write a problem with the
+constraint-programming DSL.
+
+Running Programs and
+Solving – execute a compiled program and hand it
+to a solver.
+
+XQVM Reference – the machine model, assembly
+language, instruction set, and bytecode format.
+
+Embedding – using the Rust crates directly,
+no_std support, and cross-implementation conformance.
+
+Examples – worked problems including a
+Travelling Salesman Problem.
+
+License
+
+Licensed under the
+GNU Affero General Public License v3.0 or later.
+
+ 
