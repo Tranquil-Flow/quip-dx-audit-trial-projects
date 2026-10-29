@@ -124,7 +124,7 @@ Columns: `status` is `source on branch` or `source not retained`; `branch` is th
 
 The rounds 3-5 agents (trial ids starting `g`, `v`, `p`, `s` and `x`) worked in temporary folders that were deleted after the audit. 42 of their 50 projects are on branches; the other 8 have their card only.
 
-**Where the files came from.** Two trials, `x1-a` and `x1-b`, ran on a separate Linux server where their folders were kept, so their branches are copies of the original folders. For the rest, the agent runner used for most of these trials keeps a snapshot of the working folder before each file the agent writes (only the latest snapshot per folder survives). Each branch starts from the last snapshot of either the trial's own folder or the copy that an independent rebuild made of the finished project. The session log of each run records every file the agent wrote or patched, with the content or the exact patch.
+**Where the files came from.** Three trials, `x1-a`, `x1-b` and `x2-a`, ran on a separate Linux server where their folders were kept. The `x1` branches are copies of those folders; `x2-a` was recovered as described below and then matched its original folder file for file. For the rest, the agent runner used for most of these trials keeps a snapshot of the working folder before each file the agent writes (only the latest snapshot per folder survives). Each branch starts from the last snapshot of either the trial's own folder or the copy that an independent rebuild made of the finished project. The session log of each run records every file the agent wrote or patched, with the content or the exact patch.
 
 **How each branch was made to match the trial's own result.**
 - Files the agent wrote or patched after the last snapshot were rebuilt from the log (its last full write plus every later patch). They are listed in the branch's `RESTORED.md`.
@@ -132,9 +132,9 @@ The rounds 3-5 agents (trial ids starting `g`, `v`, `p`, `s` and `x`) worked in 
 - Files the agent deleted itself before finishing were removed.
 
 **What you can rely on.**
-- **Checked against the log (31 branches):** every file the agent wrote or patched is present in its final version, except the ones it deleted.
+- **Checked against the log (32 branches, including `x2-a`):** every file the agent wrote or patched is present in its final version, except the ones it deleted.
 - **Not checkable file by file (8 branches: `g1-a`, `g4-a`, `g6-a`, `p1-a`, `p3-a`, `v1-a`, `v3-a`, `v7-a`):** these ran in Claude Code, which keeps no snapshots, so they come from a rebuild's copy of the finished project. The agents mostly wrote files through shell commands, so the log cannot confirm each file. Files the rebuild added were removed.
-- **`x2-a`:** ran on a separate Linux server and its session log is not available here. The three files its rebuild created (per the rebuild's own log) were removed; the rest is as the rebuild copied it.
+- **`x2-a`:** recovered from a rebuild's copy like the others, then compared with the agent's original folder on the server: it matches file for file.
 - **Possible gaps everywhere:** a file that a program wrote after the last snapshot and that the agent never wrote or patched itself, for example a result file produced by the final run, may be missing or an earlier version.
 - **Evidence is on the old chain:** Aglais was relaunched from a new genesis in October 2026, so the Aglais transactions and addresses in these notes are on the earlier chain and no longer resolve. Base Sepolia evidence still resolves.
 - **Removed on purpose:** keys, dependencies, caches, clones of Quip's repositories and files over 1 MB (see each `EXCLUDED.md` and [docs/REDACTIONS.md](docs/REDACTIONS.md)). Three earlier runs that the report does not count are not published.
@@ -182,7 +182,7 @@ The rounds 3-5 agents (trial ids starting `g`, `v`, `p`, `s` and `x`) worked in 
 | [`v7-c`](https://github.com/Tranquil-Flow/quip-dx-audit-trial-projects/tree/trial/v7-c) | rebuild's copy of the finished project | yes | - | 2 | - | - |
 | [`x1-a`](https://github.com/Tranquil-Flow/quip-dx-audit-trial-projects/tree/trial/x1-a) | trial's own folder, kept on the server where it ran | n/a | - | - | - | copied from the original folder; nothing to reconstruct |
 | [`x1-b`](https://github.com/Tranquil-Flow/quip-dx-audit-trial-projects/tree/trial/x1-b) | trial's own folder, kept on the server where it ran | n/a | - | - | - | copied from the original folder; nothing to reconstruct |
-| [`x2-a`](https://github.com/Tranquil-Flow/quip-dx-audit-trial-projects/tree/trial/x2-a) | rebuild's copy of the finished project | no | - | 3 | - | ran on a separate Linux server; its session log is not available |
+| [`x2-a`](https://github.com/Tranquil-Flow/quip-dx-audit-trial-projects/tree/trial/x2-a) | rebuild's copy of the finished project | yes | - | 3 | - | matches the agent's original folder on the server file for file |
 | `g3-a` ([card](cards/g3-a.md)) | not recovered | n/a | - | - | - | files not in any snapshot; session log kept |
 | `p4-a` ([card](cards/p4-a.md)) | not recovered | n/a | - | - | - | files not in any snapshot; session log kept |
 | `p7-a` ([card](cards/p7-a.md)) | not recovered | n/a | - | - | - | files not in any snapshot; session log kept |
