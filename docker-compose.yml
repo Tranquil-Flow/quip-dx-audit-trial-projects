@@ -1,0 +1,61 @@
+# Own compose (not the vendor one): vendor file hardcodes container names quip-*, host ports 80/443/20049/30333 -> collide with this shared host.
+name: devnodea-quip
+x-user: &user
+  PUID: "1002"
+  PGID: "1002"
+services:
+  validator:
+    image: registry.gitlab.com/quip.network/quip-validator/quip-network-node:beta
+    container_name: devnodea-validator
+    restart: "no"
+    environment: *user
+    volumes:
+      - ./data/chain:/data
+      - ./repo/chain-specs/aglais-network.json:/etc/quip/chain-spec.json:ro
+      - ./repo/scripts/validator-healthcheck.sh:/usr/local/bin/validator-healthcheck:ro
+    ports:
+      - "127.0.0.1:31100:9944"
+      - "127.0.0.1:31102:30333/tcp"
+      - "127.0.0.1:31102:30333/udp"
+    networks:
+      default:
+        aliases: [quip-validator]
+    command:
+      - --chain=/etc/quip/chain-spec.json
+      - --base-path=/data
+      - --name=devnodea-validator
+      - --validator
+      - --state-pruning=archive
+      - --blocks-pruning=archive
+      - --rpc-port=9944
+      - --unsafe-rpc-external
+      - --rpc-cors=*
+      - --rpc-methods=safe
+      - --no-mdns
+      - --unsafe-force-node-key-generation
+    healthcheck:
+      test: ["CMD", "validator-healthcheck"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 24h
+  miner:
+    image: registry.gitlab.com/quip.network/quip-miner/v0.3/quip-miner:beta
+    container_name: devnodea-miner
+    restart: "no"
+    cpuset: "0-1"
+    shm_size: "2gb"
+    mem_limit: 8g
+    environment: *user
+    volumes:
+      - ./data/m:/data
+      - ./keys/keystore.json:/data/keystore.json
+    ports:
+      - "127.0.0.1:31101:8086"
+    depends_on:
+      validator:
+        condition: service_healthy
+        required: false
+networks:
+  default:
+    name: devnodea-net

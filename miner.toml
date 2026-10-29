@@ -1,0 +1,11 @@
+[miner]
+validators = ["ws://quip-validator:9944"]
+faucet_url = "https://faucet.aglais.quip.network"
+signer_key = "/keys/keystore.json"
+
+[cpu]
+binary = "quip-cpu-sa"
+
+[dashboard]
+listen = "0.0.0.0:8086"
+data_dir = "/data/attempts"
